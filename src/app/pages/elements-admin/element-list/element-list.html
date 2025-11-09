@@ -1,0 +1,21 @@
+<p>element-list works!</p>
+
+<ul>
+  @for (item of elements(); track $index) {
+    <li>
+      <p>
+        {{item.name}}
+      </p>
+      <p>
+        {{item.category}}
+      </p>
+      <p>
+        {{item.price}}
+      </p>
+      <div>
+        <button type="button" (click)="delete(item.id)">Eliminar</button>
+        <button type="button" (click)="put(item)">Actualizar</button>
+      </div>
+    </li>
+  }
+</ul>
