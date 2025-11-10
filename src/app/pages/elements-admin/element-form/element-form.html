@@ -1,1 +1,18 @@
-<p>element-form works!</p>
+<h2>
+    {{isEditMode() ? "Modo edicion" : "Agregar elemento"}}
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="render()">
+  <label>nombre</label>
+  <input type="text" formControlName="name">
+
+  <label>categoria</label>
+  <input type="text" formControlName="category">
+
+  <label>precio</label>
+  <input type="number" formControlName="price">
+
+  <button type="submit">
+    {{isEditMode() ? "Actualizar" : "Agregar"}}
+  </button>
+</form>

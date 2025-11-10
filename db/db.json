@@ -1,5 +1,17 @@
 {
+  "events": [],
   "elements": [
-    {"id": "asd", "name": "asd", "category": "asd", "price": 1}
+    {
+      "id": "asd",
+      "name": "asd",
+      "category": "asd",
+      "price": 4
+    },
+    {
+      "id": "26b9",
+      "name": "asdasdasd",
+      "category": "asd",
+      "price": 1
+    }
   ]
 }

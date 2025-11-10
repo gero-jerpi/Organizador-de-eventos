@@ -1,7 +1,8 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Elemento } from '../../../model/elements.model';
-import { ElementsService } from '../../../services/elements-service';
+import { ElementsService } from '../../../services/element-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-element-form',
@@ -13,6 +14,7 @@ export class ElementForm {
   /// Variables
   private fb = inject(FormBuilder);
   private service = inject(ElementsService);
+  private router = inject(Router);
 
   private elementToEdit: Elemento | null = null;
   isEditMode = signal(false);
@@ -51,6 +53,8 @@ export class ElementForm {
       this.service.put(updateElement).subscribe(()=>{
         this.service.clearElementToUpdate();
         console.log("Elemento editado");
+        this.router.navigate(["/admin/element-list"])
+
       })
     }else{
       this.service.post(newElement).subscribe(()=>{

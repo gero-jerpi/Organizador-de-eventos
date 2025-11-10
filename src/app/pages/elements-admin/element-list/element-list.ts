@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ElementsService } from '../../../services/elements-service';
+import { ElementsService } from '../../../services/element-service';
 import { Elemento } from '../../../model/elements.model';
 import { Router } from '@angular/router';
 

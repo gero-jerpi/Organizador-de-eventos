@@ -10,3 +10,4 @@ export interface newElement{
     name: string;
     price: number;
 }
+
