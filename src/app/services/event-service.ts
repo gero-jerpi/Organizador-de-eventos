@@ -36,6 +36,9 @@ export class EventService {
 
 
   /// Methods
+
+
+
   get(){
     this.http.get<Event[]>(this.apiUrl).subscribe((data)=>{
       this.eventsSignal.set(data);
