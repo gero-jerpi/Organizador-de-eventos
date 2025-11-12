@@ -1,0 +1,24 @@
+<p>event-list works!</p>
+
+<ul>
+  @for (item of events(); track $index) {
+    <li>
+        {{item.clientName}}
+        {{item.date}}
+        {{item.totalPrice}}
+        {{item.status}}
+
+      <ul>
+        @for (i of item.elements; track $index) {
+          <li>
+            {{i.category}}
+            {{i.name}}
+          </li>
+        }
+      </ul>
+      <button type="button" (click)="delete(item.id)">Eliminar</button>
+      <button type="button">Actualizar?nose como hacerlo</button>
+      <button type="button">Actualizar estado nose q nombre poner</button>
+    </li>
+  }
+</ul>

@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class EventServiceTs {
+export class EventService {
   /// Api
   private apiUrl = 'http://localhost:3000/events';
 
