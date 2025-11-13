@@ -10,10 +10,11 @@
 
       <ul>
         @for (i of item.elements; track $index) {
-          <li>
-            {{i.category}}
-            {{i.name}}
-          </li>
+          @let elementFound = findById(i);
+          @if(elementFound){
+            {{elementFound.name}}
+            {{elementFound.price}}
+          }
         }
       </ul>
       <button type="button" (click)="delete(item.id)">Eliminar</button>

@@ -1,17 +1,34 @@
 {
-  "events": [],
+  "events": [
+    {
+      "clientName": "asd",
+      "date": "13/28/123",
+      "elements": [
+        "asd"
+      ],
+      "totalPrice": 123,
+      "status": "pending",
+      "id": "71af"
+    }
+  ],
   "elements": [
     {
       "id": "asd",
-      "name": "asd",
-      "category": "asd",
-      "price": 4
+      "name": "PRUEBA",
+      "category": "PRUEBA",
+      "price": 40000
     },
     {
       "id": "26b9",
-      "name": "asdasdasd",
-      "category": "asd",
-      "price": 1
+      "name": "PRUEBA2",
+      "category": "PRUEBA2",
+      "price": 300
+    },
+    {
+      "id": "1a00",
+      "name": "asdasd",
+      "category": "PRUEBA2",
+      "price": 123123
     }
   ]
 }

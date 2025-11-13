@@ -1,1 +1,30 @@
 <p>event-form works!</p>
+
+<form>
+  <label>nombBRE CLIENTE</label>
+  <input type="text">
+
+  <label>fecha</label>
+  <input type="date">
+
+ @for (category of getCategories(); track $index) {
+
+  <label>{{ category }}</label>
+
+  <select>
+    <option>ASDASD</option>
+
+    @for (element of filterByCategory(category); track element.id) {
+      <option>
+        {{ element.name }} - ${{ element.price }}
+      </option>
+    }
+  </select>
+
+}
+
+  <p>precio</p>
+  <p>status</p>
+
+  <button type="submit"> enviar</button>
+</form>
