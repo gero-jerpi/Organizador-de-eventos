@@ -38,6 +38,17 @@ export class EventService {
   /// Methods
 
 
+  patch(id: string, newStatus: 'pending' | 'confirmed'): Observable<Event>{
+      return this.http.patch<Event>(`${this.apiUrl}/${id}`, {status: newStatus}).pipe(
+        tap(eventUpdated =>
+          this.eventsSignal.update(events =>
+            events.map(event=>
+              event.id === id ? {...event, status: eventUpdated.status} : event
+            )
+          )
+        )
+      )
+  }
 
   get(){
     this.http.get<Event[]>(this.apiUrl).subscribe((data)=>{

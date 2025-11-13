@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { EventService } from '../../../services/event-service';
+import { Event } from '../../../model/event.model';
 
 @Component({
   selector: 'app-event-list',
@@ -19,6 +20,12 @@ export class EventList {
       }
   }
 
+  patch(event: Event){
+    const newStatus = event.status === 'confirmed' ? 'pending' : 'confirmed';
+    this.service.patch(event.id, newStatus).subscribe(()=>{
+      console.log("eliminado");
+    })
+  }
 
 
 }
