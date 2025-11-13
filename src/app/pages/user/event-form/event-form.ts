@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { EventService } from '../../services/event-service';
+import { EventService } from '../../../services/event-service';
 
 @Component({
   selector: 'app-event-form',
@@ -8,7 +8,6 @@ import { EventService } from '../../services/event-service';
   styleUrl: './event-form.css',
 })
 export class EventForm {
-  private service = inject(EventService);
 
 
 
