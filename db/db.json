@@ -40,31 +40,12 @@
       "role": "admin"
     },
     {
-      "id": "0ca7",
-      "name": "ludmilla deppen",
-      "email": "ludeppen7@gmail.com",
+      "id": "94fd",
+      "name": "ludmila",
+      "lastName": "deppen",
+      "email": "ludeppen@gmail.com",
+      "phone": "2235243997",
       "password": "12345",
-      "role": "client"
-    },
-    {
-      "id": "c84b",
-      "name": "Candela Flores",
-      "email": "florescande@gmail.com",
-      "password": "54321",
-      "role": "client"
-    },
-    {
-      "id": "1acd",
-      "name": "gerooo",
-      "email": "gero@gero.com",
-      "password": "gerooo",
-      "role": "client"
-    },
-    {
-      "id": "8eee",
-      "name": "gero12",
-      "email": "geroo@gero.com",
-      "password": "gero12",
       "role": "client"
     }
   ]

@@ -19,10 +19,12 @@ export class Register {
   errorMsg = '';
 
   registroForm = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(5)]],
-    role: ['client', Validators.required] 
+  name: ['', Validators.required],
+  lastName: ['', Validators.required],
+  email: ['', [Validators.required, Validators.email]],
+  phone: ['', Validators.required],
+  password: ['', [Validators.required, Validators.minLength(5)]],
+  role: ['client', Validators.required]
   });
 
 

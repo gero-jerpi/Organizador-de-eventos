@@ -1,0 +1,85 @@
+.register-container {
+  max-width: 380px;
+  margin: 4rem 0 0 10rem;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #395886;
+}
+
+.register-container h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+}
+
+.register-container form {
+  background: #f0f3fa;
+  border: 1.5px solid #d5deef;
+  border-radius: 18px;
+  padding: 1.4rem 3rem 1.4rem 2rem;
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register-container label {
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+.register-container input {
+  border: 1px solid #d5deef;
+  border-radius: 18px;
+  padding: 0.45rem 1rem;
+  background: #f0f3fa;
+  font-size: 0.9rem;
+  outline: none;
+  box-shadow: none;
+  width: 260px;
+  max-width: 100%;
+}
+
+.register-container input:focus {
+  border-color: #d5deef;
+}
+
+.register-container input::placeholder {
+  color: #8b95b5;
+}
+
+.register-container button[type='submit'] {
+  align-self: flex-end;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid #8eacd8;
+  background: #d5deef;
+  color: #395886;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.register-container button[type='submit']:hover {
+  filter: brightness(0.97);
+}
+
+.register-container .error {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #c0392b;
+}
+
+.register-container > a {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #395886;
+  text-decoration: underline;
+}
+
+.error-msg {
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: 4px;
+}
