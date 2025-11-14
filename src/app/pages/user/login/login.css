@@ -1,6 +1,6 @@
 .login-container {
   max-width: 380px;
-  margin: 2rem 0 0 4rem;
+  margin: 4rem 0 0 10rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   color: #395886;
 }
@@ -14,7 +14,8 @@
   background: #f0f3fa;
   border: 1.5px solid #d5deef;
   border-radius: 18px;
-  padding: 1.4rem 1.6rem;
+  padding: 1.4rem 3rem 1.4rem 2rem;
+  width: 520px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -31,6 +32,8 @@
   font-size: 0.9rem;
   outline: none;
   box-shadow: none;
+  width: 260px;
+  max-width: 100%;
 }
 .login-container input:focus {
   border-color: #d5deef;
