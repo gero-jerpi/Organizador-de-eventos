@@ -20,7 +20,7 @@ export class EventForm {
     return [...new Set(this.elements().map(e => e.category))];
   }
 
-  verValor(id: string){
+  verValor(id: any){
     console.log(id);
 
   }

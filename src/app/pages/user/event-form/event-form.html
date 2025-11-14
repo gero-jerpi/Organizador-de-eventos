@@ -11,11 +11,11 @@
 
   <label>{{ category }}</label>
 
-  <select>
+  <select (change)="verValor($event.target.value)">
     <option>ASDASD</option>
 
     @for (element of filterByCategory(category); track element.id) {
-      <option>
+      <option [value]="element.id">
         {{ element.name }} - ${{ element.price }}
       </option>
     }

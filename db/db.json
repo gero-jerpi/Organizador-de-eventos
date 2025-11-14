@@ -52,7 +52,20 @@
       "email": "florescande@gmail.com",
       "password": "54321",
       "role": "client"
+    },
+    {
+      "id": "1acd",
+      "name": "gerooo",
+      "email": "gero@gero.com",
+      "password": "gerooo",
+      "role": "client"
+    },
+    {
+      "id": "8eee",
+      "name": "gero12",
+      "email": "geroo@gero.com",
+      "password": "gero12",
+      "role": "client"
     }
   ]
 }
-
