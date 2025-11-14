@@ -1,19 +1,17 @@
 .login-container {
   max-width: 380px;
-  margin: 2rem auto;
+  margin: 2rem 0 0 4rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   color: #395886;
 }
-
 .login-container h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
 }
-
 .login-container form {
-  background: #f5f7fd;
+  background: #f0f3fa;
   border: 1.5px solid #d5deef;
   border-radius: 18px;
   padding: 1.4rem 1.6rem;
@@ -21,48 +19,45 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-
 .login-container label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 0.1rem;
 }
-
 .login-container input {
-  border: none;
-  border-radius: 999px;
+  border: 1px solid #d5deef;
+  border-radius: 18px;
   padding: 0.45rem 1rem;
-  background: #dde6f7;
+  background: #f0f3fa;
   font-size: 0.9rem;
-  color: #395886;
   outline: none;
+  box-shadow: none;
 }
-
+.login-container input:focus {
+  border-color: #d5deef;
+  box-shadow: none;
+}
 .login-container input::placeholder {
   color: #8b95b5;
 }
-
 .login-container button[type='submit'] {
   align-self: flex-end;
   margin-top: 0.8rem;
   padding: 0.5rem 1.6rem;
   border-radius: 999px;
-  border: 1px solid #b7c7ea;
-  background: #c8d6f5;
+  border: 1px solid #8eacd8;
+  background: #d5deef;
   color: #395886;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
 }
-
 .login-container button[type='submit']:hover {
   filter: brightness(0.97);
 }
-
 .login-container .error {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: #c0392b;
 }
-
 .login-container > a {
   display: inline-block;
   margin-top: 0.8rem;
