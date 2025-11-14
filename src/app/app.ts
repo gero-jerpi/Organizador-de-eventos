@@ -7,11 +7,7 @@ import { Login } from './pages/user/login/login';
 
 @Component({
   selector: 'app-root',
-<<<<<<< Updated upstream
-  imports: [RouterOutlet],
-=======
   imports: [RouterOutlet, Register, Login, HeaderUser],
->>>>>>> Stashed changes
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
