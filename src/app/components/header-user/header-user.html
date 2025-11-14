@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/">YOUR EVENT</a>
+  </div>
+
+  <!-- SOLO FUNCIONA DESDE MOBILE !! desde la compu no -->
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+
+  <!-- REVISAR RUTAS -->
+  <nav class="nav" [class.open]="isMenuOpen">
+    <a routerLink="/events/create" (click)="closeMenu()">Crear evento</a>
+    <a routerLink="/events" (click)="closeMenu()">Eventos</a>
+    <a routerLink="/" (click)="closeMenu()">Contacto</a>
+  </nav>
+</header>
