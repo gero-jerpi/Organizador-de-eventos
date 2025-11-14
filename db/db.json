@@ -30,5 +30,28 @@
       "category": "PRUEBA2",
       "price": 123123
     }
+  ],
+  "users": [
+    {
+      "id": "482a",
+      "name": "Administrador",
+      "email": "adminEventos@gmail.com",
+      "password": "utneventos2025",
+      "role": "admin"
+    },
+    {
+      "id": "0ca7",
+      "name": "ludmilla deppen",
+      "email": "ludeppen7@gmail.com",
+      "password": "12345",
+      "role": "client"
+    },
+    {
+      "id": "c84b",
+      "name": "Candela Flores",
+      "email": "florescande@gmail.com",
+      "password": "54321",
+      "role": "client"
+    }
   ]
 }

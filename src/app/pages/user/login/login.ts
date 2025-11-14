@@ -1,11 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user-service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
+  private fb = inject(FormBuilder);
+  private userService = inject(UserService);
+  private router = inject(Router);
 
+  errorMsg = '';
+
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
+  });
+
+  login(){
+    if (this.loginForm.invalid) {
+      this.errorMsg = "Por favor complete correctamente los campos.";
+      return;
+    }
+
+    const email = this.loginForm.value.email!;
+    const password = this.loginForm.value.password!;
+
+    this.userService.login(email, password).subscribe({
+      next: (user) => {
+        if (user.role === 'admin') {
+          this.router.navigate(['/admin/event-list']);
+        } else {
+          this.router.navigate(['/user/event-form']);
+        }
+      },
+      error: err => {
+        this.errorMsg = err.message;
+      }
+    });
+  }
 }
+
+

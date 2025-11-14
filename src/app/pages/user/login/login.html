@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="login-container">
+  <h2>Iniciar sesión</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+
+    <label>Contraseña</label>
+    <input type="password" formControlName="password" />
+
+    <button type="submit">Ingresar</button>
+
+    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+  </form>
+
+  <a routerLink="/register">¿No tenés cuenta? Registrate</a>
+</div>
