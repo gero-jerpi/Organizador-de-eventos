@@ -36,6 +36,7 @@
 }
 
 .menu-toggle {
+  display: none;
   border: none;
   background: transparent;
   font-size: 1.4rem;
@@ -47,21 +48,34 @@
 @media (max-width: 768px) {
   .header {
     padding: 0.5rem 1rem;
+    position: relative;
   }
 
   .nav {
     position: absolute;
     top: 60px;
-    right: 0;
     left: 0;
+    right: 0;
     background: #395886;
     padding: 0.5rem 1rem;
     flex-direction: column;
     gap: 0.5rem;
     display: none;
+    margin-left: 0;
+    align-items: flex-start;
+  }
+
+  .nav a {
+    width: auto;
+    text-align: left;
   }
 
   .nav.open {
     display: flex;
+  }
+
+  .menu-toggle {
+    margin-left: auto;
+    display: block;
   }
 }
