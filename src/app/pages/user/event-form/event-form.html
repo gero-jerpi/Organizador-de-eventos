@@ -1,30 +1,114 @@
-<p>event-form works!</p>
+<div class="event-container">
 
-<form>
-  <label>nombBRE CLIENTE</label>
-  <input type="text">
+  <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+  <div class="left-form">
 
-  <label>fecha</label>
-  <input type="date">
+    <!-- CUADRADO 1: Información del Evento -->
+    <div class="card">
+      <h3>Información del evento</h3>
 
- @for (category of getCategories(); track $index) {
+      <!-- Fecha -->
+      <label>Fecha del evento</label>
+      <input type="date"
+             formControlName="date">
+      <p *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="error">
+        La fecha es obligatoria.
+      </p>
 
-  <label>{{ category }}</label>
+      <!-- Cantidad de invitados -->
+      <label>Cantidad de invitados</label>
+      <input type="number" formControlName="guests" placeholder="Ej: 50">
 
-  <select>
-    <option>ASDASD</option>
+      <!-- Tipo de evento -->
+      <label>Tipo de evento</label>
+      <select formControlName="eventType">
+        <option value="">Seleccione tipo</option>
+        <option *ngFor="let type of eventTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
 
-    @for (element of filterByCategory(category); track element.id) {
-      <option [value]="element.id">
-        {{ element.name }} - ${{ element.price }}
-      </option>
-    }
-  </select>
+      <!-- Menú -->
+      <label>Menú</label>
+      <select formControlName="menuType">
+        <option value="">Seleccione un menú</option>
+        <option *ngFor="let m of menuTypes" [value]="m">
+          {{ m }}
+        </option>
+      </select>
+    </div>
 
-}
 
-  <p>preciooo</p>
-  <p>status</p>
+    <!-- CUADRADO 2: Servicios adicionales -->
+    <div class="card">
+      <h3>Servicios adicionales</h3>
 
-  <button type="submit"> enviar</button>
-</form>
+      <label>
+        <input type="checkbox" formControlName="fotografo"> Fotógrafo
+      </label>
+
+      <label>
+        <input type="checkbox" formControlName="barra"> Barra
+      </label>
+
+      <label>
+        <input type="checkbox" formControlName="cotillon"> Cotillón
+      </label>
+
+      <label>
+        <input type="checkbox" formControlName="mesaDulce"> Mesa dulce
+      </label>
+
+      <label>
+        <input type="checkbox" formControlName="animador"> Animador
+      </label>
+    </div>
+
+
+    <!-- CUADRADO 3: Elementos -->
+    <div class="card">
+      <h3>Elementos del evento</h3>
+
+      <div *ngFor="let cat of getCategories()">
+        <h4>{{ cat }}</h4>
+
+        <div class="elements-grid">
+          <label *ngFor="let e of filterByCategory(cat)">
+            <input type="checkbox"
+                   [value]="e.id"
+                   (change)="verValor(e.id)"
+                   formControlName="selectedElements">
+            {{ e.name }} - ${{ e.price }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" (click)="createEvent()">Crear evento</button>
+
+  </div>
+
+
+  <!-- COLUMNA DERECHA: FACTURA -->
+  <div class="right-summary">
+    <div class="card">
+      <h3>Factura del evento</h3>
+
+      <div *ngFor="let id of eventForm.value.selectedElements">
+        <div class="fact-item" *ngFor="let e of elements()">
+          <ng-container *ngIf="e.id === id">
+            <span>{{ e.name }}</span>
+            <span>${{ e.price }}</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="total">
+        Total: ${{ calcularTotal() }}
+      </div>
+    </div>
+  </div>
+
+</div>

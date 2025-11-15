@@ -1,15 +1,6 @@
 {
   "events": [
-    {
-      "clientName": "asd",
-      "date": "13/28/123",
-      "elements": [
-        "asd"
-      ],
-      "totalPrice": 123,
-      "status": "pending",
-      "id": "71af"
-    }
+    
   ],
   "elements": [
     {

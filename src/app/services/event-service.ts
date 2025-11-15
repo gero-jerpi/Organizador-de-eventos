@@ -10,52 +10,34 @@ export class EventService {
   /// Api
   private apiUrl = 'http://localhost:3000/events';
 
-
   /// Variables
   private eventsSignal = signal<Event[]>([]);
   public events = this.eventsSignal.asReadonly();
-
-
-  /// Variables && methods to update
   private eventToUpdateSignal = signal<Event | null>(null)
   public eventToUpdate = this.eventToUpdateSignal.asReadonly();
-
-  addEventToUpdate(event: Event){
-    this.eventToUpdateSignal.set(event);
-  }
-
-  clearEventToUpdate(){
-    this.eventToUpdateSignal.set(null);
-  }
 
 
   /// Constructor
   constructor(private http: HttpClient){
-    this.get()
+    this.getAll()
   }
 
 
   /// Methods
 
-
-  patch(id: string, newStatus: 'pending' | 'confirmed'): Observable<Event>{
-      return this.http.patch<Event>(`${this.apiUrl}/${id}`, {status: newStatus}).pipe(
-        tap(eventUpdated =>
-          this.eventsSignal.update(events =>
-            events.map(event=>
-              event.id === id ? {...event, status: eventUpdated.status} : event
-            )
-          )
-        )
-      )
-  }
-
-  get(){
+  //Obtener todos los eventos
+  getAll(){
     this.http.get<Event[]>(this.apiUrl).subscribe((data)=>{
       this.eventsSignal.set(data);
     })
   }
 
+  //Obtener eventos por userId
+  getByUser(userId: number): Event[]{
+    return this.eventsSignal().filter(ev => ev.userId === userId);
+  }
+
+  //Crear evento
   post(newEvent: newEvent): Observable<Event>{
     return this.http.post<Event>(this.apiUrl, newEvent).pipe(
       tap(eventCreated =>
@@ -66,18 +48,7 @@ export class EventService {
     )
   }
 
-  delete(id: string): Observable<void>{
-    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
-      tap(() =>
-        this.eventsSignal.update(events =>
-          events.filter(event=>
-            event.id !== id
-          )
-        )
-      )
-    )
-  }
-
+  //Actualizar evento
   put(eventToUpdate: Event): Observable<Event>{
     return this.http.put<Event>(`${this.apiUrl}/${eventToUpdate.id}`, eventToUpdate).pipe(
       tap(eventUpdated=>
@@ -90,6 +61,39 @@ export class EventService {
     )
   }
 
+  //Eliminar evento
+  delete(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      tap(() =>
+        this.eventsSignal.update(events =>
+          events.filter(event=>
+            event.id !== id
+          )
+        )
+      )
+    )
+  }
 
+  //Cambiar estado (pendiente / confirmado)
+  patch(id: number, newStatus: 'pending' | 'confirmed'): Observable<Event>{
+      return this.http.patch<Event>(`${this.apiUrl}/${id}`, {status: newStatus}).pipe(
+        tap(eventUpdated =>
+          this.eventsSignal.update(events =>
+            events.map(event=>
+              event.id === id ? {...event, status: eventUpdated.status} : event
+            )
+          )
+        )
+      )
+  }
+
+  //Gestionar evento a editar
+  addEventToUpdate(event: Event){
+    this.eventToUpdateSignal.set(event);
+  }
+
+  clearEventToUpdate(){
+    this.eventToUpdateSignal.set(null);
+  }
 
 }
