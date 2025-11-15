@@ -20,7 +20,7 @@ export class EventForm {
   private user = inject(UserService);
   private eventService = inject(EventService);
   private router = inject(Router);
-  private elementService = inject(ElementsService)
+  private elementService = inject(ElementsService);
   elements = this.elementService.elements;
 
   eventTypes = [
@@ -29,70 +29,60 @@ export class EventForm {
     'Bautismo',
     'Fiesta de 15',
     'Aniversario',
-    'Evento corporativo'
+    'Evento corporativo',
   ];
 
-  menuTypes = [
-    'Buffet',
-    'Vegetariano',
-    'Vegano',
-    'Infantil',
-    'Gourmet'
-  ];
+  menuTypes = ['Buffet', 'Vegetariano', 'Vegano', 'Infantil', 'Gourmet'];
 
   eventForm = this.fb.group({
     date: ['', Validators.required],
-    selectedElements: this.fb.control<number[]>([], Validators.required)
+    selectedElements: this.fb.control<number[]>([], Validators.required),
   });
-
 
   //Metodos
 
-  getCategories(){
-    return [...new Set(this.elements().map(e => e.category))];
+  getCategories() {
+    return [...new Set(this.elements().map((e) => e.category))];
   }
 
-  filterByCategory(category: string){
-    return this.elements().filter(e => e.category === category);
+  filterByCategory(category: string) {
+    return this.elements().filter((e) => e.category === category);
   }
 
-  verValor(id: any){
+  verValor(id: any) {
     console.log(id);
-
   }
 
-   calcularTotal():number{
-    const selectedIds = this.eventForm.value.selectedElements ?? []
-    
+  calcularTotal(): number {
+    const selectedIds = this.eventForm.value.selectedElements ?? [];
+
     return this.elements()
-    .filter(e => selectedIds.includes(Number(e.id)))
-    .reduce((total,e) => total + e.price, 0);
+      .filter((e) => selectedIds.includes(Number(e.id)))
+      .reduce((total, e) => total + e.price, 0);
   }
 
-  createEvent(){
-    if(this.eventForm.invalid){
+  createEvent() {
+    if (this.eventForm.invalid) {
       this.eventForm.markAllAsTouched();
       return;
     }
 
     const user = this.user.currentUser();
-    if(!user){
+    if (!user) {
       this.router.navigate(['/login']);
       return;
     }
 
     const newEvent = {
       date: this.eventForm.value.date!,
-      elements: this.eventForm.value.selectedElements!,
+      elements: this.eventForm.value.selectedElements!.map((id) => id.toString()),
       totalPrice: this.calcularTotal(),
-      userId: user.id!,
-      status: 'pending' 
-    } as newEvent
+      userId: user.id!.toString(),
+      status: 'pending' as 'pending',
+    };
 
     this.eventService.post(newEvent).subscribe(() => {
       alert('Evento creado con exito');
-    })
+    });
   }
-
-
 }

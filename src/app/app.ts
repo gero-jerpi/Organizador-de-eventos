@@ -5,9 +5,10 @@ import { HeaderAdmin } from './components/header-admin/header-admin';
 import { Register } from './pages/user/register/register';
 import { Login } from './pages/user/login/login';
 import { Footer } from './components/footer/footer';
+import { EventForm } from './pages/user/event-form/event-form';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Register, Login, HeaderUser, Footer],
+  imports: [RouterOutlet, Register, Login, HeaderUser, Footer, EventForm],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
