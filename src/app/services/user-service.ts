@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { NewUser, User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, switchMap, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, switchMap, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,13 +56,13 @@ export class UserService {
     return this.http.get<User[]>(`${this.apiUrlUser}?email=${email}`).pipe(
       switchMap((result) => {
         if (result.length === 0) {
-          return throwError(() => new Error('Usuario no encontrado'));
+           throw new Error("Correo o contraseña incorrectos");
         }
 
         const user = result[0];
 
         if (user.password !== password) {
-          return throwError(() => new Error('Contraseña incorrecta'));
+           throw new Error("Correo o contraseña incorrectos");
         }
 
         // guardar sesión
@@ -70,7 +70,10 @@ export class UserService {
         localStorage.setItem('currentUser', JSON.stringify(user));
 
          return of (user);
-      })
+      }),
+        catchError(() => {
+          return throwError(() => new Error("Correo o contraseña incorrectos"));
+        })
     );
   }
 

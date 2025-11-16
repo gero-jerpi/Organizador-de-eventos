@@ -1,4 +1,4 @@
-<p>event-form works!</p>
+<div class="event-wrapper">
 
 <form>
   <label>nombBRE CLIENTE</label>
@@ -11,7 +11,7 @@
 
   <label>{{ category }}</label>
 
-  <select #opcion (change)="verValor(opcion.value)">
+  <select>
     <option>ASDASD</option>
 
     @for (element of filterByCategory(category); track element.id) {

@@ -1,20 +1,20 @@
-import { Elemento } from "./elements.model";
+import { Elemento } from './elements.model';
 
 export interface Event {
-  id: string;
+  id: number;
+  userId: number;
   clientName: string;
   date: string;
-  elements: string[];
+  elements: number[];
   totalPrice: number;
   status: 'pending' | 'confirmed';
 }
-
 
 export interface newEvent {
+  userId: number;
   clientName: string;
   date: string;
-  elements: Elemento[];
+  elements: number[];
   totalPrice: number;
   status: 'pending' | 'confirmed';
 }
-
