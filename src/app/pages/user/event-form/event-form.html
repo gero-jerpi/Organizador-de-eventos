@@ -11,7 +11,7 @@
 
   <label>{{ category }}</label>
 
-  <select>
+  <select #opcion (change)="verValor(opcion.value)">
     <option>ASDASD</option>
 
     @for (element of filterByCategory(category); track element.id) {

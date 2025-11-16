@@ -20,9 +20,12 @@ export class EventForm {
     return [...new Set(this.elements().map(e => e.category))];
   }
 
+  form = this.fb.nonNullable.group({
+
+  })
+
   verValor(id: any){
     console.log(id);
-
   }
 
 
