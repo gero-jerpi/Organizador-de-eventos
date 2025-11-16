@@ -1,101 +1,121 @@
-<div class="event-container">
+<div class="event-wrapper">
 
-  <!-- COLUMNA IZQUIERDA: FORMULARIO -->
-  <div class="left-form">
-
-    <!-- CUADRADO 1: Información del Evento -->
-    <div class="card">
-      <h3>Información del evento</h3>
-
-      <!-- Fecha -->
-      <label>Fecha del evento</label>
-      <input type="date"
-             formControlName="date">
-      <p *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="error">
-        La fecha es obligatoria.
-      </p>
-
-      <!-- Cantidad de invitados -->
-      <label>Cantidad de invitados</label>
-      <input type="number" formControlName="guests" placeholder="Ej: 50">
-
-      <!-- Tipo de evento -->
-      <label>Tipo de evento</label>
-      <select formControlName="eventType">
-        <option value="">Seleccione tipo</option>
-        <option *ngFor="let type of eventTypes" [value]="type">
-          {{ type }}
-        </option>
-      </select>
-
-      <!-- Menú -->
-      <label>Menú</label>
-      <select formControlName="menuType">
-        <option value="">Seleccione un menú</option>
-        <option *ngFor="let m of menuTypes" [value]="m">
-          {{ m }}
-        </option>
-      </select>
-    </div>
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="left-column">
 
 
-    <!-- CUADRADO 2: Servicios adicionales -->
-    <div class="card">
-      <h3>Servicios adicionales</h3>
 
-      <label>
-        <input type="checkbox" formControlName="fotografo"> Fotógrafo
-      </label>
+    <!-- 2. INFORMACIÓN DEL EVENTO -->
+    <div class="card section-card">
+      <h2 class="section-title"><span>1</span> Información sobre tu evento</h2>
 
-      <label>
-        <input type="checkbox" formControlName="barra"> Barra
-      </label>
-
-      <label>
-        <input type="checkbox" formControlName="cotillon"> Cotillón
-      </label>
-
-      <label>
-        <input type="checkbox" formControlName="mesaDulce"> Mesa dulce
-      </label>
-
-      <label>
-        <input type="checkbox" formControlName="animador"> Animador
-      </label>
-    </div>
-
-
-    <!-- CUADRADO 3: Elementos -->
-    <div class="card">
-      <h3>Elementos del evento</h3>
-
-      <div *ngFor="let cat of getCategories()">
-        <h4>{{ cat }}</h4>
-
-        <div class="elements-grid">
-          <label *ngFor="let e of filterByCategory(cat)">
-            <input type="checkbox"
-                   [value]="e.id"
-                   (change)="verValor(e.id)"
-                   formControlName="selectedElements">
-            {{ e.name }} - ${{ e.price }}
-          </label>
+      <div class="two-cols">
+        <div>
+          <label>¿Cuántos invitados?</label>
+          <input type="number" formControlName="guests" placeholder="Ej: 50">
         </div>
+
+        <div>
+          <label>¿Qué tipo de evento es?</label>
+          <select formControlName="eventType">
+            <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Fecha</label>
+      <input type="date" formControlName="date">
+      
+      <!-- Menú -->
+      <label>Nuestros menús disponibles</label>
+      <div class="options-row">
+        <button class="option-btn">Opción A</button>
+        <button class="option-btn">Opción B</button>
+        <button class="option-btn">Opción C</button>
+      </div>
+
+      <!-- Decoraciones -->
+      <label>Nuestras decoraciones disponibles</label>
+      <div class="options-row">
+        <button class="option-btn">Opción A</button>
+        <button class="option-btn">Opción B</button>
+        <button class="option-btn">Opción C</button>
+      </div>
+
+      <!-- Música -->
+      <label>¿Qué querés escuchar?</label>
+      <div class="options-row">
+        <button class="option-btn">Opción A</button>
+        <button class="option-btn">Opción B</button>
+        <button class="option-btn">Opción C</button>
       </div>
     </div>
 
-    <button class="btn" (click)="createEvent()">Crear evento</button>
+    <!-- 3. AGREGÁ ADICIONALES -->
+<div class="card section-card">
+  <h2 class="section-title"><span>2</span> Agregá adicionales</h2>
+
+  <div class="extras-grid">
+
+    <!-- Fotografía -->
+    <div class="extra-item">
+      <label>¿Necesitás servicio de fotografía?</label>
+      <div class="options-row">
+        <button class="option-btn">Si</button>
+        <button class="option-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Barra -->
+    <div class="extra-item">
+      <label>¿Necesitás barra?</label>
+      <div class="options-row">
+        <button class="option-btn">Si</button>
+        <button class="option-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Cotillón -->
+    <div class="extra-item">
+      <label>¿Necesitás cotillón?</label>
+      <div class="options-row">
+        <button class="option-btn">Si</button>
+        <button class="option-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Mesa dulce -->
+    <div class="extra-item">
+      <label>¿Necesitás mesa dulce?</label>
+      <div class="options-row">
+        <button class="option-btn">Si</button>
+        <button class="option-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Animador -->
+    <div class="extra-item">
+      <label>¿Necesitás animador?</label>
+      <div class="options-row">
+        <button class="option-btn">Si</button>
+        <button class="option-btn">No</button>
+      </div>
+    </div>
 
   </div>
+</div>
 
+    <!-- BOTÓN FINAL -->
+    <button class="submit-btn">Crear evento</button>
+  </div>
 
-  <!-- COLUMNA DERECHA: FACTURA -->
-  <div class="right-summary">
-    <div class="card">
-      <h3>Factura del evento</h3>
+  <!-- COLUMNA DERECHA (RESUMEN) -->
+  <div class="right-column">
+    <div class="card summary-card">
+      <h2 class="summary-title">Resumen de mi evento</h2>
 
-      <div *ngFor="let id of eventForm.value.selectedElements">
-        <div class="fact-item" *ngFor="let e of elements()">
+      <div class="summary-item" *ngFor="let id of eventForm.value.selectedElements">
+        <div *ngFor="let e of elements()">
           <ng-container *ngIf="e.id === id">
             <span>{{ e.name }}</span>
             <span>${{ e.price }}</span>
@@ -105,9 +125,10 @@
 
       <hr>
 
-      <div class="total">
+      <div class="summary-total">
         Total: ${{ calcularTotal() }}
       </div>
+
     </div>
   </div>
 

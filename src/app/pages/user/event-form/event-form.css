@@ -1,80 +1,161 @@
-.event-container {
+/* Layout general */
+.event-wrapper {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 50px;                
+  padding: 40px 60px;       
+  font-family: 'Poppins', sans-serif;
 }
 
-.left-form {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* Columnas */
+.left-column { 
+  flex: 2; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 40px;                 
 }
 
-.right-summary {
-  flex: 1;
+.right-column { 
+  flex: 1; 
 }
 
+/* Tarjetas */
 .card {
-  background: white;
-  padding: 18px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: #f7faff;
+  border-radius: 22px;
+  padding: 35px;           
+  box-shadow: 0 3px 16px rgba(0,0,0,0.08);
 }
 
-h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
+/* Títulos con número */
+.section-title {
+  font-size: 22px;
+  margin-bottom: 25px;       
+  display: flex;
+  align-items: center;
 }
 
+.section-title span {
+  background: #668bbe;
+  color: white;
+  border-radius: 50%;
+  padding: 6px 12px;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+/* Inputs */
 label {
+  margin-bottom: 6px;
   display: block;
-  margin: 8px 0 4px;
+  font-size: 14px;
+  color: #3a4a6a;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="number"],
+input,
 select {
   width: 100%;
-  padding: 7px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 14px 18px;        
+  margin-bottom: 22px;       
+  border-radius: 25px;
+  border: 1px solid #d2d9e8;
+  background: white;
+  font-size: 15px;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: -4px;
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #90aee8;
+  box-shadow: 0 0 6px rgba(120,150,255,0.3);
 }
 
-.elements-grid {
+/* Dos columnas */
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;                 
+  margin-bottom: 20px;
+}
+
+/* Botones de opciones */
+.options-row {
   display: flex;
-  flex-direction: column;
+  gap: 18px;                  
+  margin: 15px 0 30px 0;      
 }
 
-.fact-item {
+.option-btn {
+  padding: 10px 22px;        
+  border-radius: 25px;
+  border: 1px solid #bfcde5;
+  color: #4a5b7d;
+  background: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.option-btn:hover {
+  background: #e8efff;
+}
+
+/* Botón Crear evento */
+.submit-btn {
+  background: #6b8de8;
+  color: white;
+  padding: 15px 0;            
+  border-radius: 30px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  background: #5674ce;
+}
+
+/* Resumen */
+.summary-card {
+  padding: 40px;              
+}
+
+.summary-title {
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.summary-item {
   display: flex;
   justify-content: space-between;
-  padding: 3px 0;
+  padding: 10px 0;            
+  font-size: 15px;
 }
 
-.total {
-  font-size: 18px;
+.summary-total {
   font-weight: bold;
   text-align: right;
+  font-size: 20px;
+  margin-top: 25px;
 }
 
-.btn {
-  padding: 10px;
-  background: #3f51b5;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+/* Grilla de adicionales */
+.extras-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px 50px;               
   margin-top: 10px;
 }
 
-.btn:hover {
-  background: #303f9f;
+/* Cada ítem de adicional */
+.extra-item label {
+  font-size: 15px;
+  color: #425b85;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.extra-item .options-row {
+  display: flex;
+  gap: 12px;
 }
