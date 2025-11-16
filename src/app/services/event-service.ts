@@ -56,7 +56,7 @@ export class EventService {
   }
 
   //Eliminar evento
-  delete(id: string): Observable<void> {
+  delete(id: number): Observable<void> {
     return this.http
       .delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
@@ -65,7 +65,7 @@ export class EventService {
   }
 
   //Cambiar estado (pendiente / confirmado)
-  patch(id: string, newStatus: 'pending' | 'confirmed'): Observable<Event> {
+  patch(id: number, newStatus: 'pending' | 'confirmed'): Observable<Event> {
     return this.http
       .patch<Event>(`${this.apiUrl}/${id}`, { status: newStatus })
       .pipe(

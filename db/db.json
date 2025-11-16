@@ -3,24 +3,7 @@
     
   ],
   "elements": [
-    {
-      "id": "asd",
-      "name": "PRUEBA",
-      "category": "PRUEBA",
-      "price": 40000
-    },
-    {
-      "id": "26b9",
-      "name": "PRUEBA2",
-      "category": "PRUEBA2",
-      "price": 300
-    },
-    {
-      "id": "1a00",
-      "name": "asdasd",
-      "category": "PRUEBA2",
-      "price": 123123
-    }
+    
   ],
   "users": [
     {

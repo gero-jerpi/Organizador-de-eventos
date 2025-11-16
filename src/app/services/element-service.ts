@@ -51,7 +51,7 @@ export class ElementsService {
     )
   }
 
-  delete(id: string): Observable<void>{
+  delete(id: number): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
       tap(()=>
         this.elementsSignal.update(elements =>

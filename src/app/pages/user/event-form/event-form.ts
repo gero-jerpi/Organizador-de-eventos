@@ -35,9 +35,10 @@ export class EventForm {
   menuTypes = ['Buffet', 'Vegetariano', 'Vegano', 'Infantil', 'Gourmet'];
 
   eventForm = this.fb.group({
-    date: ['', Validators.required],
-    selectedElements: this.fb.control<number[]>([], Validators.required),
-  });
+  clientName: ['', Validators.required],
+  date: ['', Validators.required],
+  selectedElements: this.fb.control<number[]>([], Validators.required),
+});
 
   //Metodos
 
@@ -74,10 +75,11 @@ export class EventForm {
     }
 
     const newEvent = {
+      clientName: this.eventForm.value.clientName!,
       date: this.eventForm.value.date!,
-      elements: this.eventForm.value.selectedElements!.map((id) => id.toString()),
+      elements: this.eventForm.value.selectedElements!,
       totalPrice: this.calcularTotal(),
-      userId: user.id!.toString(),
+      userId: user.id!,
       status: 'pending' as 'pending',
     };
 

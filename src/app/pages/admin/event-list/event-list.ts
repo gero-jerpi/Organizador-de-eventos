@@ -17,7 +17,7 @@ export class EventList {
   private elementService = inject(ElementsService)
   elements = this.elementService.elements
 
-  delete(id: string){
+  delete(id: number){
       if(confirm("Seguro desea eliminar?")){
           this.eventService.delete(id).subscribe(()=>{
             console.log("Eliminado");
@@ -32,7 +32,7 @@ export class EventList {
     })
   }
 
-  findById(id: string){
+  findById(id: number){
     return this.elements().find(elementFound => elementFound.id === id)
   }
 
