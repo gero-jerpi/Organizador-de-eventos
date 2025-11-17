@@ -39,7 +39,6 @@ export class EventForm {
   menuTypes = ['Buffet', 'Vegetariano', 'Vegano', 'Infantil', 'Gourmet'];
 
   eventForm = this.fb.nonNullable.group({
-    clientName: ['', Validators.required],
     date: ['', Validators.required],
     selectedElements: this.fb.control<string[]>([], Validators.required),
   });
@@ -86,7 +85,6 @@ export class EventForm {
 
     const newEvent: newEvent = {
       userId: "NOSE COMO PASAR ESTO",
-      clientName: this.eventForm.value.clientName!,
       date: this.eventForm.value.date!,
       elements: Object.values(this.selectedByCategory),
       totalPrice: this.finalPrice(),

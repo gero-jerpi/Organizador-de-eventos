@@ -2,6 +2,8 @@
 
 html {
   box-sizing: border-box;
+
+  height: 100%;
 }
 
 body {
@@ -10,6 +12,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f3fa;
+
+  height: 100%;
 }
 
 *,
@@ -19,6 +23,7 @@ body {
   padding: 0;
   box-sizing: inherit;
 }
+
 html,
 body {
   height: 100%;

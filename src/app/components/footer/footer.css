@@ -3,11 +3,13 @@
   justify-content: space-between;
   align-items: center;
   background: #395886;
-  padding: 1.5rem 3rem;
+  padding: 0.5rem 3rem;
   color: #f0f3fa;
   margin-top: 3rem;
-  height: 100px;
+  height: 1%;
+  width: 100%;
 }
+
 .footer-logo a {
   color: #f0f3fa;
   text-decoration: none;
@@ -20,12 +22,12 @@
 
 .footer-nav {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  flex-direction: row;
+  gap: 1.5rem;
 }
 
 .footer-nav a {
   color: #f0f3fa;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
