@@ -19,7 +19,7 @@ export class ElementList {
   elements = this.service.elements;
 
   /// Methods
-  delete(id: number){
+  delete(id: string){
     if(confirm('¿Seguro desea eliminar el elemento?')){
       this.service.delete(id).subscribe(()=>{
         /// Posible modificacion

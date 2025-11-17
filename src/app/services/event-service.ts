@@ -31,7 +31,7 @@ export class EventService {
   }
 
   //Obtener eventos por userId
-  getByUser(userId: number): Event[] {
+  getByUser(userId: string): Event[] {
     return this.eventsSignal().filter((ev) => ev.userId === userId);
   }
 
@@ -56,7 +56,7 @@ export class EventService {
   }
 
   //Eliminar evento
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http
       .delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
@@ -65,7 +65,7 @@ export class EventService {
   }
 
   //Cambiar estado (pendiente / confirmado)
-  patch(id: number, newStatus: 'pending' | 'confirmed'): Observable<Event> {
+  patch(id: string, newStatus: 'pending' | 'confirmed'): Observable<Event> {
     return this.http
       .patch<Event>(`${this.apiUrl}/${id}`, { status: newStatus })
       .pipe(

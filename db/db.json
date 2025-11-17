@@ -1,9 +1,48 @@
 {
   "events": [
-    
+    {
+      "id": "69bd",
+      "userId": "NOSE COMO PASAR ESTO",
+      "clientName": "ddd",
+      "date": "2025-11-04",
+      "elements": [
+        "a6ad",
+        "973a"
+      ],
+      "totalPrice": 2,
+      "status": "pending"
+    },
+    {
+      "id": "d226",
+      "userId": "NOSE COMO PASAR ESTO",
+      "clientName": "hhh",
+      "date": "2025-11-12",
+      "elements": [
+        "9d99"
+      ],
+      "totalPrice": 1,
+      "status": "pending"
+    }
   ],
   "elements": [
-    
+    {
+      "id": "a6ad",
+      "name": "Prueba",
+      "category": "Prueba",
+      "price": 1
+    },
+    {
+      "id": "9d99",
+      "name": "prueba2",
+      "category": "prueba2",
+      "price": 1
+    },
+    {
+      "id": "973a",
+      "name": "prueba2",
+      "category": "prueba2",
+      "price": 1
+    }
   ],
   "users": [
     {

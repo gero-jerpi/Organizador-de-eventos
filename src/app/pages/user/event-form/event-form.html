@@ -1,18 +1,18 @@
 <div class="event-wrapper">
 
-<form>
-  <label>nombBRE CLIENTE</label>
-  <input type="text">
+<form [formGroup]="eventForm" (ngSubmit)="cargarEvento()">
+  <label>Nombre del cliente</label>
+  <input type="text" formControlName="clientName">
 
-  <label>fecha</label>
-  <input type="date">
+  <label>Fecha de la reserva</label>
+  <input type="date" formControlName="date">
 
  @for (category of getCategories(); track $index) {
 
   <label>{{ category }}</label>
 
-  <select>
-    <option>ASDASD</option>
+  <select (change)="calculateValues($any($event.target).value, category)">
+    <option disabled selected>Seleccionar...</option>
 
     @for (element of filterByCategory(category); track element.id) {
       <option [value]="element.id">
@@ -23,8 +23,9 @@
 
 }
 
-  <p>preciooo</p>
-  <p>status</p>
+  <p>
+    Precio final: {{finalPrice()}}
+  </p>
 
-  <button type="submit"> enviar</button>
+  <button type="submit">Cargar evento</button>
 </form>

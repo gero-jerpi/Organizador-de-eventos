@@ -1,5 +1,5 @@
 import { Elemento } from './../../../model/elements.model';
-import { Component, effect, Inject, inject } from '@angular/core';
+import { Component, effect, Inject, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ElementsService } from '../../../services/element-service';
@@ -8,6 +8,7 @@ import { UserService } from '../../../services/user-service';
 import { Router, RouterModule } from '@angular/router';
 import { newEvent } from '../../../model/event.model';
 import { CommonModule } from '@angular/common';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'app-event-form',
@@ -23,6 +24,9 @@ export class EventForm {
   private elementService = inject(ElementsService);
   elements = this.elementService.elements;
 
+
+  finalPrice = signal<number>(0);
+
   eventTypes = [
     'Cumpleaños',
     'Casamiento',
@@ -34,11 +38,11 @@ export class EventForm {
 
   menuTypes = ['Buffet', 'Vegetariano', 'Vegano', 'Infantil', 'Gourmet'];
 
-  eventForm = this.fb.group({
-  clientName: ['', Validators.required],
-  date: ['', Validators.required],
-  selectedElements: this.fb.control<number[]>([], Validators.required),
-});
+  eventForm = this.fb.nonNullable.group({
+    clientName: ['', Validators.required],
+    date: ['', Validators.required],
+    selectedElements: this.fb.control<string[]>([], Validators.required),
+  });
 
   //Metodos
 
@@ -50,20 +54,54 @@ export class EventForm {
     return this.elements().filter((e) => e.category === category);
   }
 
-  form = this.fb.nonNullable.group({
+  selectedByCategory: { [category: string]: string } = {};
 
-  })
+  calculateValues(id: string, category: string) {
+    const element = this.elements().find((e) => e.id === id);
+    if (!element) return;
 
-  verValor(id: any) {
-    console.log(id);
+    const previousId = this.selectedByCategory[category];
 
+    if (previousId) {
+      const previousElement = this.elements().find((e) => e.id === previousId);
+      if (previousElement) {
+        this.finalPrice.update((price) => price - previousElement.price);
+      }
+    }
+
+    this.selectedByCategory[category] = id;
+
+    this.finalPrice.update((price) => price + element.price);
+
+    const ids = Object.values(this.selectedByCategory);
+    this.eventForm.controls.selectedElements.setValue(ids as string[]);
   }
 
+  cargarEvento() {
 
-  filterByCategory(category: string){
-    return this.elements().filter(e => e.category === category)
+    if (this.eventForm.invalid) {
+      alert("Datos invalidos")
+      return;
+    }
+
+    const newEvent: newEvent = {
+      userId: "NOSE COMO PASAR ESTO",
+      clientName: this.eventForm.value.clientName!,
+      date: this.eventForm.value.date!,
+      elements: Object.values(this.selectedByCategory),
+      totalPrice: this.finalPrice(),
+      status: 'pending',
+    };
+
+    this.eventService.post(newEvent).subscribe(()=>{
+      console.log("Evento creado");
+      this.finalPrice.set(0)
+      this.eventForm.reset()
+      this.selectedByCategory = {}
+      alert("Evento creado")
+    })
+
+
   }
-
-
 
 }

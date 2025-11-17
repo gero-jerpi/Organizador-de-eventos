@@ -1,5 +1,5 @@
 export interface Elemento {
-  id: number;
+  id: string;
   category: string;
   name: string;
   price: number;
