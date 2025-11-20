@@ -8,8 +8,14 @@
 
   <!-- REVISAR RUTAS -->
   <nav class="nav" [class.open]="isMenuOpen">
+<<<<<<< Updated upstream
     <a routerLink="/user/event-form" (click)="closeMenu()">Crear evento</a>
     <a routerLink="/events" (click)="closeMenu()">Eventos</a>
     <a (click)="logout()">Cerrar sesion</a>
+=======
+    <a routerLink="user/event-form" (click)="closeMenu()">Crear evento</a>
+    <a routerLink="user/event-list" (click)="closeMenu()">Eventos</a>
+    <a routerLink="/" (click)="closeMenu()">Contacto</a>
+>>>>>>> Stashed changes
   </nav>
 </header>

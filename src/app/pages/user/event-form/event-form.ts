@@ -6,16 +6,39 @@ import { UserService } from '../../../services/user-service';
 import { Router, RouterModule } from '@angular/router';
 import { newEvent } from '../../../model/event.model';
 import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 type ExtraName = 'fotografia' | 'barra' | 'cotillon' | 'mesaDulce' | 'animador';
 
 @Component({
   selector: 'app-event-form',
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule,MatDatepickerModule,MatNativeDateModule,MatInputModule,MatFormFieldModule,],
   templateUrl: './event-form.html',
   styleUrl: './event-form.css',
 })
 export class EventForm {
+<<<<<<< Updated upstream
+=======
+
+  // Fechas ya ocupadas (ejemplo — después las pedís del backend)
+fechasOcupadas: Date[] = [
+
+];
+
+fechaDeshabilitada = (date: Date | null): boolean => {
+  console.log("Filtro ejecutado → ", date);
+  return false;
+};
+
+
+
+  // ─────────────────────────────────────────────────────
+  // SERVICES
+  // ─────────────────────────────────────────────────────
+>>>>>>> Stashed changes
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
   private eventService = inject(EventService);
@@ -51,7 +74,7 @@ export class EventForm {
   eventTypes = Object.keys(this.EVENT_TYPE_PRICE);
 
   eventForm = this.fb.group({
-    date: ['', Validators.required],
+    date: [null, Validators.required],
     guests: [0, Validators.required],
     eventType: ['', Validators.required],
     menuType: ['', Validators.required],
@@ -167,4 +190,6 @@ export class EventForm {
       this.finalPrice.set(0);
     });
   }
+
+
 }
