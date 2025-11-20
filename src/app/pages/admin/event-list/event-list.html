@@ -1,22 +1,16 @@
-<ul>
+<div class="events-title-wrapper">
+  <h2 class="events-title">Eventos solicitados</h2>
+</div>
+<ul class="events-list">
   @for (item of events(); track $index) {
-  <li>
-    {{ item.date }}
-    {{ item.totalPrice }}
-    {{ item.status }}
+  <li class="event-item">
+    <div class="event-details">
+      <span><strong>Fecha:</strong> {{ item.date }}</span>
+      <span><strong>Estado:</strong> {{ item.status }}</span>
+      <span><strong>Usuario:</strong> {{ item.userId }}</span>
+    </div>
 
-    <ul>
-      @for (i of item.elements; track $index) { @let elementFound = findById(i); @if(elementFound){
-      {{
-        elementFound.name
-      }}
-      {{
-        elementFound.price
-      }}
-      } }
-    </ul>
-    <button type="button" (click)="delete(item.id)">Eliminar</button>
-    <button type="button" (click)="patch(item)">Confirmar evento</button>
+    <button class="show-more-btn">Mostrar más</button>
   </li>
   }
 </ul>

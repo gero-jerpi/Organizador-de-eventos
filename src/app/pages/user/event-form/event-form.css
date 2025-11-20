@@ -64,8 +64,8 @@
 }
 
 /* Inputs y selects */
-input[type="number"],
-input[type="date"],
+input[type='number'],
+input[type='date'],
 select {
   padding: 8px 12px;
   border-radius: 8px;
@@ -118,7 +118,8 @@ select:focus {
 /* Botón de enviar */
 .submit-btn {
   padding: 12px 20px;
-  background-color: #7cd97c;
+  margin-top: 10px;
+  background-color: #95cc7b;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -142,8 +143,8 @@ select:focus {
 .summary-item {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  padding: 6px 0;
+  font-size: 16px;
+  padding: 3px 0;
 }
 
 .summary-total {
