@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { ElementsService } from '../../../services/element-service';
 import { Elemento } from '../../../model/elements.model';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-element-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './element-list.html',
   styleUrl: './element-list.css',
 })
@@ -33,5 +35,9 @@ export class ElementList {
     this.router.navigate(["/admin/element-form"])
   }
 
+  addElement(){
+    this.service.clearElementToUpdate();
+    this.router.navigate(['/admin/element-form'])
+  }
 
 }

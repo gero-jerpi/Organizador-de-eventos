@@ -16,6 +16,7 @@ export const routes: Routes = [
 
   { path: 'admin/element-form', component: ElementForm, canActivate: [authGuard] },
   { path: 'admin/element-list', component: ElementList, canActivate: [authGuard] },
+  { path: 'admin/element-form', component: ElementForm, canActivate: [authGuard] },
   { path: 'admin/event-list', component: EventList, canActivate: [authGuard] },
   { path: 'user/event-form', component: EventForm, canActivate: [authGuard] },
 

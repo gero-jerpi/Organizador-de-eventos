@@ -1,21 +1,19 @@
-<p>element-list works!</p>
+<div class="elements-wrapper">
+  <h2 class="elements-title">Elementos cargados: {{ elements().length }}</h2>
 
-<ul>
-  @for (item of elements(); track $index) {
-    <li>
-      <p>
-        {{item.name}}
-      </p>
-      <p>
-        {{item.category}}
-      </p>
-      <p>
-        {{item.price}}
-      </p>
-      <div>
+  <button class="add-btn" (click)="addElement()">Agregar elemento</button>
+
+  <ul class="elements-list">
+    <li class="element-item" *ngFor="let item of elements()">
+      <div class="element-details">
+        <span>Nombre: {{ item.name }}</span>
+        <span>Categoria: {{ item.category }}</span>
+        <span>Precio: ${{ item.price }}</span>
+      </div>
+      <div class="element-buttons">
         <button type="button" (click)="delete(item.id)">Eliminar</button>
         <button type="button" (click)="put(item)">Actualizar</button>
       </div>
     </li>
-  }
-</ul>
+  </ul>
+</div>

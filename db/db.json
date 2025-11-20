@@ -48,60 +48,66 @@
       "status": "pending"
     }
   ],
-  "elementos": [
+  "elements": [
     {
       "id": "1",
       "category": "menu",
-      "name": "A",
-      "price": 10000
+      "name": "Buffet",
+      "price": 3500
     },
     {
       "id": "2",
       "category": "menu",
-      "name": "B",
-      "price": 15000
+      "name": "Vegetariano",
+      "price": 4000
     },
     {
       "id": "3",
       "category": "menu",
-      "name": "C",
-      "price": 20000
+      "name": "Vegano",
+      "price": 4500
     },
     {
-      "id": "4",
-      "category": "decoration",
-      "name": "A",
-      "price": 8000
-    },
-    {
-      "id": "5",
-      "category": "decoration",
-      "name": "B",
-      "price": 12000
-    },
-    {
-      "id": "6",
-      "category": "decoration",
-      "name": "C",
-      "price": 16000
-    },
-    {
-      "id": "7",
-      "category": "music",
-      "name": "A",
-      "price": 5000
-    },
-    {
-      "id": "8",
-      "category": "music",
-      "name": "B",
+      "id": "6131",
+      "name": "Gourmet",
+      "category": "menu",
       "price": 7000
     },
     {
-      "id": "9",
+      "id": "c111",
+      "name": "Electronica",
       "category": "music",
-      "name": "C",
-      "price": 9000
+      "price": 30000
+    },
+    {
+      "id": "c051",
+      "name": "Variado",
+      "category": "music",
+      "price": 45000
+    },
+    {
+      "id": "da0c",
+      "name": "Reggaeton",
+      "category": "music",
+      "price": 35000
+    },
+    {
+      "id": "f38c",
+      "name": "violeta",
+      "category": "decoration",
+      "price": 15000
+    },
+    {
+      "id": "bc7f",
+      "name": "Rosa",
+      "category": "decoration",
+      "price": 15000
+    },
+    {
+      "id": "69c3",
+      "name": "Rojo",
+      "category": "decoration",
+      "price": 15000
     }
   ],
   "users": [
