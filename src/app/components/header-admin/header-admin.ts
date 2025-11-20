@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-header-admin',
@@ -9,6 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header-admin.css',
 })
 export class HeaderAdmin {
+  private userService = inject(UserService);
+  private router = inject(Router);
+
   // ABRIR Y CERRAR MENU
   isMenuOpen = false;
 
@@ -18,5 +22,11 @@ export class HeaderAdmin {
 
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  logout(){
+    this.userService.logout();
+    this.router.navigate(['/login'])
+    this.closeMenu();
   }
 }

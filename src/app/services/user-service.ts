@@ -77,6 +77,13 @@ export class UserService {
     );
   }
 
+  //LOGOUT
+  logout(){
+    this.currentUserSignal.set(null);
+    localStorage.removeItem('currentUser');
+  }
+
+  
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrlUser}/${id}`).pipe(
       tap(() =>

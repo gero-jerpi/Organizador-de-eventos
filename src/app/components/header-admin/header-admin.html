@@ -10,5 +10,6 @@
   <nav class="nav" [class.open]="isMenuOpen">
     <a routerLink="/admin/element-list" (click)="closeMenu()">Modificar elementos</a>
     <a routerLink="/admin/event-list" (click)="closeMenu()">Eventos</a>
+    <a (click)="logout()">Cerrar sesion</a>
   </nav>
 </header>

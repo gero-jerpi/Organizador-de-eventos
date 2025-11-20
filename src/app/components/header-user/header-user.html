@@ -10,6 +10,6 @@
   <nav class="nav" [class.open]="isMenuOpen">
     <a routerLink="/user/event-form" (click)="closeMenu()">Crear evento</a>
     <a routerLink="/events" (click)="closeMenu()">Eventos</a>
-    <a routerLink="/" (click)="closeMenu()">Contacto</a>
+    <a (click)="logout()">Cerrar sesion</a>
   </nav>
 </header>
