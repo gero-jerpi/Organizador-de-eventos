@@ -1,29 +1,136 @@
 <div class="event-wrapper">
 
-<form [formGroup]="eventForm" (ngSubmit)="cargarEvento()">
+  <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+  <div class="left-column">
 
-  <label>Fecha de la reserva</label>
-  <input type="date" formControlName="date">
+    <form [formGroup]="eventForm">  <!-- <- AQUI -->
 
- @for (category of getCategories(); track $index) {
+      <!-- INFORMACIÓN DEL EVENTO -->
+      <div class="card section-card">
+        <h2 class="section-title"><span>1</span> Información sobre tu evento</h2>
 
-  <label>{{ category }}</label>
+        <div class="two-cols">
+          <div>
+            <label>¿Cuántos invitados?</label>
+            <input type="number" formControlName="guests" placeholder="Num">
+          </div>
 
-  <select (change)="calculateValues($any($event.target).value, category)">
-    <option disabled selected>Seleccionar...</option>
+          <div>
+            <label>Tipo de evento</label>
+            <select formControlName="eventType">
+              <option value="">Seleccionar</option>
+              <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+        </div>
 
-    @for (element of filterByCategory(category); track element.id) {
-      <option [value]="element.id">
-        {{ element.name }} - ${{ element.price }}
-      </option>
-    }
-  </select>
+        <label>Fecha</label>
+        <input type="date" formControlName="date">
 
-}
+        <!-- MENÚ -->
+        <label>Menús disponibles</label>
+        <div class="options-row">
+          <button
+            type="button"
+            class="option-btn"
+            *ngFor="let m of menus()"
+            [class.active]="eventForm.value.menuType === m.id"
+            (click)="selectMenu(m.id)"
+          >
+            {{ m.name }} - ${{ m.price }}
+          </button>
+        </div>
 
-  <p>
-    Precio final: {{finalPrice()}}
-  </p>
+        <!-- DECORACIONES -->
+        <label>Decoraciones</label>
+        <div class="options-row">
+          <button
+            type="button"
+            class="option-btn"
+            *ngFor="let d of decorations()"
+            [class.active]="selectedByCategory['decoration'] === d.id"
+            (click)="selectDecoration(d.id)"
+          >
+            {{ d.name }} - ${{ d.price }}
+          </button>
+        </div>
 
-  <button type="submit">Cargar evento</button>
-</form>
+        <!-- MÚSICA -->
+        <label>Música</label>
+        <div class="options-row">
+          <button
+            type="button"
+            class="option-btn"
+            *ngFor="let m of music()"
+            [class.active]="selectedByCategory['music'] === m.id"
+            (click)="selectMusic(m.id)"
+          >
+            {{ m.name }} - ${{ m.price }}
+          </button>
+        </div>
+      </div>
+
+      <!-- EXTRAS -->
+      <div class="card section-card">
+        <h2 class="section-title"><span>2</span> Adicionales</h2>
+        <div class="extras-grid">
+          <div class="extra-item" *ngFor="let e of EXTRAS">
+            <label>¿Necesitás {{ e.key }}?</label>
+            <div class="options-row">
+              <button
+                type="button"
+                class="option-btn"
+                [class.active]="eventForm.value.extras?.[e.key] === true"
+                (click)="toggleExtra(e.key, true)"
+              >
+                Sí (+ ${{ e.price }})
+              </button>
+              <button
+                type="button"
+                class="option-btn"
+                [class.active]="eventForm.value.extras?.[e.key] === false"
+                (click)="toggleExtra(e.key, false)"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
+    </form> <!-- <- CIERRE FORM -->
+
+  </div>
+  <!-- COLUMNA DERECHA: RESUMEN -->
+  <div class="right-column">
+    <div class="card summary-card">
+      <h2 class="summary-title">Resumen</h2>
+
+      <div class="summary-item" *ngFor="let id of eventForm.value.selectedElements">
+        <ng-container *ngFor="let e of elements()">
+          <ng-container *ngIf="e.id === id">
+            <span>{{ e.name }}</span>
+            <span>${{ e.price }}</span>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <!-- Extras -->
+      <div class="summary-item" *ngFor="let extra of EXTRAS">
+        <ng-container *ngIf="eventForm.value.extras?.[extra.key]">
+          <span>{{ extra.key }}</span>
+          <span>${{ extra.price }}</span>
+        </ng-container>
+      </div>
+
+      <hr>
+
+      <div class="summary-total">
+        Total: ${{ finalPrice() }}
+      </div>
+
+    </div>
+  </div>
+
+</div>

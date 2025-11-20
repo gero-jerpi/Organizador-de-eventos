@@ -22,26 +22,86 @@
       ],
       "totalPrice": 1,
       "status": "pending"
+    },
+    {
+      "id": "a191",
+      "userId": "94fd",
+      "date": "2025-11-29",
+      "elements": [
+        "2",
+        "5",
+        "8"
+      ],
+      "totalPrice": 116000,
+      "status": "confirmed"
+    },
+    {
+      "id": "11f9",
+      "userId": "94fd",
+      "date": "2025-12-05",
+      "elements": [
+        "1",
+        "6",
+        "8"
+      ],
+      "totalPrice": 225000,
+      "status": "pending"
     }
   ],
-  "elements": [
+  "elementos": [
     {
-      "id": "a6ad",
-      "name": "Prueba",
-      "category": "Prueba",
-      "price": 1
+      "id": "1",
+      "category": "menu",
+      "name": "A",
+      "price": 10000
     },
     {
-      "id": "9d99",
-      "name": "prueba2",
-      "category": "prueba2",
-      "price": 1
+      "id": "2",
+      "category": "menu",
+      "name": "B",
+      "price": 15000
     },
     {
-      "id": "973a",
-      "name": "prueba2",
-      "category": "prueba2",
-      "price": 1
+      "id": "3",
+      "category": "menu",
+      "name": "C",
+      "price": 20000
+    },
+    {
+      "id": "4",
+      "category": "decoration",
+      "name": "A",
+      "price": 8000
+    },
+    {
+      "id": "5",
+      "category": "decoration",
+      "name": "B",
+      "price": 12000
+    },
+    {
+      "id": "6",
+      "category": "decoration",
+      "name": "C",
+      "price": 16000
+    },
+    {
+      "id": "7",
+      "category": "music",
+      "name": "A",
+      "price": 5000
+    },
+    {
+      "id": "8",
+      "category": "music",
+      "name": "B",
+      "price": 7000
+    },
+    {
+      "id": "9",
+      "category": "music",
+      "name": "C",
+      "price": 9000
     }
   ],
   "users": [
