@@ -8,9 +8,22 @@ import { Footer } from './components/footer/footer';
 import { EventForm } from './pages/user/event-form/event-form';
 import { EventList } from './pages/admin/event-list/event-list';
 import { Landing } from './pages/landing/landing';
+import { DynamicHeader } from './components/dynamic-header/dynamic-header';
+import { HeaderPublic } from './components/header-public/header-public';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Register, Login, HeaderAdmin, Footer, EventForm, EventList, Landing],
+  imports: [
+    RouterOutlet,
+    Register,
+    Login,
+    HeaderAdmin,
+    Footer,
+    EventForm,
+    EventList,
+    Landing,
+    DynamicHeader,
+    HeaderPublic,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

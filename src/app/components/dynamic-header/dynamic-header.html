@@ -1,0 +1,7 @@
+@if (role === null) {
+<app-header-public></app-header-public>
+} @if (role === 'admin') {
+<app-header-admin></app-header-admin>
+} @if (role === 'client') {
+<app-header-user></app-header-user>
+}

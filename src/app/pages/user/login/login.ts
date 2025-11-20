@@ -19,12 +19,12 @@ export class Login {
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
   });
 
-  login(){
+  login() {
     if (this.loginForm.invalid) {
-      this.errorMsg = "Por favor complete correctamente los campos.";
+      this.errorMsg = 'Por favor complete correctamente los campos.';
       return;
     }
 
@@ -33,17 +33,16 @@ export class Login {
 
     this.userService.login(email, password).subscribe({
       next: (user) => {
+        localStorage.setItem('role', user.role);
         if (user.role === 'admin') {
           this.router.navigate(['/admin/event-list']);
         } else {
           this.router.navigate(['/user/event-form']);
         }
       },
-      error: err => {
+      error: (err) => {
         this.errorMsg = err.message;
-      }
+      },
     });
   }
 }
-
-
