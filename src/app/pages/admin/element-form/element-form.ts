@@ -24,7 +24,8 @@ export class ElementForm {
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
-    price: [0, Validators.required],
+    description: ['', Validators.required],
+    price: [0, [Validators.required, Validators.min(1)]],
   });
 
   /// Constructor
@@ -36,17 +37,23 @@ export class ElementForm {
         this.form.patchValue({
           name: this.elementToEdit.name,
           category: this.elementToEdit.category,
-          price: this.elementToEdit.price
+          description:this.elementToEdit.description,
+          price: this.elementToEdit.price ?? 0
         })
       }else{
         this.isEditMode.set(false);
-        this.form.reset();
+     this.form.reset({ name: '', category: '', price: 0 });
       }
     });
   }
 
   /// Method
   render() {
+    if (this.form.invalid) {
+    // opcional: marcar touched para que aparezcan errores
+    this.form.markAllAsTouched();
+    return;
+  }
     const newElement = this.form.getRawValue()
     if(this.elementToEdit && this.isEditMode()){
       const updateElement = {...this.elementToEdit, ...newElement}
@@ -60,6 +67,7 @@ export class ElementForm {
       this.service.post(newElement).subscribe(()=>{
         console.log("Elemento agregado");
         this.form.reset();
+          this.router.navigate(["/admin/element-list"])
       })
     }
   }

@@ -27,16 +27,13 @@
           <div class="error">
 
             @if (eventForm.get('guests')?.errors?.['required']) {
-            <small>Este campo es obligatorio.</small>
-            }
+            <small>Este campo es obligatorio.</small> }
 
             @if (eventForm.get('guests')?.errors?.['min']) {
-            <small>El mínimo permitido es 80.</small>
-            }
+            <small>El mínimo permitido es 80.</small>}
 
             @if (eventForm.get('guests')?.errors?.['max']) {
-            <small>El máximo permitido es 200.</small>
-            }
+            <small>El máximo permitido es 200.</small>}
 
           </div>
           }

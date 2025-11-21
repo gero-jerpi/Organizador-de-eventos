@@ -1,6 +1,5 @@
 {
   "events": [
-   
     {
       "id": "a191",
       "userId": "94fd",
@@ -82,6 +81,18 @@
       ],
       "totalPrice": 95000,
       "status": "pending"
+    },
+    {
+      "id": "d5c8",
+      "userId": "482a",
+      "date": "2025-11-17",
+      "elements": [
+        "1",
+        "bc7f",
+        "da0c"
+      ],
+      "totalPrice": 165500,
+      "status": "pending"
     }
   ],
   "elements": [
@@ -89,7 +100,8 @@
       "id": "1",
       "category": "menu",
       "name": "Buffet",
-      "price": 3500
+      "price": 3500,
+      "description": "ert"
     },
     {
       "id": "2",
@@ -112,38 +124,52 @@
     {
       "id": "c111",
       "name": "Electronica",
-      "category": "music",
+      "category": "musica",
       "price": 30000
     },
     {
       "id": "c051",
       "name": "Variado",
-      "category": "music",
+      "category": "musica",
       "price": 45000
     },
     {
       "id": "da0c",
       "name": "Reggaeton",
-      "category": "music",
+      "category": "musica",
       "price": 35000
     },
     {
       "id": "f38c",
       "name": "violeta",
-      "category": "decoration",
+      "category": "decoracion",
       "price": 15000
     },
     {
       "id": "bc7f",
       "name": "Rosa",
-      "category": "decoration",
+      "category": "decoracion",
       "price": 15000
     },
     {
       "id": "69c3",
       "name": "Rojo",
-      "category": "decoration",
+      "category": "decoracion",
       "price": 15000
+    },
+    {
+      "id": "5c70",
+      "name": "dt",
+      "category": "ety",
+      "description": "ty",
+      "price": 7
+    },
+    {
+      "id": "7ef8",
+      "name": "srrtt",
+      "category": "rt",
+      "description": "ert",
+      "price": 6
     }
   ],
   "users": [

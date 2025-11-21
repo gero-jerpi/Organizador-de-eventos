@@ -3,10 +3,12 @@ export interface Elemento {
   category: string;
   name: string;
   price: number;
+  description:string;
 }
 
 export interface newElement {
   category: string;
   name: string;
   price: number;
+  description:string;
 }
