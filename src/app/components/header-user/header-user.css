@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: #395886;
+  background: #581b70;
   padding: 0.5rem 2rem;
   height: 7%;
   box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .logo {
@@ -30,15 +31,20 @@
 }
 
 .nav a {
-  font-family: 'Times New Roman', serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  padding: 0.5rem 2.2rem;
-  background: #d5deef;
-  color: #395886;
-  font-size: 1.1rem;
-  border-radius: 0;
-  border: none;
-  white-space: nowrap;
+  padding: 0.4rem 1.5rem;
+  background: #e8daec;
+  color: #66227a;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.nav a:hover {
+  background: #9539ca;
+  transform: translateY(-2px);
 }
 
 .menu-toggle {

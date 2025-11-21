@@ -31,9 +31,10 @@ export class EventService {
   }
 
   //Obtener eventos por userId
-  getByUser(userId: string): Event[] {
-    return this.eventsSignal().filter((ev) => ev.userId === userId);
-  }
+ getEventsByUserId(userId: string) {
+  return this.http.get<Event[]>(`${this.apiUrl}?userId=${userId}`);
+}
+
 
   //Crear evento
   post(newEvent: newEvent): Observable<Event> {

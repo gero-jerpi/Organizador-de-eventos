@@ -1,6 +1,6 @@
 <header class="header">
   <div class="logo">
-    <a routerLink="/">YOUR EVENT</a>
+    <a routerLink="/home-user">YOUR EVENT</a>
   </div>
 
   <!-- SOLO FUNCIONA DESDE MOBILE !! desde la compu no -->
@@ -8,14 +8,9 @@
 
   <!-- REVISAR RUTAS -->
   <nav class="nav" [class.open]="isMenuOpen">
-<<<<<<< Updated upstream
-    <a routerLink="/user/event-form" (click)="closeMenu()">Crear evento</a>
-    <a routerLink="/events" (click)="closeMenu()">Eventos</a>
+    <a routerLink="/home-user" (click)="closeMenu()">Inicio</a>
+    <a routerLink="/events-user" (click)="closeMenu()"> Mis eventos</a>
     <a (click)="logout()">Cerrar sesion</a>
-=======
-    <a routerLink="user/event-form" (click)="closeMenu()">Crear evento</a>
-    <a routerLink="user/event-list" (click)="closeMenu()">Eventos</a>
-    <a routerLink="/" (click)="closeMenu()">Contacto</a>
->>>>>>> Stashed changes
+
   </nav>
 </header>

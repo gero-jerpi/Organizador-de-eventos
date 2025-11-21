@@ -1,0 +1,47 @@
+<div class="events-user">
+
+  <!-- LOADING -->
+  @if (loading) {
+    <div class="loading">
+      Cargando tus eventos...
+    </div>
+  }
+
+  <!-- SIN EVENTOS -->
+  @if (!loading && eventos.length === 0) {
+    <div class="no-events">
+      No tenés eventos cargados todavía.
+    </div>
+  }
+
+  <!-- LISTA DE EVENTOS -->
+  @if (!loading && eventos.length > 0) {
+
+    <div class="events-list">
+
+      @for (ev of eventos; track ev.id) {
+
+        <div class="event-card">
+
+          <h3>Evento del {{ ev.date }}</h3>
+
+          <p><strong>Estado:</strong> {{ ev.status }}</p>
+          <p><strong>Total:</strong> ${{ ev.totalPrice }}</p>
+
+          <p><strong>Elementos:</strong></p>
+          <ul>
+            @for (elem of ev.elements; track elem) {
+              <li>{{ elem }}</li>
+            }
+          </ul>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>
+

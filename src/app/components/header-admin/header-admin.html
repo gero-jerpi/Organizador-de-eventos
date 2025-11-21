@@ -1,6 +1,6 @@
 <header class="header">
   <div class="logo">
-    <a routerLink="/">YOUR EVENT</a>
+    <a routerLink="/home-admin">YOUR EVENT</a>
   </div>
 
   <!-- SOLO FUNCIONA DESDE MOBILE !! desde la compu no -->
@@ -8,8 +8,9 @@
 
   <!-- REVISAR RUTAS -->
   <nav class="nav" [class.open]="isMenuOpen">
-    <a routerLink="/admin/element-list" (click)="closeMenu()">Elementos</a>
-    <a routerLink="/admin/event-list" (click)="closeMenu()">Eventos</a>
+    <a routerLink="/home-admin" (click)="closeMenu()">Inicio</a>
+    <!-- <a routerLink="/admin/element-list" (click)="closeMenu()">Elementos</a>
+    <a routerLink="/admin/event-list" (click)="closeMenu()">Eventos</a> -->
     <a (click)="logout()">Cerrar sesion</a>
   </nav>
 </header>

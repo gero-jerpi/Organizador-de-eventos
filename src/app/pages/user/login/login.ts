@@ -35,9 +35,9 @@ export class Login {
       next: (user) => {
         localStorage.setItem('role', user.role);
         if (user.role === 'admin') {
-          this.router.navigate(['/admin/event-list']);
+          this.router.navigate(['home-admin']);
         } else {
-          this.router.navigate(['/user/event-form']);
+          this.router.navigate(['home-user']);
         }
       },
       error: (err) => {

@@ -1,13 +1,13 @@
 /* ----------- LAYOUT GENERAL ----------- */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-
 
 .event-wrapper {
   display: flex;
   gap: 40px;
   padding: 40px;
-  font-family: 'Poppins', sans-serif;
+   font-size: 0.9rem;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 
 /* Columnas */
 .left-column {
@@ -125,7 +125,6 @@ select:focus {
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -145,13 +144,11 @@ select:focus {
 .summary-item {
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
   padding: 3px 0;
 }
 
 .summary-total {
   font-weight: 700;
-  font-size: 16px;
   margin-top: 10px;
 }
 
@@ -162,7 +159,6 @@ select:focus {
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
   cursor: pointer;
 }
 

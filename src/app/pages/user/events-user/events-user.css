@@ -1,0 +1,105 @@
+.events-user {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Estado de carga */
+.loading {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #66227a;
+  padding: 2rem 0;
+}
+
+/* Mensaje de "sin eventos" */
+.no-events {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #444;
+  padding: 2rem 0;
+  background: #f7e9ff;
+  border-radius: 12px;
+  border: 1px solid #e4c6ff;
+}
+
+/* Contenedor de lista */
+.events-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Tarjeta de cada evento */
+.event-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #e9d6f7;
+  box-shadow: 0 3px 8px rgba(102, 34, 122, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(102, 34, 122, 0.25);
+}
+
+.event-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #66227a;
+  border-bottom: 1px solid #e8cfff;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.event-card p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.event-card ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+.event-card li {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Por si querés agregar botones dentro de card más adelante */
+.event-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.event-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.event-btn.primary {
+  background: #d0a1df;
+  color: #66227a;
+}
+
+.event-btn.primary:hover {
+  background: #9539ca;
+}
+
+.event-btn.secondary {
+  background: #ece3f5;
+  color: #66227a;
+}
+
+.event-btn.secondary:hover {
+  background: #d7c3e9;
+}
