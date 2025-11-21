@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: #395886;
+  background: #581b70;
   padding: 0.5rem 2rem;
-  height: 7%;
+  height: 90px;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

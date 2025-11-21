@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: flex-start;
   background: #581b70;
-  padding: 0.5rem 2rem;
-  height: 7%;
+  padding: 1rem 2.5rem;
+  height: 85px;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -17,7 +17,7 @@
   color: #f0f3fa;
   text-decoration: none;
   font-family: 'Times New Roman', serif;
-  font-size: 1.2rem;
+  font-size: 2rem;
   max-width: 80px;
   display: block;
 }
@@ -33,7 +33,7 @@
 .nav a {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  padding: 0.4rem 1.5rem;
+  padding: 0.8rem 1.7rem;
   background: #e8daec;
   color: #66227a;
   font-size: 1rem;

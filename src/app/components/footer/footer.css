@@ -2,24 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #395886;
-  padding: 0.5rem 3rem;
+  background: #581b70;
+  padding: 1rem 3rem;
   color: #f0f3fa;
-  margin-top: 3rem;
-  height: 1%;
+  height: auto;           
+  min-height: 70px;       
   width: 100%;
+  box-sizing: border-box;
+  position: relative;
 }
 
+/* LOGO DEL FOOTER */
 .footer-logo a {
   color: #f0f3fa;
   text-decoration: none;
   font-family: 'Times New Roman', serif;
-  font-size: 1.2rem;
-  line-height: 1.1;
-  max-width: 80px;
+  font-size: 1.4rem;        
   display: block;
 }
 
+/* NAVEGACIÓN */
 .footer-nav {
   display: flex;
   flex-direction: row;
@@ -29,5 +31,9 @@
 .footer-nav a {
   color: #f0f3fa;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
 }

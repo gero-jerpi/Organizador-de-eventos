@@ -3,20 +3,15 @@
     <a routerLink="/home-user">YOUR EVENT</a>
   </div>
 
-  <!-- SOLO FUNCIONA DESDE MOBILE !! desde la compu no -->
   <button class="menu-toggle" (click)="toggleMenu()">☰</button>
 
-  <!-- REVISAR RUTAS -->
   <nav class="nav" [class.open]="isMenuOpen">
-<<<<<<< Updated upstream
-    <a routerLink="/home-user" (click)="closeMenu()">Inicio</a>
-    <a routerLink="/events-user" (click)="closeMenu()"> Mis eventos</a>
-    <a (click)="logout()">Cerrar sesion</a>
 
-=======
-    <a routerLink="user/event-form" (click)="closeMenu()">Crear evento</a>
-    <a routerLink="user/event-list" (click)="closeMenu()">Eventos</a>
-    <a routerLink="/" (click)="closeMenu()">Contacto</a>
->>>>>>> Stashed changes
+    <a routerLink="/home-user" (click)="closeMenu()">Inicio</a>
+    <a routerLink="/events-user" (click)="closeMenu()">Mis eventos</a>
+    <a routerLink="/user/event-form" (click)="closeMenu()">Crear evento</a>
+
+    <a (click)="logout()" class="logout">Cerrar sesión</a>
+
   </nav>
 </header>

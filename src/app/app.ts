@@ -1,28 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderUser } from './components/header-user/header-user';
-import { HeaderAdmin } from './components/header-admin/header-admin';
-import { Register } from './pages/user/register/register';
-import { Login } from './pages/user/login/login';
 import { Footer } from './components/footer/footer';
-import { EventForm } from './pages/user/event-form/event-form';
-import { EventList } from './pages/admin/event-list/event-list';
-import { Landing } from './pages/landing/landing';
 import { DynamicHeader } from './components/dynamic-header/dynamic-header';
-import { HeaderPublic } from './components/header-public/header-public';
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    Register,
-    Login,
-    HeaderAdmin,
     Footer,
-    EventForm,
-    EventList,
-    Landing,
     DynamicHeader,
-    HeaderPublic,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
