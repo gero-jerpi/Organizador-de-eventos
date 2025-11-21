@@ -74,8 +74,8 @@ export class EventForm {
 
       // Filtrar por categoría
       this.menus.set(elems.filter((e) => e.category === 'menu'));
-      this.decorations.set(elems.filter((e) => e.category === 'decoration'));
-      this.music.set(elems.filter((e) => e.category === 'music'));
+      this.decorations.set(elems.filter((e) => e.category === 'decoracion'));
+      this.music.set(elems.filter((e) => e.category === 'musica'));
     });
   }
 
