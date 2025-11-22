@@ -10,7 +10,7 @@
         "8"
       ],
       "totalPrice": 116000,
-      "status": "confirmed"
+      "status": "pending"
     },
     {
       "id": "11f9",
@@ -34,7 +34,7 @@
         "8"
       ],
       "totalPrice": 150000,
-      "status": "pending"
+      "status": "confirmed"
     },
     {
       "id": "3246",
@@ -46,7 +46,7 @@
         "8"
       ],
       "totalPrice": 183000,
-      "status": "pending"
+      "status": "confirmed"
     },
     {
       "id": "8831",
