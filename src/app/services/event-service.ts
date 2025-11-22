@@ -70,7 +70,7 @@ export class EventService {
   }
 
   //Cambiar estado (pendiente / confirmado)
-  patch(id: string, newStatus: 'pending' | 'confirmed'): Observable<Event> {
+  patch(id: string, newStatus: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado'): Observable<Event> {
     return this.http
       .patch<Event>(`${this.apiUrl}/${id}`, { status: newStatus })
       .pipe(

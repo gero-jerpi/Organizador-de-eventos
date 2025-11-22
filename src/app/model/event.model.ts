@@ -6,7 +6,7 @@ export interface Event {
   date: string;
   elements: string[];
   totalPrice: number;
-  status: 'pending' | 'confirmed';
+  status: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado';
 }
 
 export interface newEvent {
@@ -14,5 +14,5 @@ export interface newEvent {
   date: string;
   elements: string[];
   totalPrice: number;
-  status: 'pending' | 'confirmed';
+  status: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado';
 }

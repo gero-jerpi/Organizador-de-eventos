@@ -26,13 +26,29 @@ export class EventList {
       });
     }
   }
+patch(event: Event) {
+  const estados = ['Pendiente', 'Confirmado', 'Rechazado', 'Finalizado'] as const;
 
-  patch(event: Event) {
-    const newStatus = event.status === 'confirmed' ? 'pending' : 'confirmed';
-    this.eventService.patch(event.id, newStatus).subscribe(() => {
-      console.log('eliminado');
-    });
-  }
+  // Normalizar lo que venga de la base
+  const estado = event.status.toLowerCase();
+
+  let estadoNormalizado = '';
+
+  if (estado.startsWith('pend')) estadoNormalizado = 'Pendiente';
+  else if (estado.startsWith('conf')) estadoNormalizado = 'Confirmado';
+  else if (estado.startsWith('rech')) estadoNormalizado = 'Rechazado';
+  else if (estado.startsWith('fina')) estadoNormalizado = 'Finalizado';
+
+  const indexActual = estados.indexOf(estadoNormalizado as any);
+  const siguienteIndex = (indexActual + 1) % estados.length;
+
+  const newStatus = estados[siguienteIndex];
+
+  this.eventService.patch(event.id, newStatus).subscribe(() => {
+    console.log("Estado actualizado a:", newStatus);
+  });
+}
+
 
   findById(id: string) {
     return this.elements().find((elementFound) => elementFound.id === id);

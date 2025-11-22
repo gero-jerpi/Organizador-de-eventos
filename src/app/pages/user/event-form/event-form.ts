@@ -191,7 +191,7 @@ export class EventForm {
       date: this.eventForm.value.date!,
       elements: this.eventForm.value.selectedElements!,
       totalPrice: this.finalPrice(),
-      status: 'pending',
+      status: 'Pendiente',
     };
 
     this.eventService.post(newEvent).subscribe(() => {

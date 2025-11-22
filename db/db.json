@@ -10,7 +10,7 @@
         "8"
       ],
       "totalPrice": 116000,
-      "status": "pending"
+      "status": "Rechazado"
     },
     {
       "id": "11f9",
@@ -46,7 +46,7 @@
         "8"
       ],
       "totalPrice": 183000,
-      "status": "pending"
+      "status": "Pendiente"
     },
     {
       "id": "8831",
@@ -56,7 +56,7 @@
         "1"
       ],
       "totalPrice": 132000,
-      "status": "pending"
+      "status": "Pendiente"
     },
     {
       "id": "b3a2",
@@ -68,7 +68,7 @@
         "8"
       ],
       "totalPrice": 221000,
-      "status": "pending"
+      "status": "Pendiente"
     },
     {
       "id": "aa7a",
@@ -80,7 +80,7 @@
         "7"
       ],
       "totalPrice": 95000,
-      "status": "pending"
+      "status": "Pendiente"
     },
     {
       "id": "d5c8",
@@ -92,7 +92,7 @@
         "da0c"
       ],
       "totalPrice": 165500,
-      "status": "pending"
+      "status": "Pendiente"
     },
     {
       "id": "fea6",
@@ -105,7 +105,33 @@
         "b5ee"
       ],
       "totalPrice": 3630011,
-      "status": "pending"
+      "status": "Pendiente"
+    },
+    {
+      "id": "4384",
+      "userId": "94fd",
+      "date": "2025-11-26",
+      "elements": [
+        "3",
+        "c051",
+        "bc7f",
+        "b5ee"
+      ],
+      "totalPrice": 672011,
+      "status": "Pendiente"
+    },
+    {
+      "id": "3076",
+      "userId": "94fd",
+      "date": "2025-12-25",
+      "elements": [
+        "3",
+        "c051",
+        "bc7f",
+        "b5ee"
+      ],
+      "totalPrice": 550011,
+      "status": "Pendiente"
     }
   ],
   "elements": [
