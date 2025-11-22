@@ -30,6 +30,8 @@ export class EventForm {
   elements = signal<any[]>([]);
 
   selectedByCategory: { [category: string]: string } = {};
+  selectedMenu: any = null;
+  foodTotal: number = 0;
 
   readonly EVENT_TYPE_PRICE: Record<string, number> = {
     Cumpleaños: 50000,
@@ -77,6 +79,17 @@ export class EventForm {
       this.decorations.set(elems.filter((e) => e.category === 'decoracion'));
       this.music.set(elems.filter((e) => e.category === 'musica'));
     });
+    this.eventForm.get('guests')?.valueChanges.subscribe(() => {
+      this.calculateTotal();
+    });
+
+    this.eventForm.get('eventType')?.valueChanges.subscribe(() => {
+      this.calculateTotal();
+    });
+
+    this.eventForm.get('extras')?.valueChanges.subscribe(() => {
+      this.calculateTotal();
+    });
   }
 
   // ─────────────────────────────────────────────────────
@@ -103,40 +116,55 @@ export class EventForm {
     const element = this.elements().find((e) => e.id === id);
     if (!element) return;
 
-    const previousId = this.selectedByCategory[category];
-
-    if (previousId) {
-      const previousElement = this.elements().find((e) => e.id === previousId);
-      if (previousElement) {
-        this.finalPrice.update((price) => price - previousElement.price);
-      }
-    }
-
     this.selectedByCategory[category] = id;
-
-    this.finalPrice.update((price) => price + element.price);
 
     const ids = Object.values(this.selectedByCategory);
     this.eventForm.controls.selectedElements.setValue(ids as string[]);
+
+    this.calculateTotal();
   }
+
   calculateTotal(): number {
     const raw = this.eventForm.getRawValue();
     const guests = raw.guests ?? 0;
     const eventType = raw.eventType ?? '';
-    const menuType = raw.menuType ?? '';
     const selectedElements = raw.selectedElements ?? [];
     const extras = raw.extras ?? {};
 
     let total = 0;
 
-    if (eventType) total += this.EVENT_TYPE_PRICE[eventType] || 0;
+    // Precio del tipo de evento
+    if (eventType) {
+      total += this.EVENT_TYPE_PRICE[eventType] || 0;
+    }
 
     const allElems = this.elements();
+
+    // Encontrar menú seleccionado
+    let selectedMenu: any = null;
     selectedElements.forEach((id) => {
       const el = allElems.find((e) => e.id === id);
-      if (el) total += el.price;
+      if (el && el.category === 'menu') {
+        selectedMenu = el;
+      }
     });
 
+    this.selectedMenu = selectedMenu;
+
+    if (selectedMenu) {
+      const foodTotal = guests * selectedMenu.price;
+      this.foodTotal = foodTotal;
+      total += foodTotal;
+    }
+
+    selectedElements.forEach((id) => {
+      const el = allElems.find((e) => e.id === id);
+      if (el && el.category !== 'menu') {
+        total += el.price;
+      }
+    });
+
+    // Sumar extras
     this.EXTRAS.forEach((extra) => {
       if (extras?.[extra.key]) total += extra.price;
     });
@@ -144,7 +172,6 @@ export class EventForm {
     this.finalPrice.set(total);
     return total;
   }
-
   // ─────────────────────────────────────────────────────
   // GUARDAR EVENTO
   // ─────────────────────────────────────────────────────
@@ -170,105 +197,3 @@ export class EventForm {
     });
   }
 }
-/*
-import { Elemento } from './../../../model/elements.model';
-import { Component, effect, Inject, inject, signal } from '@angular/core';
-import { EventService } from '../../../services/event-service';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ElementsService } from '../../../services/element-service';
-import { authGuard } from '../../../auth-guard';
-import { UserService } from '../../../services/user-service';
-import { Router, RouterModule } from '@angular/router';
-import { newEvent } from '../../../model/event.model';
-import { CommonModule } from '@angular/common';
-import { Login } from '../login/login';
-
-@Component({
-  selector: 'app-event-form',
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
-  templateUrl: './event-form.html',
-  styleUrl: './event-form.css',
-})
-export class EventForm {
-  private fb = inject(FormBuilder);
-  private user = inject(UserService);
-  private eventService = inject(EventService);
-  private router = inject(Router);
-  private elementService = inject(ElementsService);
-  elements = this.elementService.elements;
-
-  finalPrice = signal<number>(0);
-
-  eventTypes = [
-    'CumpleaÃ±os',
-    'Casamiento',
-    'Bautismo',
-    'Fiesta de 15',
-    'Aniversario',
-    'Evento corporativo',
-  ];
-
-  menuTypes = ['Buffet', 'Vegetariano', 'Vegano', 'Infantil', 'Gourmet'];
-
-  eventForm = this.fb.nonNullable.group({
-    date: ['', Validators.required],
-    selectedElements: this.fb.control<string[]>([], Validators.required),
-  });
-
-  //Metodos
-
-  getCategories() {
-    return [...new Set(this.elements().map((e) => e.category))];
-  }
-
-  filterByCategory(category: string) {
-    return this.elements().filter((e) => e.category === category);
-  }
-
-  selectedByCategory: { [category: string]: string } = {};
-
-  calculateValues(id: string, category: string) {
-    const element = this.elements().find((e) => e.id === id);
-    if (!element) return;
-
-    const previousId = this.selectedByCategory[category];
-
-    if (previousId) {
-      const previousElement = this.elements().find((e) => e.id === previousId);
-      if (previousElement) {
-        this.finalPrice.update((price) => price - previousElement.price);
-      }
-    }
-
-    this.selectedByCategory[category] = id;
-
-    this.finalPrice.update((price) => price + element.price);
-
-    const ids = Object.values(this.selectedByCategory);
-    this.eventForm.controls.selectedElements.setValue(ids as string[]);
-  }
-
-  cargarEvento() {
-    if (this.eventForm.invalid) {
-      alert('Datos invalidos');
-      return;
-    }
-
-    const newEvent: newEvent = {
-      userId: 'NOSE COMO PASAR ESTO',
-      date: this.eventForm.value.date!,
-      elements: Object.values(this.selectedByCategory),
-      totalPrice: this.finalPrice(),
-      status: 'pending',
-    };
-
-    this.eventService.post(newEvent).subscribe(() => {
-      console.log('Evento creado');
-      this.finalPrice.set(0);
-      this.eventForm.reset();
-      this.selectedByCategory = {};
-      alert('Evento creado');
-    });
-  }
-}
-*/

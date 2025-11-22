@@ -87,19 +87,33 @@
   <div class="right-column">
     <div class="card summary-card">
       <h2 class="summary-title">Resumen</h2>
+      <!-- TIPO DE EVENTO -->
+      <div class="summary-item" *ngIf="eventForm.value.eventType">
+        <span>{{ eventForm.value.eventType }}</span>
+        <span>${{ EVENT_TYPE_PRICE[eventForm.value.eventType] }}</span>
+      </div>
 
+      <!-- COMIDA -->
+      <div class="summary-item" *ngIf="selectedMenu">
+        <span>Comida ({{ eventForm.value.guests }} invitados)</span>
+        <span>${{ foodTotal | number : '1.0-0' }}</span>
+      </div>
+
+      <!-- ELEMENTOS (EXCLUYE MENÚ) -->
       <div class="summary-item" *ngFor="let id of eventForm.value.selectedElements">
         <ng-container *ngFor="let e of elements()">
-          <ng-container *ngIf="e.id === id">
+          <ng-container *ngIf="e.id === id && e.category !== 'menu'">
             <span>{{ e.name }}</span>
             <span>${{ e.price }}</span>
           </ng-container>
         </ng-container>
       </div>
 
-      <!-- Extras -->
+      <hr />
+
+      <!-- EXTRAS -->
       <div class="summary-item" *ngFor="let extra of EXTRAS">
-        <ng-container *ngIf="eventForm.value.extras?.[extra.key]">
+        <ng-container *ngIf="eventForm.get('extras')?.get(extra.key)?.value">
           <span>{{ extra.key }}</span>
           <span>${{ extra.price }}</span>
         </ng-container>
