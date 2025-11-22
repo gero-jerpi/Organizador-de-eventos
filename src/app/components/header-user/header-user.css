@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: #581b70;
+  background: rgb(71, 27, 112);
+
   padding: 1rem 2.5rem;
   height: 85px;
   box-sizing: border-box;
