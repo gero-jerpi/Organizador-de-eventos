@@ -95,18 +95,45 @@ export class EventForm {
   // ─────────────────────────────────────────────────────
   // SELECCIÓN DE ELEMENTOS
   // ─────────────────────────────────────────────────────
-  getCategories() {
+   getCategories() {
     return [...new Set(this.elements().map((e) => e.category))];
   }
+
 
   filterByCategory(category: string) {
     return this.elements().filter((e) => e.category === category);
   }
+
   toggleExtra(extra: ExtraName, value: boolean) {
     const extras = this.eventForm.get('extras') as FormGroup;
     extras.get(extra)?.setValue(value);
     this.calculateTotal();
   }
+
+  selectOption(category: string, id: string) {
+  const current = this.selectedByCategory[category];
+  if (current === id) {
+     const prevEl = this.elements().find((e: any) => e.id === current);
+     if (prevEl) {
+      this.finalPrice.update((p) => p - prevEl.price);
+    }
+    delete this.selectedByCategory[category];
+
+    if (category === 'menu') {
+      this.eventForm.controls.menuType.setValue('');
+    }
+   } else {
+     this.calculateValues(id, category);
+
+     if (category === 'menu') {
+      this.eventForm.controls.menuType.setValue(this.selectedByCategory['menu'] || '');
+    }
+    return;
+  }
+  const ids = Object.values(this.selectedByCategory);
+  this.eventForm.controls.selectedElements.setValue(ids as string[]);
+  this.calculateTotal();
+}
 
   // ─────────────────────────────────────────────────────
   // CÁLCULO TOTAL
