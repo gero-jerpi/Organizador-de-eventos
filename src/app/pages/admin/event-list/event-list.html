@@ -10,8 +10,10 @@
       <span><strong>Usuario:</strong> {{ item.userId }}</span>
     </div>
 
-    <button class="show-more-btn">Mostrar más</button>
-    <button type="button" class="show-more-btn" (click)="patch(item)">Actualizar</button>
+    <div class="event-btn">
+      <button class="show-more-btn">Mostrar más</button>
+      <button type="button" class="show-more-btn" (click)="patch(item)">Actualizar</button>
+    </div>
   </li>
   }
 </ul>

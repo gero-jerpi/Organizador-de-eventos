@@ -34,7 +34,7 @@
         "8"
       ],
       "totalPrice": 150000,
-      "status": "confirmed"
+      "status": "pending"
     },
     {
       "id": "3246",
@@ -46,7 +46,7 @@
         "8"
       ],
       "totalPrice": 183000,
-      "status": "confirmed"
+      "status": "pending"
     },
     {
       "id": "8831",
@@ -187,6 +187,15 @@
       "email": "ludeppen@gmail.com",
       "phone": "2235243997",
       "password": "12345",
+      "role": "client"
+    },
+    {
+      "id": "e4c9",
+      "name": "Candela",
+      "lastName": "Flores",
+      "email": "cande@gmail.com",
+      "phone": "2235336767",
+      "password": "lalala",
       "role": "client"
     }
   ]
