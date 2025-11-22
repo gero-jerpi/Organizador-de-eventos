@@ -100,7 +100,7 @@
       "id": "1",
       "category": "menu",
       "name": "Buffet",
-      "price": 3500,
+      "price": 35000,
       "description": "ert"
     },
     {
@@ -160,9 +160,16 @@
     {
       "id": "5c70",
       "name": "dt",
-      "category": "ety",
+      "category": "menu",
       "description": "ty",
       "price": 7
+    },
+    {
+      "id": "b5ee",
+      "name": "dsdsds",
+      "category": "dsdsds",
+      "description": "dsds",
+      "price": 11
     }
   ],
   "users": [
