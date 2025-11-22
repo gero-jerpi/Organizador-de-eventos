@@ -11,9 +11,9 @@ import { Landing } from './pages/landing/landing';
 import { EventsUser } from './pages/user/events-user/events-user';
 import { HomeAdmin } from './pages/admin/home-admin/home-admin';
 import { HomeUser } from './pages/user/home-user/home-user';
+import { EventDetail } from './pages/event-detail/event-detail';
 
 export const routes: Routes = [
-
   // Página inicial
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -34,6 +34,9 @@ export const routes: Routes = [
   { path: 'admin/element-list', component: ElementList, canActivate: [authGuard] },
   { path: 'admin/event-list', component: EventList, canActivate: [authGuard] },
 
+  // detalle del evento
+  { path: 'eventos/:id', component: EventDetail, canActivate: [authGuard] },
+
   // 404
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' },
 ];

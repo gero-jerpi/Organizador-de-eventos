@@ -121,6 +121,10 @@ export class EventForm {
     const ids = Object.values(this.selectedByCategory);
     this.eventForm.controls.selectedElements.setValue(ids as string[]);
 
+    if (category === 'menu') {
+      this.eventForm.patchValue({ menuType: id });
+    }
+
     this.calculateTotal();
   }
 

@@ -1,0 +1,40 @@
+<div *ngIf="eventData && eventData.id as ev">
+  <h1>Evento del {{ ev.date }}</h1>
+
+  <p><strong>Tipo:</strong> {{ ev.eventType }}</p>
+  <p><strong>Fecha:</strong> {{ ev.date }}</p>
+  <p><strong>Total:</strong> ${{ ev.totalPrice }}</p>
+
+  <div class="card">
+    <h2 class="section-title">Elementos seleccionados</h2>
+
+    <div *ngFor="let id of ev.elements">
+      <ng-container *ngFor="let e of elements()">
+        <div *ngIf="e.id === id" class="row">
+          <span>{{ e.name }}</span>
+          <span class="price">${{ e.price }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- CLIENTE -->
+  <div *ngIf="mode === 'client'">
+    <h3>Estado: {{ ev.status }}</h3>
+    <p>Gracias por confiar en nosotros</p>
+  </div>
+
+  <!-- ADMIN -->
+  <div *ngIf="mode === 'admin'">
+    <h3>Acciones de administrador</h3>
+
+    <button class="btn btn-success">Aprobar</button>
+    <button class="btn btn-danger">Rechazar</button>
+    <button class="btn btn-warning">Eliminar</button>
+
+    <p>ID Cliente: {{ ev.userId }}</p>
+    <p>Estado actual: {{ ev.status }}</p>
+  </div>
+</div>

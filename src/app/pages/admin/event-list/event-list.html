@@ -11,7 +11,7 @@
     </div>
 
     <div class="event-btn">
-      <button class="show-more-btn">Mostrar más</button>
+      <button class="show-more-btn" [routerLink]="['/eventos', item.id]">Mostrar más</button>
       <button type="button" class="show-more-btn" (click)="patch(item)">Actualizar</button>
     </div>
   </li>

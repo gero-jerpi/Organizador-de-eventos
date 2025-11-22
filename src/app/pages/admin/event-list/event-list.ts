@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-event-list',
   imports: [RouterModule],
+  standalone: true,
   templateUrl: './event-list.html',
   styleUrl: './event-list.css',
 })
