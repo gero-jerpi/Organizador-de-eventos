@@ -1,13 +1,35 @@
+
 <div class="events-title-wrapper">
-  <h2 class="events-title">Eventos solicitados</h2>
+  <h2 class="events-title">Reservas solicitadas</h2>
+
+<div class="filter-buttons">
+
+  <button class="show-more-btn"  [class.active]="filterMode() === 'all'" (click)="setFilter('all')">
+    Todos
+  </button>
+
+  <button class="show-more-btn" [class.active]="filterMode() === 'past'" (click)="setFilter('past')" >
+    Eventos pasados
+  </button>
+
+  <button class="show-more-btn" [class.active]="filterMode() === 'future'" (click)="setFilter('future')">
+    Eventos próximos
+  </button>
+
 </div>
+</div>
+
 <ul class="events-list">
-  @for (item of events(); track $index) {
+ @for (item of filteredEvents(); track $index)
+ {
   <li class="event-item">
     <div class="event-details">
       <span><strong>Fecha:</strong> {{ item.date }}</span>
       <span><strong>Estado:</strong> {{ item.status }}</span>
-      <span><strong>Usuario:</strong> {{ item.userId }}</span>
+      <span><strong>Cliente:</strong>
+     {{ item.user.name }} {{ item.user.lastName }}
+      </span>
+
     </div>
 
     <div class="event-btn">

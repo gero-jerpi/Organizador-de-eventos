@@ -214,7 +214,9 @@ export class EventForm {
     if (!user?.id) return alert('No se encontró el usuario');
 
     const newEvent: newEvent = {
-      userId: user.id.toString(),
+      user: user,
+      eventType:this.eventForm.value.eventType!,
+      guests: this.eventForm.value.guests!,
       date: this.eventForm.value.date!,
       elements: this.eventForm.value.selectedElements!,
       totalPrice: this.finalPrice(),

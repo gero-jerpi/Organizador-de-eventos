@@ -1,8 +1,11 @@
-import { Elemento } from './elements.model';
+
+import { User } from './user.model';
 
 export interface Event {
   id: string;
-  userId: string;
+  user: User;
+  eventType: string;
+  guests: number;
   date: string;
   elements: string[];
   totalPrice: number;
@@ -10,7 +13,9 @@ export interface Event {
 }
 
 export interface newEvent {
-  userId: string;
+  user: User;
+  eventType: string;
+  guests: number;
   date: string;
   elements: string[];
   totalPrice: number;

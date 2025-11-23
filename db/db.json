@@ -1,136 +1,47 @@
 {
   "events": [
     {
-      "id": "a191",
-      "userId": "94fd",
-      "date": "2025-11-29",
-      "elements": [
-        "2",
-        "5",
-        "8"
-      ],
-      "totalPrice": 116000,
-      "status": "Rechazado"
-    },
-    {
-      "id": "11f9",
-      "userId": "94fd",
-      "date": "2025-12-05",
-      "elements": [
-        "1",
-        "6",
-        "8"
-      ],
-      "totalPrice": 225000,
-      "status": "pending"
-    },
-    {
-      "id": "68d1",
-      "userId": "482a",
-      "date": "2025-11-28",
-      "elements": [
-        "3",
-        "6",
-        "8"
-      ],
-      "totalPrice": 150000,
-      "status": "pending"
-    },
-    {
-      "id": "3246",
-      "userId": "482a",
-      "date": "2025-11-30",
-      "elements": [
-        "1",
-        "6",
-        "8"
-      ],
-      "totalPrice": 183000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "8831",
-      "userId": "482a",
-      "date": "2025-11-19",
-      "elements": [
-        "1"
-      ],
-      "totalPrice": 132000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "b3a2",
-      "userId": "482a",
-      "date": "2025-11-19",
-      "elements": [
-        "1",
-        "5",
-        "8"
-      ],
-      "totalPrice": 221000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "aa7a",
-      "userId": "94fd",
-      "date": "2025-11-27",
-      "elements": [
-        "5",
-        "1",
-        "7"
-      ],
-      "totalPrice": 95000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "d5c8",
-      "userId": "482a",
-      "date": "2025-11-17",
-      "elements": [
-        "1",
-        "bc7f",
-        "da0c"
-      ],
-      "totalPrice": 165500,
-      "status": "Pendiente"
-    },
-    {
-      "id": "fea6",
-      "userId": "e4c9",
-      "date": "2025-12-12",
+      "id": "c473",
+      "user": {
+        "id": "94fd",
+        "name": "ludmila",
+        "lastName": "deppen",
+        "email": "ludeppen@gmail.com",
+        "phone": "2235243997",
+        "password": "12345",
+        "role": "client"
+      },
+      "date": "2025-11-20",
       "elements": [
         "1",
         "c111",
         "f38c",
         "b5ee"
       ],
-      "totalPrice": 3630011,
+      "totalPrice": 2965011,
       "status": "Pendiente"
     },
     {
-      "id": "4384",
-      "userId": "94fd",
-      "date": "2025-11-26",
+      "id": "3f13",
+      "user": {
+        "id": "94fd",
+        "name": "ludmila",
+        "lastName": "deppen",
+        "email": "ludeppen@gmail.com",
+        "phone": "2235243997",
+        "password": "12345",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 100,
+      "date": "2026-02-27",
       "elements": [
-        "3",
-        "c051",
-        "bc7f",
+        "1",
+        "c111",
+        "f38c",
         "b5ee"
       ],
-      "totalPrice": 672011,
-      "status": "Pendiente"
-    },
-    {
-      "id": "3076",
-      "userId": "94fd",
-      "date": "2025-12-25",
-      "elements": [
-        "3",
-        "c051",
-        "bc7f",
-        "b5ee"
-      ],
-      "totalPrice": 550011,
+      "totalPrice": 3595011,
       "status": "Pendiente"
     }
   ],
@@ -152,7 +63,8 @@
       "id": "3",
       "category": "menu",
       "name": "Vegano",
-      "price": 4500
+      "price": 22,
+      "description": "wsw"
     },
     {
       "id": "6131",
@@ -195,20 +107,6 @@
       "name": "Rojo",
       "category": "decoracion",
       "price": 15000
-    },
-    {
-      "id": "5c70",
-      "name": "dt",
-      "category": "menu",
-      "description": "ty",
-      "price": 7
-    },
-    {
-      "id": "b5ee",
-      "name": "dsdsds",
-      "category": "dsdsds",
-      "description": "dsds",
-      "price": 11
     }
   ],
   "users": [

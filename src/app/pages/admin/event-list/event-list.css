@@ -77,6 +77,43 @@
   background: #c9d6ec;
 }
 
+/* Contenedor de botones de filtros */
+.filter-buttons {
+  display: flex;
+  gap: 12px;           /* espacio entre los botones */
+  margin-bottom: 1.2rem; /* lo que tenías inline */
+  padding-left: 0  /* separarlo del borde izquierdo */
+}
+
+/* Estilos genéricos del botón */
+.filter-btn {
+  background: #e5e5e5;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* Activo */
+.filter-btn.active {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Hover */
+.filter-btn:hover {
+  background: #d2d2d2;
+}
+
+/* Click */
+.filter-btn:active {
+  transform: scale(0.97);
+}
+
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1100px) {
   .events-list {

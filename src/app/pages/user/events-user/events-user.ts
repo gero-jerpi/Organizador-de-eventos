@@ -3,10 +3,11 @@ import { EventService } from '../../../services/event-service';
 import { UserService } from '../../../services/user-service';
 import { Event } from '../../../model/event.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-events-user',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './events-user.html',
   styleUrl: './events-user.css',
 })

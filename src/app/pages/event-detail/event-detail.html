@@ -1,40 +1,54 @@
-<div *ngIf="eventData && eventData.id as ev">
-  <h1>Evento del {{ ev.date }}</h1>
-
-  <p><strong>Tipo:</strong> {{ ev.eventType }}</p>
-  <p><strong>Fecha:</strong> {{ ev.date }}</p>
-  <p><strong>Total:</strong> ${{ ev.totalPrice }}</p>
-
-  <div class="card">
-    <h2 class="section-title">Elementos seleccionados</h2>
-
-    <div *ngFor="let id of ev.elements">
-      <ng-container *ngFor="let e of elements()">
-        <div *ngIf="e.id === id" class="row">
-          <span>{{ e.name }}</span>
-          <span class="price">${{ e.price }}</span>
-        </div>
-      </ng-container>
+<!-- event-detail.component.html -->
+<div class="event-detail-page" *ngIf="eventData as ev">
+  <!-- HEADER / TITULO -->
+  <header class="event-header">
+    <h1 class="event-title">Evento del {{ ev.date }}</h1><br/>
+    <div class="event-meta">
+      <div><strong>Tipo:</strong> {{ ev.eventType || 'No especificado' }}</div>
+      <div><strong> Cantidad de invitados:</strong> {{ ev.guests}}</div>
+      <div><strong> Presupuesto estimado:</strong> ${{ ev.totalPrice }}</div>
     </div>
-  </div>
+  </header>
 
-  <hr />
+  <!-- CARD PRINCIPAL: ELEMENTOS -->
+  <section class="card elements-card">
+    <h2 class="section-title">Elementos extras elegidos por el cliente</h2>
 
-  <!-- CLIENTE -->
-  <div *ngIf="mode === 'client'">
-    <h3>Estado: {{ ev.status }}</h3>
-    <p>Gracias por confiar en nosotros</p>
-  </div>
+    <!-- GRID de tarjetas; mantenés tu lógica *ngFor + includes -->
+   <div class="elements-grid">
+  <div class="element-item"
+       *ngFor="let e of elements()"
+       [hidden]="!ev.elements?.includes(e.id)">
 
-  <!-- ADMIN -->
-  <div *ngIf="mode === 'admin'">
-    <h3>Acciones de administrador</h3>
+      <div class="element-category">{{ e.category }}</div>
+      <div class="element-name">{{ e.name }}</div>
+      <div class="element-price">Precio: ${{ e.price }}</div>
 
-    <button class="btn btn-success">Aprobar</button>
-    <button class="btn btn-danger">Rechazar</button>
-    <button class="btn btn-warning">Eliminar</button>
-
-    <p>ID Cliente: {{ ev.userId }}</p>
-    <p>Estado actual: {{ ev.status }}</p>
   </div>
 </div>
+
+  </section>
+
+  <!-- ACCIONES (SEPARADO abajo, ocupa full-width) -->
+  <section class="card admin-card">
+
+    <div class="admin-info">
+       <span><strong>Información del cliente: </strong> </span>
+       <p> Nombre: {{ ev.user.name }} {{ ev.user.lastName }} </p>
+       <p> Email: {{ ev.user.email }}</p>
+       <p> Número de teléfono: {{ ev.user.email }}</p>
+       <br/>
+      <p><strong>Estado actual:</strong> {{ ev.status }}</p>
+    </div>
+
+   <h2 class="section-title">Acciones de administrador</h2>
+    <div class="admin-actions">
+      <button class="btn btn-success">Aprobar</button>
+      <button class="btn btn-danger">Rechazar</button>
+      <button class="btn btn-warning">Eliminar</button>
+    </div>
+
+  </section>
+
+</div>
+

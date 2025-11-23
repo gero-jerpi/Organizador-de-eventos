@@ -1,0 +1,136 @@
+.event-detail-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.4rem;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #2f456e;
+  font-size: 1.05rem; /* Aumenté toda la base un poco */
+}
+
+/* ---------- HEADER ---------- */
+.event-header {
+  background: #3c1d63;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.event-title {
+  margin: 0;
+  font-size: 1.35rem; /* MÁS CHICO que antes */
+  font-weight: 600;
+}
+
+.event-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+/* ---------- CARD BASE ---------- */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  border: 1px solid #dce4f4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: #395886;
+  font-weight: 700;
+}
+
+/* ---------- ELEMENTOS GRID ---------- */
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.element-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid #e6eef8;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+
+.element-category {
+  font-weight: 600;
+  color: #395886;
+  font-size: 0.95rem;
+}
+
+.element-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #263a57;
+}
+
+.element-desc {
+  color: #5a6e86;
+  font-size: 0.92rem;
+}
+
+.element-price {
+  margin-top: auto;
+  font-weight: 700;
+  color: #5b2a86;
+  font-size: 1.02rem;
+}
+
+/* ---------- ADMIN ---------- */
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.12s;
+  border: 1px solid transparent;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-success { background: #dff2e6; color: #2b7a3a; border-color: #bde6c3; }
+.btn-danger  { background: #fde7e7; color: #a33a3a; border-color: #f1bcbc; }
+.btn-warning { background: #fff3d9; color: #8a5d00; border-color: #f3e0b3; }
+
+.admin-info {
+  font-size: 1rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+/* Para tablets */
+@media (max-width: 900px) {
+  .elements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .elements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

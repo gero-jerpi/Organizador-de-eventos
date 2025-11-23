@@ -1,5 +1,5 @@
 import { Elemento } from './../../../model/elements.model';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';
 import { Event } from '../../../model/event.model';
 import { ElementsService } from '../../../services/element-service';
@@ -18,6 +18,41 @@ export class EventList {
 
   private elementService = inject(ElementsService);
   elements = this.elementService.elements;
+
+  filterMode = signal<'all' | 'past' | 'future'>('all');
+
+  filteredEvents = computed(() => {
+  let all = this.events() ?? [];
+
+  // ORDENAR PRIMERO
+  all = [...all].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateA - dateB; // ASCENDENTE (más viejo → más nuevo)
+  });
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // LUEGO FILTRAR
+  return all.filter(ev => {
+    const evDate = new Date(ev.date + 'T00:00:00');
+
+    if (this.filterMode() === 'past') {
+      return evDate.getTime() < today.getTime();
+    }
+    if (this.filterMode() === 'future') {
+      return evDate.getTime() >= today.getTime();
+    }
+    return true;
+  });
+});
+
+setFilter(mode: 'all' | 'past' | 'future') {
+  this.filterMode.set(mode);
+}
+
+
 
   delete(id: string) {
     if (confirm('Seguro desea eliminar?')) {

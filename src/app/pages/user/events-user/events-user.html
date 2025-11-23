@@ -26,22 +26,15 @@
           <h3>Evento del {{ ev.date }}</h3>
 
           <p><strong>Estado:</strong> {{ ev.status }}</p>
-          <p><strong>Total:</strong> ${{ ev.totalPrice }}</p>
+          <p><strong>Tipo de evento:</strong> {{ ev.eventType }}</p>
+          <p>ID del evento: {{ ev.id }}</p>
 
-          <p><strong>Elementos:</strong></p>
-          <ul>
-            @for (elem of ev.elements; track elem) {
-              <li>{{ elem }}</li>
-            }
-          </ul>
-
+        <div class="event-btn">
+          <button class="show-more-btn" [routerLink]="['/eventos', ev.id]">Mostrar más</button>
         </div>
-
+        </div>
       }
-
     </div>
-
   }
-
 </div>
 
