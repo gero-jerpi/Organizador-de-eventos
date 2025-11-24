@@ -13,6 +13,7 @@ import { HomeAdmin } from './pages/admin/home-admin/home-admin';
 import { HomeUser } from './pages/user/home-user/home-user';
 import { EventDetail } from './pages/event-detail/event-detail';
 import { UserEventDetail } from './pages/user/user-event-detail/user-event-detail';
+import { ElementListDetail } from './pages/user/element-list-detail/element-list-detail';
 
 export const routes: Routes = [
   // Página inicial
@@ -28,6 +29,7 @@ export const routes: Routes = [
   { path: 'events-user', component: EventsUser, canActivate: [authGuard] },
   { path: 'user/event-form', component: EventForm, canActivate: [authGuard] },
   { path: 'register', component: Register },
+  { path: 'user/elementList-Detail', component: ElementListDetail, canActivate: [authGuard] },
 
   // Admin
   { path: 'home-admin', component: HomeAdmin, canActivate: [authGuard] },

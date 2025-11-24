@@ -7,14 +7,18 @@
     <p class="hero-lead"></p>
 
     <div class="hero-secondary">
-      <p>
-        Deja que la magia suceda.<br />
-        ¡Tu próximo gran evento comienza aquí!
-      </p>
+      <p> Deja que la magia suceda. </p>
+
+       <p>¡Tu próximo gran evento comienza aquí!</p>
+ </div>
+
+       <label class="hero-info-label">
+       Lo que tienes que saber antes de empezar a planificar tu evento
+       </label>
 
       <nav class="nav" [class.open]="isMenuOpen">
-        <a class="btn" routerLink="/user/event-form" (click)="closeMenu()">Planifica tu evento</a>
+        <a class="btn" routerLink="/user/elementList-Detail/" (click)="closeMenu()">Más información</a>
       </nav>
-    </div>
+
   </div>
 </header>

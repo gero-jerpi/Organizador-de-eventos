@@ -111,6 +111,49 @@
       ],
       "totalPrice": 600000,
       "status": "Pendiente"
+    },
+    {
+      "id": "2277",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 82,
+      "date": "2025-11-28",
+      "elements": [
+        "2"
+      ],
+      "totalPrice": 5740000,
+      "status": "Pendiente"
+    },
+    {
+      "id": "0c10",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 81,
+      "date": "2025-11-20",
+      "elements": [
+        "2",
+        "c111",
+        "69c3",
+        "7531"
+      ],
+      "totalPrice": 5930000,
+      "status": "Pendiente"
     }
   ],
   "elements": [
@@ -124,7 +167,7 @@
     {
       "id": "2",
       "category": "Menú",
-      "name": "Menú criollo",
+      "name": "Criollo",
       "price": 70000,
       "description": "Incluye:  \nEntrada: Empanadas criollas + tabla de fiambres \nPlato principal: Asado “a la mesa” o vacío con ensaladas y papas  \nPostre: Panqueque con dulce de leche o helado\nBebida: Gaseosas, agua, vino tinto de mesa  \nMesa dulce: más elaborada, 5 variedades"
     },
@@ -195,7 +238,7 @@
       "id": "7531",
       "name": "Hora Loca",
       "category": "Entretenimiento",
-      "description": "Show de animación de 20 minutos con cotillón luminoso, personajes temáticos, música especial y participación del público. Ideal para levantar la energía de la fiesta.",
+      "description": "Show de animación de 40 minutos con cotillón luminoso, personajes temáticos, música especial y participación del público. Ideal para levantar la energía de la fiesta.",
       "price": 80000
     }
   ],

@@ -2,15 +2,7 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/* Estado de carga */
-.loading {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #66227a;
-  padding: 2rem 0;
+  font-family:  'Segoe UI', system-ui, sans-serif;
 }
 
 /* Mensaje de "sin eventos" */
@@ -49,7 +41,7 @@
 .event-card h3 {
   margin-top: 0;
   font-size: 1.3rem;
-  color: #66227a;
+  color: #310944;
   border-bottom: 1px solid #e8cfff;
   padding-bottom: 0.4rem;
   margin-bottom: 1rem;
@@ -59,16 +51,6 @@
   margin: 0.4rem 0;
   font-size: 1rem;
   color: #333;
-}
-
-.event-card ul {
-  margin-top: 0.5rem;
-  padding-left: 1.2rem;
-}
-
-.event-card li {
-  color: #555;
-  font-size: 0.95rem;
 }
 
 /* Por si querés agregar botones dentro de card más adelante */
@@ -86,35 +68,10 @@
   border: none;
 }
 
-.event-btn.primary {
-  background: #d0a1df;
-  color: #66227a;
-}
-
-.event-btn.primary:hover {
-  background: #9539ca;
-}
-
-.event-btn.secondary {
-  background: #ece3f5;
-  color: #66227a;
-}
-
-.event-btn.secondary:hover {
-  background: #d7c3e9;
-}
-
-.event-btn {
-  display: flex;
-  gap: 0.5rem;
-  gap: 0.6rem;
-  margin-top: 0.8rem;
-  margin-bottom: 1rem;
-}
 .show-more-btn {
-  background: #d5deef;
-  border: 1px solid #8eacd8;
-  color: #395886;
+  background: #310944;
+  border: 1px solid  #310944;
+  color: #ecd5ef;
   margin-top: auto;
   padding: 0.45rem 0.9rem;
   border-radius: 10px;
@@ -126,6 +83,7 @@
 }
 
 .show-more-btn:hover {
-  background: #c9d6ec;
+  background:#ecd5ef;
+  color:  #310944;
 }
 

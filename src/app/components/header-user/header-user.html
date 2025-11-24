@@ -8,8 +8,8 @@
   <nav class="nav" [class.open]="isMenuOpen">
 
     <a routerLink="/home-user" (click)="closeMenu()">Inicio</a>
+    <a routerLink="/user/event-form" (click)="closeMenu()">Planificar evento</a>
     <a routerLink="/events-user" (click)="closeMenu()">Mis eventos</a>
-    <a routerLink="/user/event-form" (click)="closeMenu()">Crear evento</a>
 
     <a (click)="logout()" class="logout">Cerrar sesión</a>
 

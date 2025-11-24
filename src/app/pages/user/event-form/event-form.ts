@@ -51,7 +51,6 @@ export class EventForm {
 
   readonly REQUIRED_CATEGORIES = ['Menú'];
 
-
   readonly eventTypes = [
   'Cumpleaños',
   'Casamiento',
@@ -87,12 +86,6 @@ export class EventForm {
       const elems = this.elementService.elements();
       if (!elems) return;
       this.elements.set(elems);
-
-      const events = this.eventService.events();
-      const dates = events.map((ev) => ev.date);
-
-      this.occupiedDates.set(dates);
-
     });
     this.eventForm.get('guests')?.valueChanges.subscribe(() => {
       this.calculateTotal();
@@ -137,14 +130,14 @@ export class EventForm {
       }
       delete this.selectedByCategory[category];
 
-      if (category === 'menu') {
+      if (category === 'Menú') {
         this.eventForm.controls.menuType.setValue('');
       }
     } else {
       this.calculateValues(id, category);
 
-      if (category === 'menu') {
-        this.eventForm.controls.menuType.setValue(this.selectedByCategory['menu'] || '');
+      if (category === 'Menú') {
+        this.eventForm.controls.menuType.setValue(this.selectedByCategory['Menú'] || '');
       }
       return;
     }
@@ -166,7 +159,7 @@ export class EventForm {
     const ids = Object.values(this.selectedByCategory);
     this.eventForm.controls.selectedElements.setValue(ids as string[]);
 
-    if (category === 'menu') {
+    if (category ==='Menú') {
       this.eventForm.patchValue({ menuType: id });
     }
 
@@ -188,7 +181,7 @@ export class EventForm {
     let selectedMenu: any = null;
     selectedElements.forEach((id) => {
       const el = allElems.find((e) => e.id === id);
-      if (el && el.category === 'menu') {
+      if (el && el.category === 'Menú') {
         selectedMenu = el;
       }
     });
@@ -203,7 +196,7 @@ export class EventForm {
 
     selectedElements.forEach((id) => {
       const el = allElems.find((e) => e.id === id);
-      if (el && el.category !== 'menu') {
+      if (el && el.category !== 'Menú') {
         total += el.price;
       }
     });

@@ -42,7 +42,7 @@
 .section-title {
   font-size: 1.15rem;
   margin-bottom: 12px;
-  color: #395886;
+  color:#3c1d63;
   font-weight: 700;
 }
 
@@ -107,13 +107,11 @@
   cursor: pointer;
   transition: 0.12s;
   border: 1px solid transparent;
+  background:#3c1d63;
+  color: #f0def5;
 }
 
 .btn:hover { transform: translateY(-2px); }
-
-.btn-success { background: #dff2e6; color: #2b7a3a; border-color: #bde6c3; }
-.btn-danger  { background: #fde7e7; color: #a33a3a; border-color: #f1bcbc; }
-.btn-warning { background: #fff3d9; color: #8a5d00; border-color: #f3e0b3; }
 
 .admin-info {
   font-size: 1rem;

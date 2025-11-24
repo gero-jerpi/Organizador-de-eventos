@@ -6,8 +6,11 @@
 
       <!-- INFORMACIÓN DEL EVENTO -->
       <div class="card section-card">
-        <h2 class="section-title"><span>1</span> ¡Crea el evento de tus sueños!</h2>
+        <h2 class="section-title">
+          <!-- <span>1</span>  -->
+          ¡Crea el evento de tus sueños!</h2>
 
+         <div class="card section-card">
         <div class="field">
           <label> ¿Que tipo de evento quisieras realizar? </label>
 
@@ -16,14 +19,15 @@
             <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
           </select>
         </div>
+      </div>
 
+      <div class="card section-card">
         <div class="field">
           <label> Pedimos para hacer posible su fiesta un minimo de 80, y un máximo de 200 invitados.</label>
-          <label>Cantidad:</label>
-          <input type="number" formControlName="guests" placeholder="Número" min="80" max="200" />
+          <label>Cantidad:  <input type="number" formControlName="guests" placeholder="Número" min="80" max="200" /></label>
 
           @if(eventForm.get('guests')?.invalid && eventForm.get('guests')?.touched) {
-          <div class="error">
+          <div class="error-card">
             @if (eventForm.get('guests')?.errors?.['required']) {
                <small>Este campo es obligatorio.</small> }
             @if(eventForm.get('guests')?.errors?.['min']) {
@@ -33,7 +37,9 @@
           </div>
           }
         </div>
+      </div>
 
+       <div class="card section-card">
          <mat-form-field appearance="outline"  hideRequiredMarker>
           <mat-label>Fecha del evento</mat-label>
           <input
@@ -46,10 +52,16 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+      </div>
+
+      <div class="card section-card">
+
+        <label>En esta sección usted podrá seleccionar el menú que desea, recuerde que éste es obligatorio.
+          Además, podrá seleccionar los adicionales que prefiera para su fiesta.
+        <br/>La información detalla de cada opción está en la página de incio.</label>
 
          @for (category of getCategories(); track $index) {
-             <label>{{ category }}</label>
-
+             <label class="category-label"> <strong>{{ category }}</strong></label>
 
           <div class="options-row">
              @for (element of filterByCategory(category); track element.id) {
@@ -63,14 +75,13 @@
             <div class="no-elements">No hay opciones en esta categoría todavía.</div>
           }
          </div>
-
-
        <!-- MENSAJE SI ES OBLIGATORIO -->
-         <small class="error"
+         <small class="error-card"
             *ngIf="isRequired(category) && !selectedByCategory[category] && eventForm.touched">
              Debes elegir una opción para la categoría "{{ category }}".
           </small>
         }
+        </div>
 
         <!--
         <div class="card section-card">
@@ -99,10 +110,11 @@
             </div>
           </div>
         </div>
- -->
+    -->
 
-      </div>
+
       <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
+    </div>
     </form>
   </div>
 
@@ -111,6 +123,7 @@
     <div class="card summary-card">
       <h2 class="summary-title">Resumen</h2>
 
+       <hr class="summary-divider" />
 
       <!-- COMIDA -->
       <div class="summary-item" *ngIf="selectedMenu">
@@ -121,7 +134,7 @@
       <!-- ELEMENTOS (EXCLUYE MENÚ) -->
       <div class="summary-item" *ngFor="let id of eventForm.value.selectedElements">
         <ng-container *ngFor="let e of elements()">
-          <ng-container *ngIf="e.id === id && e.category !== 'menu'">
+          <ng-container *ngIf="e.id === id && e.category !== 'Menú'">
             <span>{{ e.name }}</span>
             <span>${{ e.price }}</span>
           </ng-container>
@@ -136,6 +149,8 @@
         </ng-container>
       </div>
       <hr /> -->
+
+      <hr class="summary-divider" />
 
       <div class="summary-total">Total: ${{ finalPrice() }}</div>
     </div>

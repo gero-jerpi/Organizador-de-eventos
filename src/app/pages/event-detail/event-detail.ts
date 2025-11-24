@@ -71,6 +71,7 @@ export class EventDetail implements OnInit {
       }
     });
   }
+
   confirmar(id: string) {
     this.eventService.patch(id, 'Confirmado').subscribe(() => {
       const ev = this.eventData(); // obtenemos el valor actual
@@ -89,6 +90,17 @@ export class EventDetail implements OnInit {
       this.eventData.set({
         ...ev,
         status: 'Rechazado',
+      });
+    });
+  }
+
+  finalizado(id: string) {
+    this.eventService.patch(id, 'Finalizado').subscribe(() => {
+      const ev = this.eventData();
+      if (!ev) return;
+      this.eventData.set({
+        ...ev,
+        status: 'Finalizado',
       });
     });
   }
