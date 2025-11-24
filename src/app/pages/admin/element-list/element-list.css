@@ -151,3 +151,17 @@
     margin-top: 1.5rem;
   }
 }
+.description-section {
+  margin-top: 8px;
+}
+
+.description-section .label {
+  font-weight: bold;
+}
+
+.description-list {
+  margin: 5px 0 0 15px;
+  padding: 0;
+  list-style: disc;
+  line-height: 1.4;
+}
