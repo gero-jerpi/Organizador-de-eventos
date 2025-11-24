@@ -46,5 +46,20 @@ export class Register {
       }
     });
   }
+  ngAfterViewInit() {
+    const carousel = document.getElementById('eventCarousel');
+    const btnLeft = document.getElementById('carouselLeft');
+    const btnRight = document.getElementById('carouselRight');
+
+    if (!carousel || !btnLeft || !btnRight) return;
+
+    btnLeft.addEventListener('click', () => {
+      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      carousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+  }
 }
 
