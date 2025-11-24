@@ -1,27 +1,6 @@
 {
   "events": [
     {
-      "id": "c473",
-      "user": {
-        "id": "94fd",
-        "name": "ludmila",
-        "lastName": "deppen",
-        "email": "ludeppen@gmail.com",
-        "phone": "2235243997",
-        "password": "12345",
-        "role": "client"
-      },
-      "date": "2025-11-20",
-      "elements": [
-        "1",
-        "c111",
-        "f38c",
-        "b5ee"
-      ],
-      "totalPrice": 2965011,
-      "status": "Pendiente"
-    },
-    {
       "id": "3f13",
       "user": {
         "id": "94fd",

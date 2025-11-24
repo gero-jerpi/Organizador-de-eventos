@@ -20,7 +20,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class EventDetail implements OnInit {
   eventId!: string;
-  eventData: any = null;
+  eventData = signal<Event | null>(null);
   currentUser: any = null;
   mode: 'admin' | 'client' = 'client';
   elements = signal<any[]>([]);
@@ -58,14 +58,9 @@ export class EventDetail implements OnInit {
     console.log('CARGANDO EVENTO...', this.eventId);
 
     this.eventService.getById(this.eventId).subscribe((event) => {
-      console.log('EVENTO RECIBIDO:', event);
+      if (!event) return;
 
-      if (!event) {
-        console.error('NO SE ENCONTRÓ EL EVENTO');
-        return;
-      }
-
-      this.eventData = event;
+      this.eventData.set(event);
 
       if (this.currentUser.role === 'admin') {
         this.mode = 'admin';
@@ -73,10 +68,35 @@ export class EventDetail implements OnInit {
         this.mode = 'client';
       } else {
         this.router.navigate(['/']);
-        return;
       }
+    });
+  }
+  confirmar(id: string) {
+    this.eventService.patch(id, 'Confirmado').subscribe(() => {
+      const ev = this.eventData(); // obtenemos el valor actual
+      if (!ev) return; // si es null, no hacemos nada
+      this.eventData.set({
+        ...ev,
+        status: 'Confirmado',
+      });
+    });
+  }
 
-      this.cdr.detectChanges();
+  rechazar(id: string) {
+    this.eventService.patch(id, 'Rechazado').subscribe(() => {
+      const ev = this.eventData();
+      if (!ev) return;
+      this.eventData.set({
+        ...ev,
+        status: 'Rechazado',
+      });
+    });
+  }
+
+  eliminar(id: string) {
+    this.eventService.delete(id).subscribe(() => {
+      console.log('Eliminado');
+      this.router.navigate(['/admin/event-list'])
     });
   }
 
