@@ -46,7 +46,32 @@
       "status": "Pendiente"
     },
     {
-      "id": "8d74",
+      "id": "2e86",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Fiesta de 15",
+      "guests": 130,
+      "date": "2025-12-21",
+      "elements": [
+        "3",
+        "da0c",
+        "f38c",
+        "69c3",
+        "ab4e",
+        "7531"
+      ],
+      "totalPrice": 15010000,
+      "status": "Pendiente"
+    },
+    {
+      "id": "a95d",
       "user": {
         "id": "ffa3",
         "name": "Melina",
@@ -58,124 +83,15 @@
       },
       "eventType": "Cumpleaños",
       "guests": 80,
-      "date": "2025-11-26",
-      "elements": [
-        "1"
-      ],
-      "totalPrice": 140000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "2e98",
-      "user": {
-        "id": "ffa3",
-        "name": "Melina",
-        "lastName": "Mamani",
-        "email": "melinamamani2022@gmail.com",
-        "phone": "2235066590",
-        "password": "123456",
-        "role": "client"
-      },
-      "eventType": "Casamiento",
-      "guests": 81,
-      "date": "2025-11-27",
-      "elements": [
-        "69c3",
-        "ab4e",
-        "7531",
-        "1"
-      ],
-      "totalPrice": 670000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "a0c3",
-      "user": {
-        "id": "ffa3",
-        "name": "Melina",
-        "lastName": "Mamani",
-        "email": "melinamamani2022@gmail.com",
-        "phone": "2235066590",
-        "password": "123456",
-        "role": "client"
-      },
-      "eventType": "Cumpleaños",
-      "guests": 120,
-      "date": "2025-11-29",
-      "elements": [
-        "1",
-        "c111",
-        "f38c",
-        "ab4e",
-        "7531"
-      ],
-      "totalPrice": 600000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "2277",
-      "user": {
-        "id": "ffa3",
-        "name": "Melina",
-        "lastName": "Mamani",
-        "email": "melinamamani2022@gmail.com",
-        "phone": "2235066590",
-        "password": "123456",
-        "role": "client"
-      },
-      "eventType": "Cumpleaños",
-      "guests": 82,
-      "date": "2025-11-28",
-      "elements": [
-        "2"
-      ],
-      "totalPrice": 5740000,
-      "status": "Pendiente"
-    },
-    {
-      "id": "0c10",
-      "user": {
-        "id": "ffa3",
-        "name": "Melina",
-        "lastName": "Mamani",
-        "email": "melinamamani2022@gmail.com",
-        "phone": "2235066590",
-        "password": "123456",
-        "role": "client"
-      },
-      "eventType": "Cumpleaños",
-      "guests": 81,
-      "date": "2025-11-20",
+      "date": "2026-01-28",
       "elements": [
         "2",
-        "c111",
-        "69c3",
-        "7531"
+        "c051",
+        "f38c",
+        "ab4e"
       ],
-      "totalPrice": 5930000,
+      "totalPrice": 6060000,
       "status": "Pendiente"
-    },
-    {
-      "id": "dba4",
-      "user": {
-        "id": "ffa3",
-        "name": "Melina",
-        "lastName": "Mamani",
-        "email": "melinamamani2022@gmail.com",
-        "phone": "2235066590",
-        "password": "123456",
-        "role": "client"
-      },
-      "eventType": "Casamiento",
-      "guests": 81,
-      "date": "2025-11-19",
-      "elements": [
-        "1",
-        "c111",
-        "7531"
-      ],
-      "totalPrice": 7400000,
-      "status": "Confirmado"
     }
   ],
   "elements": [
@@ -238,7 +154,7 @@
     {
       "id": "bc7f",
       "name": "Cabina de fotos con accesorios",
-      "category": "Fotografía",
+      "category": "Extra",
       "price": 200000,
       "description": "Cabina fotográfica con impresiones ilimitadas durante 2 horas.\nIncluye fondo, luces y accesorios divertidos."
     },
