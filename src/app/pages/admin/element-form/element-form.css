@@ -1,0 +1,113 @@
+/* ----- Contenedor principal ----- */
+.element {
+  width: 100%;
+  padding: 40px;
+  font-size: 0.9rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  flex:1;
+}
+
+/* ----- Card principal ----- */
+.card {
+  background-color: #f9fafe;
+  border: 1px solid #d3dde6;
+  border-radius: 12px;
+  padding: 25px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ----- Título de sección ----- */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4d2269;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title span {
+  background-color: #e2eaf7;
+  color: #471061;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+/* ----- Campos ----- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels */
+.field label {
+  font-weight: 600;
+  color: #3e1853;
+}
+
+/* Inputs */
+.field input[type="text"],
+.field input[type="number"] {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d3ace2;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Focus */
+.field input:focus {
+  border-color: #632277;
+}
+
+/* ----- Errores ----- */
+.error small {
+  color: #251121;
+  font-size: 13px;
+}
+
+/* ----- Botón de acción ----- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-actions button {
+  padding: 10px 18px;
+  background-color: #ca9bd6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form-actions button:hover:enabled {
+  background-color: #4c155a;
+}
+
+.form-actions button:disabled {
+  background-color: #c4d0e0;
+  cursor: not-allowed;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 600px) {
+  .element {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

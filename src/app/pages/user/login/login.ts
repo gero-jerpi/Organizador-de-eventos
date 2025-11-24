@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, AfterViewInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user-service';
 import { Router, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements AfterViewInit {
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
   private router = inject(Router);
@@ -19,12 +19,12 @@ export class Login {
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
   });
 
-  login(){
+  login() {
     if (this.loginForm.invalid) {
-      this.errorMsg = "Por favor complete correctamente los campos.";
+      this.errorMsg = 'Por favor complete correctamente los campos.';
       return;
     }
 
@@ -33,17 +33,32 @@ export class Login {
 
     this.userService.login(email, password).subscribe({
       next: (user) => {
+        localStorage.setItem('role', user.role);
         if (user.role === 'admin') {
-          this.router.navigate(['/admin/event-list']);
+          this.router.navigate(['home-admin']);
         } else {
-          this.router.navigate(['/user/event-form']);
+          this.router.navigate(['home-user']);
         }
       },
-      error: err => {
+      error: (err) => {
         this.errorMsg = err.message;
-      }
+      },
+    });
+  }
+
+  ngAfterViewInit() {
+    const carousel = document.getElementById('eventCarousel');
+    const btnLeft = document.getElementById('carouselLeft');
+    const btnRight = document.getElementById('carouselRight');
+
+    if (!carousel || !btnLeft || !btnRight) return;
+
+    btnLeft.addEventListener('click', () => {
+      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      carousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
   }
 }
-
-

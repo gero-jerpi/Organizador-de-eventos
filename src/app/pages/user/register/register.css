@@ -1,5 +1,36 @@
+.login-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-right: 5rem;
+  margin-left: 2rem;
+}
+
+.login-intro {
+  margin-bottom: 1.5rem;
+}
+
+.login-intro h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2a4163;
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.login-intro p {
+  font-size: 0.95rem;
+  color: #4a5c82;
+  margin: 0.3rem 0 0;
+  opacity: 0.85;
+}
+
+/* ----FORM ---- */
+
 .register-container {
-  max-width: 380px;
+  max-width: 520px;
   margin: 4rem 0 0 10rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   color: #395886;
@@ -17,15 +48,30 @@
   border: 1.5px solid #d5deef;
   border-radius: 18px;
   padding: 1.4rem 3rem 1.4rem 2rem;
-  width: 520px;
+  width: 580px;
+
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
+
+.row {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ------ inputs ------- */
 
 .register-container label {
   font-size: 1rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
 }
 
 .register-container input {
@@ -35,51 +81,80 @@
   background: #f0f3fa;
   font-size: 0.9rem;
   outline: none;
-  box-shadow: none;
-  width: 260px;
-  max-width: 100%;
+  width: 240px;
+  margin-left: 5px;
 }
 
 .register-container input:focus {
-  border-color: #d5deef;
+  border-color: #8eacd8;
+  background: #ffffff;
 }
 
-.register-container input::placeholder {
-  color: #8b95b5;
-}
+/* ---boton submit --- */
 
 .register-container button[type='submit'] {
   align-self: flex-end;
-  margin-top: 0.8rem;
-  padding: 0.5rem 1.6rem;
+  margin-top: 0.3rem;
+  padding: 0.55rem 1.8rem;
   border-radius: 999px;
   border: 1px solid #8eacd8;
   background: #d5deef;
   color: #395886;
   font-size: 1rem;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .register-container button[type='submit']:hover {
-  filter: brightness(0.97);
-}
-
-.register-container .error {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #c0392b;
-}
-
-.register-container > a {
-  display: inline-block;
-  margin-top: 0.8rem;
-  font-size: 0.8rem;
-  color: #395886;
-  text-decoration: underline;
+  background: #c7d7f1;
 }
 
 .error-msg {
   color: #c0392b;
   font-size: 14px;
-  margin-top: 4px;
+  margin-top: 2px;
+}
+
+/* ---stats --- */
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 7rem;
+  width: 100%;
+}
+
+.stat-block {
+  padding: 1.2rem;
+  border-radius: 14px;
+  text-align: center;
+  color: #395886;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid rgba(213, 222, 239, 0.7);
+  background: linear-gradient(135deg, #f0f4fb, #dfe7f3);
+}
+
+.stat-block.big {
+  width: 340px;
+}
+
+.stat-block.medium {
+  width: 260px;
+}
+
+.stat-block.small {
+  width: 200px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.85;
 }

@@ -1,29 +1,134 @@
 <div class="event-wrapper">
+  <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+  <div class="left-column">
+    <form [formGroup]="eventForm">
+      <!-- <- AQUI -->
 
-<form [formGroup]="eventForm" (ngSubmit)="cargarEvento()">
+      <!-- INFORMACIÓN DEL EVENTO -->
+      <div class="card section-card">
+        <h2 class="section-title"><span>1</span> ¡Crea el evento de tus sueños!</h2>
 
-  <label>Fecha de la reserva</label>
-  <input type="date" formControlName="date">
+        <div class="field">
+          <label> ¿Que tipo de evento quisieras realizar? </label>
 
- @for (category of getCategories(); track $index) {
+          <select formControlName="eventType">
+            <option value="">Seleccionar</option>
+            <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
 
-  <label>{{ category }}</label>
+        <div class="field">
+          <label>Cantidad de invitados:</label>
+          <label
+            >Pedimos para hacer posible su fiesta un minimo de 80 invitados, y por el momento
+            contamos con espacio para un maximo de 200 invitados.
+          </label>
+          <input type="number" formControlName="guests" placeholder="Número" min="80" max="200" />
 
-  <select (change)="calculateValues($any($event.target).value, category)">
-    <option disabled selected>Seleccionar...</option>
+          @if(eventForm.get('guests')?.invalid && eventForm.get('guests')?.touched) {
+          <div class="error">
+            @if (eventForm.get('guests')?.errors?.['required']) {
+            <small>Este campo es obligatorio.</small> } @if
+            (eventForm.get('guests')?.errors?.['min']) { <small>El mínimo permitido es 80.</small>}
+            @if (eventForm.get('guests')?.errors?.['max']) {
+            <small>El máximo permitido es 200.</small>}
+          </div>
+          }
+        </div>
 
-    @for (element of filterByCategory(category); track element.id) {
-      <option [value]="element.id">
-        {{ element.name }} - ${{ element.price }}
-      </option>
-    }
-  </select>
+        <label>Fecha</label>
+        <input type="date" formControlName="date" />
 
-}
 
-  <p>
-    Precio final: {{finalPrice()}}
-  </p>
+      @for (category of getCategories(); track $index){
+         <label>{{ category }}</label>
+          <div class="options-row">
+             @for (element of filterByCategory(category); track element.id) {
+              <button
+                type="button"
+                class="option-btn"
+                [class.active]="selectedByCategory[category] === element.id"
+                (click)="selectOption(category, element.id)"
+                >
+                 {{ element.name }} - ${{ element.price }}
+                </button>  }
 
-  <button type="submit">Cargar evento</button>
-</form>
+                @if (filterByCategory(category).length === 0) {
+                  <div class="no-elements">No hay opciones en esta categoría todavía.</div> }
+          </div>
+      }
+
+        <!-- EXTRAS -->
+        <div class="card section-card">
+          <h2 class="section-title"><span>2</span> Adicionales</h2>
+          <div class="extras-grid">
+            <div class="extra-item" *ngFor="let e of EXTRAS">
+              <label>¿Necesitás {{ e.key }}?</label>
+              <div class="options-row">
+                <button
+                  type="button"
+                  class="option-btn"
+                  [class.active]="eventForm.value.extras?.[e.key] === true"
+                  (click)="toggleExtra(e.key, true)"
+                >
+                  Sí (+ ${{ e.price }})
+                </button>
+                <button
+                  type="button"
+                  class="option-btn"
+                  [class.active]="eventForm.value.extras?.[e.key] === false"
+                  (click)="toggleExtra(e.key, false)"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
+    </form>
+    <!-- <- CIERRE FORM -->
+  </div>
+  <!-- COLUMNA DERECHA: RESUMEN -->
+  <div class="right-column">
+    <div class="card summary-card">
+      <h2 class="summary-title">Resumen</h2>
+      <!-- TIPO DE EVENTO -->
+      <div class="summary-item" *ngIf="eventForm.value.eventType">
+        <span>{{ eventForm.value.eventType }}</span>
+        <span>${{ EVENT_TYPE_PRICE[eventForm.value.eventType] }}</span>
+      </div>
+
+      <!-- COMIDA -->
+      <div class="summary-item" *ngIf="selectedMenu">
+        <span>Comida ({{ eventForm.value.guests }} invitados)</span>
+        <span>${{ foodTotal | number : '1.0-0' }}</span>
+      </div>
+
+      <!-- ELEMENTOS (EXCLUYE MENÚ) -->
+      <div class="summary-item" *ngFor="let id of eventForm.value.selectedElements">
+        <ng-container *ngFor="let e of elements()">
+          <ng-container *ngIf="e.id === id && e.category !== 'menu'">
+            <span>{{ e.name }}</span>
+            <span>${{ e.price }}</span>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <hr />
+
+      <!-- EXTRAS -->
+      <div class="summary-item" *ngFor="let extra of EXTRAS">
+        <ng-container *ngIf="eventForm.get('extras')?.get(extra.key)?.value">
+          <span>{{ extra.key }}</span>
+          <span>${{ extra.price }}</span>
+        </ng-container>
+      </div>
+
+      <hr />
+
+      <div class="summary-total">Total: ${{ finalPrice() }}</div>
+    </div>
+  </div>
+</div>

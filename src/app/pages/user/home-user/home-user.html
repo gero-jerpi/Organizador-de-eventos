@@ -1,0 +1,20 @@
+<header class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container">
+    <h1 class="hero-title">Tu fiesta, <span>nuestra misión.</span></h1>
+
+    <p class="hero-lead"></p>
+
+    <div class="hero-secondary">
+      <p>
+        Deja que la magia suceda.<br />
+        ¡Tu próximo gran evento comienza aquí!
+      </p>
+
+      <nav class="nav" [class.open]="isMenuOpen">
+        <a class="btn" routerLink="/user/event-form" (click)="closeMenu()">Planifica tu evento</a>
+      </nav>
+    </div>
+  </div>
+</header>

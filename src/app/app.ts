@@ -1,14 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderUser } from './components/header-user/header-user';
-import { HeaderAdmin } from './components/header-admin/header-admin';
-import { Register } from './pages/user/register/register';
-import { Login } from './pages/user/login/login';
 import { Footer } from './components/footer/footer';
-import { EventForm } from './pages/user/event-form/event-form';
+import { DynamicHeader } from './components/dynamic-header/dynamic-header';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Register, Login, HeaderUser, Footer, EventForm],
+  imports: [
+    RouterOutlet,
+    Footer,
+    DynamicHeader,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

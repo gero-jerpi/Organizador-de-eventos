@@ -1,18 +1,82 @@
-<h2>
-    {{isEditMode() ? "Modo edicion" : "Agregar elemento"}}
-</h2>
+<div class="element">
+ <form [formGroup]="form" (ngSubmit)="render()">
 
-<form [formGroup]="form" (ngSubmit)="render()">
-  <label>nombre</label>
-  <input type="text" formControlName="name">
 
-  <label>categoria</label>
-  <input type="text" formControlName="category">
+  <div class="card section-card">
 
-  <label>precio</label>
-  <input type="number" formControlName="price">
+    <h2 class="section-title">
+        Datos del elemento
+    </h2>
 
-  <button type="submit">
-    {{isEditMode() ? "Actualizar" : "Agregar"}}
-  </button>
+    <!-- CATEGORÍA -->
+    <div class="field">
+      <label>Categoría</label>
+      <input type="text" formControlName="category">
+
+      @if(form.get('category')?.invalid && form.get('category')?.touched) {
+        <div class="error">
+          @if(form.get('category')?.errors?.['required']) {
+            <small>La categoría es obligatoria.</small>
+          }
+        </div>
+      }
+
+    <!-- NOMBRE -->
+    <div class="field">
+      <label>Nombre</label>
+      <input type="text" formControlName="name">
+
+      @if(form.get('name')?.invalid && form.get('name')?.touched) {
+        <div class="error">
+          @if(form.get('name')?.errors?.['required']) {
+            <small>El nombre es obligatorio.</small>
+          }
+        </div>
+      }
+    </div>
+
+      <!-- DESCRIPCION -->
+    </div>
+    <div class="field">
+      <label>Descripcion</label>
+      <input type="text" formControlName="description">
+
+      @if(form.get('description')?.invalid && form.get('description')?.touched) {
+        <div class="error">
+          @if(form.get('description')?.errors?.['required']) {
+            <small>La descripcion es obligatoria.</small>
+          }
+        </div>
+      }
+    </div>
+
+
+    <!-- PRECIO -->
+    <div class="field">
+      <label>Precio</label>
+      <input type="number" formControlName="price">
+
+      @if(form.get('price')?.invalid && form.get('price')?.touched) {
+        <div class="error">
+
+          @if(form.get('price')?.errors?.['required']) {
+            <small>El precio es obligatorio.</small>
+          }
+
+          @if(form.get('price')?.errors?.['min']) {
+            <small>El precio debe ser mayor que 0.</small>
+          }
+
+        </div>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="form.invalid">
+        {{ isEditMode() ? "Actualizar" : "Agregar" }}
+      </button>
+    </div>
+
+  </div>
 </form>
+</div>

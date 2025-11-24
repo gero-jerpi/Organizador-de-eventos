@@ -1,0 +1,54 @@
+<!-- event-detail.component.html -->
+<div class="event-detail-page" *ngIf="eventData as ev">
+  <!-- HEADER / TITULO -->
+  <header class="event-header">
+    <h1 class="event-title">Evento del {{ ev.date }}</h1><br/>
+    <div class="event-meta">
+      <div><strong>Tipo:</strong> {{ ev.eventType || 'No especificado' }}</div>
+      <div><strong> Cantidad de invitados:</strong> {{ ev.guests}}</div>
+      <div><strong> Presupuesto estimado:</strong> ${{ ev.totalPrice }}</div>
+    </div>
+  </header>
+
+  <!-- CARD PRINCIPAL: ELEMENTOS -->
+  <section class="card elements-card">
+    <h2 class="section-title">Elementos extras elegidos por el cliente</h2>
+
+    <!-- GRID de tarjetas; mantenés tu lógica *ngFor + includes -->
+   <div class="elements-grid">
+  <div class="element-item"
+       *ngFor="let e of elements()"
+       [hidden]="!ev.elements?.includes(e.id)">
+
+      <div class="element-category">{{ e.category }}</div>
+      <div class="element-name">{{ e.name }}</div>
+      <div class="element-price">Precio: ${{ e.price }}</div>
+
+  </div>
+</div>
+
+  </section>
+
+  <!-- ACCIONES (SEPARADO abajo, ocupa full-width) -->
+  <section class="card admin-card">
+
+    <div class="admin-info">
+       <span><strong>Información del cliente: </strong> </span>
+       <p> Nombre: {{ ev.user.name }} {{ ev.user.lastName }} </p>
+       <p> Email: {{ ev.user.email }}</p>
+       <p> Número de teléfono: {{ ev.user.phone }}</p>
+       <br/>
+      <p><strong>Estado actual:</strong> {{ ev.status }}</p>
+    </div>
+
+   <h2 class="section-title">Acciones de administrador</h2>
+    <div class="admin-actions">
+      <button class="btn btn-success">Aprobar</button>
+      <button class="btn btn-danger">Rechazar</button>
+      <button class="btn btn-warning">Eliminar</button>
+    </div>
+
+  </section>
+
+</div>
+

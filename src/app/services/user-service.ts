@@ -7,7 +7,7 @@ import { catchError, Observable, of, switchMap, tap, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  
+
   private apiUrlUser = 'http://localhost:3000/users';
 
   private userSignal = signal<User[]>([]);
@@ -29,7 +29,7 @@ export class UserService {
       this.userSignal.set(data);
     });
   }
-  
+
   //Regster(post)
 
   register(newUser: NewUser): Observable<User> {
@@ -77,7 +77,14 @@ export class UserService {
     );
   }
 
-  delete(id: number): Observable<any> {
+  //LOGOUT
+  logout(){
+    this.currentUserSignal.set(null);
+    localStorage.removeItem('currentUser');
+  }
+
+
+  delete(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrlUser}/${id}`).pipe(
       tap(() =>
         this.userSignal.update((users) =>

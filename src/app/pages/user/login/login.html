@@ -1,17 +1,134 @@
-<div class="login-container">
-  <h2>Iniciá sesión.</h2>
+<div class="login-page">
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="login-container">
+    <div class="login-intro">
+      <h1>Gestioná tus eventos.</h1>
+      <p>Organizá, planificá y controlá todo desde un solo lugar.</p>
+    </div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <label>Correo electrónico</label>
-    <input type="email" formControlName="email" placeholder="Correo electrónico" />
+    <h2>Iniciá sesión.</h2>
 
-    <label>Contraseña</label>
-    <input type="password" formControlName="password" placeholder="Contraseña" />
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <label>Correo electrónico</label>
+      <input type="email" formControlName="email" placeholder="Correo electrónico" />
 
-    <button type="submit">Iniciar sesión</button>
+      <label>Contraseña</label>
+      <input type="password" formControlName="password" placeholder="Contraseña" />
 
-    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
-  </form>
+      <button type="submit">Iniciar sesión</button>
 
-  <a routerLink="/register">¿No tenés cuenta? Registrate</a>
+      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+    </form>
+
+    <a routerLink="/register">¿No tenés cuenta? Registrate</a>
+  </div>
+
+  <!-- columna de stats -->
+  <div class="stats-card">
+    <div class="stat-block big">
+      <div class="stat-number">120</div>
+      <div class="stat-label">Eventos creados</div>
+    </div>
+
+    <div class="stat-block medium">
+      <div class="stat-number">340</div>
+      <div class="stat-label">Invitados gestionados</div>
+    </div>
+
+    <div class="stat-block small">
+      <div class="stat-number">15</div>
+      <div class="stat-label">Proveedores conectados</div>
+    </div>
+  </div>
 </div>
+
+<!-- tipos de eventos con fotos -->
+<section class="event-types">
+  <h2 class="event-types-title">¿Qué tipo de eventos hacemos?</h2>
+
+  <div class="event-carousel-wrapper">
+    <button class="carousel-btn left" id="carouselLeft">&#10094;</button>
+
+    <div class="event-carousel" id="eventCarousel">
+      <div class="event-item">
+        <img
+          src="https://i.pinimg.com/736x/1f/d1/c4/1fd1c425bb3dd0ca8ca656efc3c9fffa.jpg"
+          alt="Cumpleaños"
+        />
+        <p>Cumpleaños</p>
+      </div>
+
+      <div class="event-item">
+        <img
+          src="https://cdn0.casamientos.com.ar/article-real-wedding/986/original/1280/jpg/486030.jpeg"
+          alt="Casamientos"
+        />
+        <p>Casamientos</p>
+      </div>
+
+      <div class="event-item">
+        <img
+          src="https://i.pinimg.com/736x/70/89/e6/7089e6ef118ff56b9f70eee89f03d186.jpg"
+          alt="Eventos Corporativos"
+        />
+        <p>Eventos Corporativos</p>
+      </div>
+
+      <div class="event-item">
+        <img
+          src="https://i.pinimg.com/736x/44/dd/b8/44ddb8ac8bee09093831e52cf63e6d90.jpg"
+          alt="Bautismos"
+        />
+        <p>Bautismos</p>
+      </div>
+
+      <div class="event-item">
+        <img
+          src="https://i.pinimg.com/1200x/74/59/10/74591086a019af1ee11f2c423820deca.jpg"
+          alt="Fiesta de 15"
+        />
+        <p>Fiesta de 15</p>
+      </div>
+
+      <div class="event-item">
+        <img
+          src="https://i.pinimg.com/736x/20/a2/42/20a2427d0cf33252aa9fd8a5a1e7cd0e.jpg"
+          alt="Aniversario"
+        />
+        <p>Aniversario</p>
+      </div>
+    </div>
+
+    <button class="carousel-btn right" id="carouselRight">&#10095;</button>
+  </div>
+</section>
+
+<!-- testimonios muy reales -->
+<section class="testimonials">
+  <h2 class="testimonials-title">¿Qué opinan nuestros clientes?</h2>
+  <div class="testimonials-row">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        “La plataforma hizo que organizar mi evento fuera increíblemente fácil. Todo en un solo
+        lugar.”
+      </p>
+      <p class="testimonial-author">— Maria Lalala</p>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">“Excelente experiencia. Muy rica la comida.”</p>
+      <p class="testimonial-author">— Agustina Gomez</p>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        “ Súper intuitivo y profesional. Lo recomiendo a cualquiera que quiera organizar eventos sin
+        estrés.”
+      </p>
+      <p class="testimonial-author">— Lucas Fernández</p>
+    </div>
+  </div>
+</section>

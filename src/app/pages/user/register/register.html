@@ -1,29 +1,51 @@
-<div class="register-container">
+<div class="login-page">
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="register-container">
+    <div class="login-intro">
+      <h1>Gestioná tus eventos.</h1>
+      <p>Organizá, planificá y controlá todo desde un solo lugar.</p>
+    </div>
 
-  <h2>Registrate hoy</h2>
+    <h2>Registrate hoy.</h2>
 
-  <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+    <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+      <!-- fila 1 del form -->
+      <div class="row">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" formControlName="name" placeholder="Tu nombre" />
+          <p
+            class="error-msg"
+            *ngIf="registroForm.get('name')?.invalid && registroForm.get('name')?.touched"
+          >
+            El nombre es obligatorio.
+          </p>
+        </div>
 
-    <label>Nombre</label>
-    <input type="text" formControlName="name" placeholder="Tu nombre">
-    <p class="error-msg"
-      *ngIf="registroForm.get('name')?.invalid && registroForm.get('name')?.touched">
-      El nombre es obligatorio.
-    </p>
+        <div class="field">
+          <label>Apellido</label>
+          <input type="text" formControlName="lastName" placeholder="Tu apellido" />
+          <p
+            class="error-msg"
+            *ngIf="registroForm.get('lastName')?.invalid && registroForm.get('lastName')?.touched"
+          >
+            El apellido es obligatorio.
+          </p>
+        </div>
+      </div>
 
-    <label>Apellido</label>
-    <input type="text" formControlName="lastName" placeholder="Tu apellido" />
-    <p class="error-msg"
-      *ngIf="registroForm.get('lastName')?.invalid && registroForm.get('lastName')?.touched">
-      El apellido es obligatorio.
-    </p>
-
-    <label>Email</label>
-    <input type="email" formControlName="email" placeholder="Tu email">
-    <p class="error-msg"
-      *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
-      Ingresá un email válido.
-    </p>
+      <!-- Fila 2 del form-->
+      <div class="row">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="Tu email" />
+          <p
+            class="error-msg"
+            *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched"
+          >
+            Ingresá un email válido.
+          </p>
+        </div>
 
     <label>Teléfono</label>
     <input type="text" formControlName="phone" placeholder="Tu teléfono" />
@@ -42,7 +64,25 @@
 
     <button type="submit">Registrarse</button>
 
-    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
-  </form>
+      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+    </form>
+  </div>
 
+  <!-- COLUMNA DERECHA: stats -->
+  <div class="stats-card">
+    <div class="stat-block big">
+      <div class="stat-number">120</div>
+      <div class="stat-label">Eventos creados</div>
+    </div>
+
+    <div class="stat-block medium">
+      <div class="stat-number">340</div>
+      <div class="stat-label">Invitados gestionados</div>
+    </div>
+
+    <div class="stat-block small">
+      <div class="stat-number">15</div>
+      <div class="stat-label">Proveedores conectados</div>
+    </div>
+  </div>
 </div>

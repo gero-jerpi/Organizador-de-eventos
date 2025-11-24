@@ -1,18 +1,23 @@
-import { Elemento } from './elements.model';
+
+import { User } from './user.model';
 
 export interface Event {
   id: string;
-  userId: string;
+  user: User;
+  eventType: string;
+  guests: number;
   date: string;
   elements: string[];
   totalPrice: number;
-  status: 'pending' | 'confirmed';
+  status: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado';
 }
 
 export interface newEvent {
-  userId: string;
+  user: User;
+  eventType: string;
+  guests: number;
   date: string;
   elements: string[];
   totalPrice: number;
-  status: 'pending' | 'confirmed';
+  status: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado';
 }

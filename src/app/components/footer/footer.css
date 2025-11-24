@@ -1,33 +1,101 @@
 .footer {
+  background: #395886;
+  color: #ffffff;
+  padding: 1.8rem 3rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: #395886;
-  padding: 0.5rem 3rem;
-  color: #f0f3fa;
-  margin-top: 3rem;
-  height: 1%;
-  width: 100%;
+  align-items: flex-start;
+  font-family: 'Segoe UI', sans-serif;
+  gap: 1.8rem;
 }
 
-.footer-logo a {
+.footer-left {
+  max-width: 350px;
+  margin-left: 30px;
+}
+
+.footer-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
   color: #f0f3fa;
-  text-decoration: none;
-  font-family: 'Times New Roman', serif;
-  font-size: 1.2rem;
+  white-space: normal;
   line-height: 1.1;
-  max-width: 80px;
-  display: block;
 }
 
-.footer-nav {
+.footer-tagline {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.footer-social {
   display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
+  gap: 0.6rem;
 }
 
-.footer-nav a {
-  color: #f0f3fa;
+.social-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d5deef;
+  border-radius: 50%;
   text-decoration: none;
-  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.social-btn:hover {
+  background: #9ea8bb;
+}
+
+.social-btn img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%);
+}
+
+.footer-right h3 {
+  margin-top: 12px;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  margin-right: 100px;
+  margin-left: -10px;
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 3px;
+  left: -3px;
+}
+
+.footer-contact li {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    max-width: none;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
 }

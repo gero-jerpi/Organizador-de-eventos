@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/">YOUR EVENT</a>
+  </div>
+
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+
+  <nav class="nav" [class.open]="isMenuOpen">
+    <a class="login" routerLink="/login" routerLinkActive="active" (click)="closeMenu()"
+      >Iniciar sesión</a
+    >
+    <a class="register" routerLink="/register" routerLinkActive="active" (click)="closeMenu()"
+      >Registrarme</a
+    >
+  </nav>
+</header>
