@@ -33,6 +33,7 @@ export class EventForm {
   private userService = inject(UserService);
   private eventService = inject(EventService);
   private elementService = inject(ElementsService);
+  private router = inject(Router)
 
   occupiedDates = signal<string[]>([]);
 
@@ -261,4 +262,10 @@ export class EventForm {
     });
 
 }
+
+
+verMas(){
+  this.router.navigate(['/user/elementList-Detail'])
+}
+
 }

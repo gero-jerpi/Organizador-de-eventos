@@ -111,4 +111,10 @@ export class EventDetail implements OnInit {
       this.router.navigate(['/admin/event-list'])
     });
   }
+
+  volver(){
+    this.router.navigate(['/admin/event-list'])
+  }
+
+
 }

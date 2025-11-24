@@ -2,7 +2,7 @@ import { Elemento } from './../../../model/elements.model';
 import { Event } from './../../../model/event.model';
 import { Component, effect, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ElementsService } from '../../../services/element-service';
 
 @Component({
@@ -15,6 +15,7 @@ export class UserEventDetail {
   private eventService = inject(EventService);
   private route = inject(ActivatedRoute);
   private elementService = inject(ElementsService);
+  private router = inject(Router);
 
   foundEvent = signal<Event | null>(null);
   elements: Elemento[] = [];
@@ -41,4 +42,11 @@ export class UserEventDetail {
   getElementById(id: string) {
     return this.elements.find((e) => e.id === id);
   }
+
+
+  volver(){
+    this.router.navigate(['/events-user'])
+  }
+
+
 }

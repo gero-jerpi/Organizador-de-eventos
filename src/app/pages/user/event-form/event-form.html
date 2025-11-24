@@ -55,7 +55,7 @@
       <div class="card section-card">
 
         <label>En esta sección podrá elegir el menú que desee; recuerde que este paso es obligatorio. Además, podrá seleccionar los adicionales que prefiera para su fiesta.
-        <br/>Puede ver la información detallada de cada opción en la página de inicio en "Más información".</label>
+        <br/>Puede ver la información detallada de cada opción en la página de inicio en <strong (click)="verMas()">"Más información"</strong>.</label>
 
          @for (category of getCategories(); track $index) {
              <label class="category-label"> <strong>{{ category }}</strong></label>
