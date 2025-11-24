@@ -44,77 +44,112 @@
       ],
       "totalPrice": 830000,
       "status": "Pendiente"
+    },
+    {
+      "id": "8d74",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 80,
+      "date": "2025-11-26",
+      "elements": [
+        "1"
+      ],
+      "totalPrice": 140000,
+      "status": "Pendiente"
     }
   ],
   "elements": [
     {
       "id": "1",
-      "category": "menu",
-      "name": "Buffet",
-      "price": 35000,
-      "description": "ert"
+      "category": "Menú",
+      "name": "Gourmet",
+      "price": 90000,
+      "description": "Incluye:\nEntrada: Bruschettas gourmet + tapeo con mini degustaciones\nPlato principal: Lomo al malbec / Lasagna de espinaca / Risotto\nPostre: Mousse de chocolate + shot de maracuyá\nBebida: Gaseosas, agua, vino de gama media (Cabernet / Malbec)\nMesa dulce premium: 8 variedades + shots dulces"
     },
     {
       "id": "2",
-      "category": "menu",
-      "name": "Vegetariano",
-      "price": 4000
+      "category": "Menú",
+      "name": "Menú criollo",
+      "price": 70000,
+      "description": "Incluye:  \nEntrada: Empanadas criollas + tabla de fiambres \nPlato principal: Asado “a la mesa” o vacío con ensaladas y papas  \nPostre: Panqueque con dulce de leche o helado\nBebida: Gaseosas, agua, vino tinto de mesa  \nMesa dulce: más elaborada, 5 variedades"
     },
     {
       "id": "3",
-      "category": "menu",
-      "name": "Vegano",
-      "price": 22,
-      "description": "wsw"
+      "category": "Menú",
+      "name": "Premium/Deluxe",
+      "price": 110000,
+      "description": "Incluye:\nEntrada: Degustación de sushi + finger food\nPlato principal: Ojo de bife / Salmón con vegetales / Pasta casera rellena gourmet\nPostre: Degustación triple (mousse + cheesecake + helado artesanal)\nBebida: Agua, gaseosas, vino premiun, champagne para brindis\nMesa dulce deluxe: 10–12 variedades + chocolates + mini patisserie\nBarra sin alcohol + mocktails"
     },
     {
       "id": "6131",
-      "name": "Gourmet",
-      "category": "menu",
-      "price": 7000
+      "name": "Clásico",
+      "category": "Menú",
+      "price": 55000,
+      "description": "Incluye:\nEntrada: Bruschettas, empanaditas de carne o jamón y queso\nPlato principal: Pollo al horno con papas / Pastas (sorrentinos o ñoquis)\nPostre: Helado o flan\nBebida: Gaseosas, agua saborizada\nMesa dulce básica: torta + 3 variedades (brownies, lemon pie, cupcakes)"
     },
     {
       "id": "c111",
-      "name": "Electronica",
-      "category": "musica",
-      "price": 30000
+      "name": "Decoración básica del salón",
+      "category": "Decoración",
+      "price": 30000,
+      "description": "Ambientación general del salón. Incluye mantelería básica, velas o centros de mesa simples y detalles en mesas principales. Ideal para eventos pequeños o económicos."
     },
     {
       "id": "c051",
-      "name": "Variado",
-      "category": "musica",
-      "price": 45000
+      "name": "Decoración premium personalizada",
+      "category": "Decoración",
+      "price": 60000,
+      "description": "Ambientación completa del salón. Incluye centros de mesa elaborados, iluminación decorativa y personalización de colores según el evento. Ideal para fiestas con estética definida."
     },
     {
       "id": "da0c",
-      "name": "Reggaeton",
-      "category": "musica",
-      "price": 35000
+      "name": "Decoración temática",
+      "category": "Decoración",
+      "price": 80000,
+      "description": "Ambientación personalizada según la temática elegida.\nIncluye cartelería, arreglos especiales, mesa temática y detalles en ingreso."
     },
     {
       "id": "f38c",
-      "name": "violeta",
-      "category": "decoracion",
-      "price": 15000
+      "name": "Cobertura fotográfica",
+      "category": "Fotografía",
+      "price": 200000,
+      "description": "Fotógrafo profesional durante todo el evento.\nIncluye entrega digital de todas las fotos editadas."
     },
     {
       "id": "bc7f",
-      "name": "Rosa",
-      "category": "decoracion",
-      "price": 15000
+      "name": "Cabina de fotos con accesorios",
+      "category": "Fotografía",
+      "price": 200000,
+      "description": "Cabina fotográfica con impresiones ilimitadas durante 2 horas.\nIncluye fondo, luces y accesorios divertidos."
     },
     {
       "id": "69c3",
-      "name": "Rojo",
-      "category": "decoracion",
-      "price": 15000
+      "name": "DJ Premium con luces",
+      "category": "Música",
+      "price": 150000,
+      "description": "DJ profesional con set de iluminación.\nIncluye efectos, máquina de humo y luces robóticas.\nIdeal para cumpleaños o eventos sociales."
     },
     {
       "id": "ab4e",
-      "name": "bachata",
-      "category": "musica",
-      "description": "asdasd",
-      "price": 3000
+      "name": "Barra de tragos completa",
+      "category": "Barra",
+      "description": "Barra atendida por bartender profesional durante todo el evento. Incluye variedad de tragos clásicos y frutales, cervezas, aperitivos y opciones sin alcohol. Presentación elegante con luces y cristalería.",
+      "price": 200000
+    },
+    {
+      "id": "7531",
+      "name": "Hora Loca",
+      "category": "Entretenimiento",
+      "description": "Show de animación de 20 minutos con cotillón luminoso, personajes temáticos, música especial y participación del público. Ideal para levantar la energía de la fiesta.",
+      "price": 80000
     }
   ],
   "users": [
@@ -150,6 +185,15 @@
       "email": "gero@gmail.com",
       "phone": "2235759592",
       "password": "12345",
+      "role": "client"
+    },
+    {
+      "id": "ffa3",
+      "name": "Melina",
+      "lastName": "Mamani",
+      "email": "melinamamani2022@gmail.com",
+      "phone": "2235066590",
+      "password": "123456",
       "role": "client"
     }
   ]

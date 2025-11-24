@@ -39,8 +39,7 @@
     </div>
     <div class="field">
       <label>Descripcion</label>
-      <input type="text" formControlName="description">
-
+     <textarea formControlName="description" rows="6" placeholder="Ingresá aquí el detalle del elemento (podés usar saltos de línea o guiones para listas)"></textarea>
       @if(form.get('description')?.invalid && form.get('description')?.touched) {
         <div class="error">
           @if(form.get('description')?.errors?.['required']) {
