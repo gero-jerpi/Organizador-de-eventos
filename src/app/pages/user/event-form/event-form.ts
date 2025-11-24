@@ -57,7 +57,9 @@ export class EventForm {
   'Cumpleaños',
   'Casamiento',
   'Fiesta de 15',
-  'Evento corporativo'
+  'Evento corporativo',
+  'Bautismo',
+  'Aniversario'
 ];
 
   // readonly EXTRAS = [
