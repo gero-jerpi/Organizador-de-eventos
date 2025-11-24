@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, AfterViewInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user-service';
 import { Router, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements AfterViewInit {
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
   private router = inject(Router);
@@ -43,6 +43,22 @@ export class Login {
       error: (err) => {
         this.errorMsg = err.message;
       },
+    });
+  }
+
+  ngAfterViewInit() {
+    const carousel = document.getElementById('eventCarousel');
+    const btnLeft = document.getElementById('carouselLeft');
+    const btnRight = document.getElementById('carouselRight');
+
+    if (!carousel || !btnLeft || !btnRight) return;
+
+    btnLeft.addEventListener('click', () => {
+      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      carousel.scrollBy({ left: 300, behavior: 'smooth' });
     });
   }
 }
