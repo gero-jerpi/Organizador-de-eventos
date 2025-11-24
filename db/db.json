@@ -46,7 +46,32 @@
       "status": "Pendiente"
     },
     {
-      "id": "8d74",
+      "id": "2e86",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Fiesta de 15",
+      "guests": 130,
+      "date": "2025-12-21",
+      "elements": [
+        "3",
+        "da0c",
+        "f38c",
+        "69c3",
+        "ab4e",
+        "7531"
+      ],
+      "totalPrice": 15010000,
+      "status": "Pendiente"
+    },
+    {
+      "id": "a95d",
       "user": {
         "id": "ffa3",
         "name": "Melina",
@@ -58,12 +83,15 @@
       },
       "eventType": "Cumpleaños",
       "guests": 80,
-      "date": "2025-11-26",
+      "date": "2026-01-28",
       "elements": [
-        "1"
+        "2",
+        "c051",
+        "f38c",
+        "ab4e"
       ],
       "totalPrice": 140000,
-      "status": "Confirmado"
+      "status": "Pendiente"
     }
   ],
   "elements": [
@@ -77,7 +105,7 @@
     {
       "id": "2",
       "category": "Menú",
-      "name": "Menú criollo",
+      "name": "Criollo",
       "price": 70000,
       "description": "Incluye:  \nEntrada: Empanadas criollas + tabla de fiambres \nPlato principal: Asado “a la mesa” o vacío con ensaladas y papas  \nPostre: Panqueque con dulce de leche o helado\nBebida: Gaseosas, agua, vino tinto de mesa  \nMesa dulce: más elaborada, 5 variedades"
     },
@@ -114,7 +142,7 @@
       "name": "Decoración temática",
       "category": "Decoración",
       "price": 80000,
-      "description": "Ambientación personalizada según la temática elegida.\nIncluye cartelería, arreglos especiales, mesa temática y detalles en ingreso."
+      "description": "Ambientación personalizada según la temática elegida. Incluye cartelería, arreglos especiales, mesa temática y detalles en ingreso."
     },
     {
       "id": "f38c",
@@ -126,7 +154,7 @@
     {
       "id": "bc7f",
       "name": "Cabina de fotos con accesorios",
-      "category": "Fotografía",
+      "category": "Extra",
       "price": 200000,
       "description": "Cabina fotográfica con impresiones ilimitadas durante 2 horas.\nIncluye fondo, luces y accesorios divertidos."
     },
@@ -148,7 +176,7 @@
       "id": "7531",
       "name": "Hora Loca",
       "category": "Entretenimiento",
-      "description": "Show de animación de 20 minutos con cotillón luminoso, personajes temáticos, música especial y participación del público. Ideal para levantar la energía de la fiesta.",
+      "description": "Show de animación de 40 minutos con cotillón luminoso, personajes temáticos, música especial y participación del público. Ideal para levantar la energía de la fiesta.",
       "price": 80000
     }
   ],

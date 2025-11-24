@@ -74,6 +74,4 @@ export class ElementsService {
       )
     )
   }
-
-
 }

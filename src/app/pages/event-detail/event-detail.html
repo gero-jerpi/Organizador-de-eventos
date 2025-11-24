@@ -33,14 +33,19 @@
        <p>Email: {{ ev.user.email }}</p>
        <p>Número de teléfono: {{ ev.user.phone }}</p>
        <br/>
-       <p><strong>Estado actual:</strong> {{ ev.status }}</p>
-    </div>
 
     <h2 class="section-title">Acciones de administrador</h2>
+    <p>Puedes cambiar el estado del evento o eliminarlo desde aquí.</p>
+    <br/>
+     <p><strong>Estado actual:</strong> {{ ev.status }}</p>
+    </div>
+
     <div class="admin-actions">
-      <button class="btn btn-success" type="button" (click)="confirmar(ev.id)">Aprobar</button>
-      <button class="btn btn-danger" type="button" (click)="rechazar(ev.id)">Rechazar</button>
-      <button class="btn btn-warning" type="button" (click)="eliminar(ev.id)">Eliminar</button>
+       <button class="btn" type="button" (click)="confirmar(ev.id)">Aprobar</button>
+       <button class="btn" type="button" (click)="rechazar(ev.id)">Rechazar</button>
+       <button class="btn" type="button" (click)="finalizado(ev.id)">Finalizar</button>
+
+       <button class="btn" type="button" (click)="eliminar(ev.id)">Eliminar</button>
     </div>
   </section>
 </div>

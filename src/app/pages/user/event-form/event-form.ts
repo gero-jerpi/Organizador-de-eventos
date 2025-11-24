@@ -43,67 +43,49 @@ export class EventForm {
   };
 
   finalPrice = signal<number>(0);
-
-  menus = signal<any[]>([]);
-  decorations = signal<any[]>([]);
-  music = signal<any[]>([]);
-
   elements = signal<any[]>([]);
 
   selectedByCategory: { [category: string]: string } = {};
   selectedMenu: any = null;
   foodTotal: number = 0;
 
-  readonly EVENT_TYPE_PRICE: Record<string, number> = {
-    Cumpleaños: 50000,
-    Casamiento: 150000,
-    Bautismo: 40000,
-    'Fiesta de 15': 120000,
-    Aniversario: 60000,
-    'Evento corporativo': 200000,
-  };
+  readonly REQUIRED_CATEGORIES = ['Menú'];
 
-  readonly EXTRAS = [
-    { key: 'fotografia', price: 15000 },
-    { key: 'barra', price: 20000 },
-    { key: 'cotillon', price: 7000 },
-    { key: 'mesaDulce', price: 12000 },
-    { key: 'animador', price: 18000 },
-  ] as const;
+  readonly eventTypes = [
+  'Cumpleaños',
+  'Casamiento',
+  'Fiesta de 15',
+  'Evento corporativo'
+];
 
-  eventTypes = Object.keys(this.EVENT_TYPE_PRICE);
+  // readonly EXTRAS = [
+  //   { key: 'fotografia', price: 15000 },
+  //   { key: 'barra', price: 20000 },
+  //   { key: 'cotillon', price: 7000 },
+  //   { key: 'mesaDulce', price: 12000 },
+  //   { key: 'animador', price: 18000 },
+  // ] as const;
 
   eventForm = this.fb.group({
     date: ['', Validators.required],
     guests: [0, Validators.required],
     eventType: ['', Validators.required],
-    menuType: ['', Validators.required],
+    menuType: [''],
     selectedElements: this.fb.control<string[]>([]),
-    extras: this.fb.group({
-      fotografia: false,
-      barra: false,
-      cotillon: false,
-      mesaDulce: false,
-      animador: false,
-    }),
+    // extras: this.fb.group({
+    //   fotografia: false,
+    //   barra: false,
+    //   cotillon: false,
+    //   mesaDulce: false,
+    //   animador: false,
+    // }),
   });
 
   constructor() {
     effect(() => {
       const elems = this.elementService.elements();
       if (!elems) return;
-
       this.elements.set(elems);
-
-      const events = this.eventService.events();
-      const dates = events.map((ev) => ev.date);
-
-      this.occupiedDates.set(dates);
-
-      // Filtrar por categoría
-      this.menus.set(elems.filter((e) => e.category === 'menu'));
-      this.decorations.set(elems.filter((e) => e.category === 'decoracion'));
-      this.music.set(elems.filter((e) => e.category === 'musica'));
     });
     this.eventForm.get('guests')?.valueChanges.subscribe(() => {
       this.calculateTotal();
@@ -113,9 +95,9 @@ export class EventForm {
       this.calculateTotal();
     });
 
-    this.eventForm.get('extras')?.valueChanges.subscribe(() => {
-      this.calculateTotal();
-    });
+    // this.eventForm.get('extras')?.valueChanges.subscribe(() => {
+    //   this.calculateTotal();
+    // });
   }
 
   // ─────────────────────────────────────────────────────
@@ -129,11 +111,15 @@ export class EventForm {
     return this.elements().filter((e) => e.category === category);
   }
 
-  toggleExtra(extra: ExtraName, value: boolean) {
-    const extras = this.eventForm.get('extras') as FormGroup;
-    extras.get(extra)?.setValue(value);
-    this.calculateTotal();
-  }
+  isRequired(category: string): boolean {
+  return this.REQUIRED_CATEGORIES.includes(category);
+}
+
+  // toggleExtra(extra: ExtraName, value: boolean) {
+  //   const extras = this.eventForm.get('extras') as FormGroup;
+  //   extras.get(extra)?.setValue(value);
+  //   this.calculateTotal();
+  // }
 
   selectOption(category: string, id: string) {
     const current = this.selectedByCategory[category];
@@ -144,14 +130,14 @@ export class EventForm {
       }
       delete this.selectedByCategory[category];
 
-      if (category === 'menu') {
+      if (category === 'Menú') {
         this.eventForm.controls.menuType.setValue('');
       }
     } else {
       this.calculateValues(id, category);
 
-      if (category === 'menu') {
-        this.eventForm.controls.menuType.setValue(this.selectedByCategory['menu'] || '');
+      if (category === 'Menú') {
+        this.eventForm.controls.menuType.setValue(this.selectedByCategory['Menú'] || '');
       }
       return;
     }
@@ -173,7 +159,7 @@ export class EventForm {
     const ids = Object.values(this.selectedByCategory);
     this.eventForm.controls.selectedElements.setValue(ids as string[]);
 
-    if (category === 'menu') {
+    if (category ==='Menú') {
       this.eventForm.patchValue({ menuType: id });
     }
 
@@ -185,14 +171,9 @@ export class EventForm {
     const guests = raw.guests ?? 0;
     const eventType = raw.eventType ?? '';
     const selectedElements = raw.selectedElements ?? [];
-    const extras = raw.extras ?? {};
+    // const extras = raw.extras ?? {};
 
     let total = 0;
-
-    // Precio del tipo de evento
-    if (eventType) {
-      total += this.EVENT_TYPE_PRICE[eventType] || 0;
-    }
 
     const allElems = this.elements();
 
@@ -200,7 +181,7 @@ export class EventForm {
     let selectedMenu: any = null;
     selectedElements.forEach((id) => {
       const el = allElems.find((e) => e.id === id);
-      if (el && el.category === 'menu') {
+      if (el && el.category === 'Menú') {
         selectedMenu = el;
       }
     });
@@ -215,15 +196,15 @@ export class EventForm {
 
     selectedElements.forEach((id) => {
       const el = allElems.find((e) => e.id === id);
-      if (el && el.category !== 'menu') {
+      if (el && el.category !== 'Menú') {
         total += el.price;
       }
     });
 
-    // Sumar extras
-    this.EXTRAS.forEach((extra) => {
-      if (extras?.[extra.key]) total += extra.price;
-    });
+    //  Sumar extras
+    // this.EXTRAS.forEach((extra) => {
+    //   if (extras?.[extra.key]) total += extra.price;
+    // });
 
     this.finalPrice.set(total);
     return total;
@@ -233,7 +214,7 @@ export class EventForm {
   // ─────────────────────────────────────────────────────
 
   cargarEvento() {
-    if (this.eventForm.invalid) return alert('Datos inválidos');
+  if (this.eventForm.invalid) return alert('Datos inválidos');
 
     const user = this.userService.currentUser();
     if (!user?.id) return alert('No se encontró el usuario');
@@ -243,6 +224,13 @@ export class EventForm {
     if (!rawDate) return alert('Fecha inválida');
 
     const formattedDate = new Date(rawDate).toISOString().split('T')[0];
+
+    // VALIDAR CATEGORÍAS OBLIGATORIAS
+    for (const cat of this.REQUIRED_CATEGORIES) {
+     if (!this.selectedByCategory[cat]) {
+       return alert(`Debe seleccionar al menos una opción en la categoría: ${cat}`);
+     }
+   }
 
     const newEvent: newEvent = {
       user: user,
@@ -259,5 +247,6 @@ export class EventForm {
       this.eventForm.reset();
       this.finalPrice.set(0);
     });
-  }
+
+}
 }

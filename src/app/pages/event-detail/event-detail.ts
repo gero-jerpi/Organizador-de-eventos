@@ -71,6 +71,7 @@ export class EventDetail implements OnInit {
       }
     });
   }
+
   confirmar(id: string) {
     this.eventService.patch(id, 'Confirmado').subscribe(() => {
       const ev = this.eventData(); // obtenemos el valor actual
@@ -93,34 +94,21 @@ export class EventDetail implements OnInit {
     });
   }
 
+  finalizado(id: string) {
+    this.eventService.patch(id, 'Finalizado').subscribe(() => {
+      const ev = this.eventData();
+      if (!ev) return;
+      this.eventData.set({
+        ...ev,
+        status: 'Finalizado',
+      });
+    });
+  }
+
   eliminar(id: string) {
     this.eventService.delete(id).subscribe(() => {
       console.log('Eliminado');
       this.router.navigate(['/admin/event-list'])
     });
   }
-
-  /*
-  loadEvent() {
-    this.eventService.getById(this.eventId).subscribe((event) => {
-      console.log('Evento recibido:', event);
-
-      this.eventData = event;
-
-      if (!event) return;
-
-      if (this.currentUser.role === 'admin') {
-        this.mode = 'admin';
-        return;
-      }
-
-      if (event.userId === this.currentUser.id.toString()) {
-        this.mode = 'client';
-        return;
-      }
-
-      this.router.navigate(['/']);
-    });
-  }
-    */
 }

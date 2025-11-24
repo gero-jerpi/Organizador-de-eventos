@@ -6,12 +6,11 @@
     <div class="event-card">
       <h3>Evento del {{ evento.date }}</h3>
 
-      <p><strong>Estado:</strong> {{ evento.status }}</p>
       <p><strong>Tipo de evento:</strong> {{ evento.eventType }}</p>
-      <p>ID del evento: {{ evento.id }}</p>
+      <p><strong>Estado:</strong> {{ evento.status }}</p>
 
       <div class="event-btn">
-        <button class="show-more-btn" [routerLink]="['/user', 'events', evento.id]">Mostrar más</button>
+        <button class="show-more-btn" [routerLink]="['/user', 'events', evento.id]">Información completa</button>
       </div>
     </div>
     }

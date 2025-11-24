@@ -2,18 +2,9 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family:  'Segoe UI', system-ui, sans-serif;
 }
 
-/* Estado de carga */
-.loading {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #66227a;
-  padding: 2rem 0;
-}
-
-/* Mensaje de "sin eventos" */
 .no-events {
   text-align: center;
   font-size: 1.2rem;
@@ -24,7 +15,6 @@
   border: 1px solid #e4c6ff;
 }
 
-/* Contenedor de lista */
 .events-list {
   display: grid;
   gap: 1.5rem;
@@ -49,7 +39,7 @@
 .event-card h3 {
   margin-top: 0;
   font-size: 1.3rem;
-  color: #66227a;
+  color: #310944;
   border-bottom: 1px solid #e8cfff;
   padding-bottom: 0.4rem;
   margin-bottom: 1rem;
@@ -61,17 +51,6 @@
   color: #333;
 }
 
-.event-card ul {
-  margin-top: 0.5rem;
-  padding-left: 1.2rem;
-}
-
-.event-card li {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-/* Por si querés agregar botones dentro de card más adelante */
 .event-actions {
   margin-top: 1rem;
   display: flex;
@@ -86,20 +65,22 @@
   border: none;
 }
 
-.event-btn.primary {
-  background: #d0a1df;
-  color: #66227a;
+.show-more-btn {
+  background: #310944;
+  border: 1px solid  #310944;
+  color: #ecd5ef;
+  margin-top: auto;
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+  align-self: flex-end;
 }
 
-.event-btn.primary:hover {
-  background: #9539ca;
+.show-more-btn:hover {
+  background:#ecd5ef;
+  color:  #310944;
 }
 
-.event-btn.secondary {
-  background: #ece3f5;
-  color: #66227a;
-}
-
-.event-btn.secondary:hover {
-  background: #d7c3e9;
-}

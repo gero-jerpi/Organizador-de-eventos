@@ -1,5 +1,4 @@
 import { Elemento } from './../../../model/elements.model';
-import { Element } from './../../../../../node_modules/@angular/cdk/schematics/utils/parse5-element.d';
 import { Event } from './../../../model/event.model';
 import { Component, effect, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';

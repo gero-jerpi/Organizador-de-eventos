@@ -6,7 +6,6 @@
   color: #fff;
 }
 
-/* === Fondo estilo hero === */
 .admin-hero {
   min-height: 72vh;
   position: relative;
@@ -19,7 +18,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('https://media.janoseventos.com/large_Copia_de_0573_7c5336d74b.jpg');
+  background-image: url('https://revistatweens.com/uploads/galerias/IMG_6737.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,7 +97,7 @@
   cursor: pointer;
   overflow: hidden;
 
-  background: #a7437a;
+  background:  #09035afd;
   color: #fff;
   border: none;
   z-index: 1;

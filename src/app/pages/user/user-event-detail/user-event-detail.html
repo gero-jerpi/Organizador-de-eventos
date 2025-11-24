@@ -10,9 +10,6 @@
   </div>
 </header>
 
-<!-- event-detail.component.html -->
-<div class="event-detail-page">
-  <!-- HEADER / TITULO -->
 
   <!-- CARD PRINCIPAL: ELEMENTOS -->
   <section class="card elements-card">
@@ -20,22 +17,23 @@
 
     <!-- GRID de tarjetas; mantenés tu lógica *ngFor + includes -->
     <div class="elements-grid">
-      <div class="element-item">
+
         @for (elementId of foundEvent()?.elements; track $index) {
-        @let element = getElementById(elementId);
-        @if(element){
-        <div class="element-category">{{ element.category }}</div>
-        <div class="element-name">{{ element.name }}</div>
-        <div class="element-price">Precio: ${{ element.price }}</div>
-        }
+       <div class="element-item">
+          @let element = getElementById(elementId);
+           @if(element){
+             <div class="element-category">{{ element.category }}</div>
+             <div class="element-name">{{ element.name }}</div>
+            <div class="element-price">Precio: ${{ element.price }}</div>
+         }
+       </div>
       }
-      </div>
+
     </div>
   </section>
 
-  <!-- ACCIONES (SEPARADO abajo, ocupa full-width) -->
-  <section class="card admin-card">
-    <div class="admin-info">
+  <section class="card client-card">
+    <div class="client-info">
       <span><strong>Información del cliente: </strong> </span>
       <p>Nombre: {{ foundEvent()!.user.name }} {{ foundEvent()!.user.lastName }}</p>
       <p>Email: {{ foundEvent()!.user.email }}</p>
@@ -45,5 +43,5 @@
     </div>
   </section>
 </div>
-</div>
+
 }

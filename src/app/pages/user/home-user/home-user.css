@@ -21,7 +21,7 @@
   position: absolute;
   inset: 0;
 
-  background-image: url('https://media.janoseventos.com/large_0450_4ab8c63902.jpg');
+  background-image: url('https://revistatweens.com/uploads/galerias/IMG_6737.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,17 +75,34 @@
   font-weight: 600;
 }
 
+.hero-info-label {
+  display: block;
+  font-size: clamp(0.7rem, 1.8vw, 1.2rem);
+  font-weight: 500;
+  opacity: 0.85;
+  text-align: center;
+  margin-top: 5rem ;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
 .nav a.btn {
   position: relative;
   display: inline-block;
-  padding: 0.9rem 2.4rem;
-  font-size: 1.3rem;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
   overflow: hidden;
 
-  background: #a7437a;
+  background:  #09035afd;
   color: #fff;
   border: none;
   transition: all 0.3s ease;
@@ -122,3 +139,4 @@
 .nav a.btn:active {
   top: 2px;
 }
+

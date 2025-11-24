@@ -1,9 +1,9 @@
 <div class="elements-wrapper">
+
   <h2 class="elements-title">Elementos cargados: {{ filteredElements().length }}</h2>
 
   <button class="add-btn" (click)="addElement()">Agregar elemento</button>
 
-  <!-- FILTRO -->
   <div class="filter-box">
    <input type="text" [ngModel]="categoryText()" (ngModelChange)="categoryText.set($event)"
     placeholder="Filtrar por categoría..." (keyup.enter)="filterByCategory()" />
@@ -36,4 +36,5 @@
      </div>
     </li>
   </ul>
+
 </div>
