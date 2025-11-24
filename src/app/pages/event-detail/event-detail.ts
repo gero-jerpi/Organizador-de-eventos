@@ -1,3 +1,4 @@
+import { Event } from './../../model/event.model';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +21,6 @@ import { ChangeDetectorRef } from '@angular/core';
 export class EventDetail implements OnInit {
   eventId!: string;
   eventData: any = null;
-
   currentUser: any = null;
   mode: 'admin' | 'client' = 'client';
   elements = signal<any[]>([]);

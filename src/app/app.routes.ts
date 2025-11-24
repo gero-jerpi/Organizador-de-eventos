@@ -12,6 +12,7 @@ import { EventsUser } from './pages/user/events-user/events-user';
 import { HomeAdmin } from './pages/admin/home-admin/home-admin';
 import { HomeUser } from './pages/user/home-user/home-user';
 import { EventDetail } from './pages/event-detail/event-detail';
+import { UserEventDetail } from './pages/user/user-event-detail/user-event-detail';
 
 export const routes: Routes = [
   // Página inicial
@@ -36,6 +37,7 @@ export const routes: Routes = [
 
   // detalle del evento
   { path: 'eventos/:id', component: EventDetail, canActivate: [authGuard] },
+  { path: 'user/events/:id', component: UserEventDetail},
 
   // 404
   { path: '**', redirectTo: 'login' },

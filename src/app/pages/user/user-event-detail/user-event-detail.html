@@ -1,0 +1,49 @@
+@if(foundEvent()){
+  <div class="event-detail-page">
+<header class="event-header">
+  <h1 class="event-title">Evento del {{ foundEvent()!.date }}</h1>
+  <br />
+  <div class="event-meta">
+    <div><strong>Tipo:</strong> {{ foundEvent()!.eventType || 'No especificado' }}</div>
+    <div><strong> Cantidad de invitados:</strong> {{ foundEvent()!.guests }}</div>
+    <div><strong> Presupuesto estimado:</strong> ${{ foundEvent()!.totalPrice }}</div>
+  </div>
+</header>
+
+<!-- event-detail.component.html -->
+<div class="event-detail-page">
+  <!-- HEADER / TITULO -->
+
+  <!-- CARD PRINCIPAL: ELEMENTOS -->
+  <section class="card elements-card">
+    <h2 class="section-title">Elementos extras elegidos por el cliente</h2>
+
+    <!-- GRID de tarjetas; mantenés tu lógica *ngFor + includes -->
+    <div class="elements-grid">
+      <div class="element-item">
+        @for (elementId of foundEvent()?.elements; track $index) {
+        @let element = getElementById(elementId);
+        @if(element){
+        <div class="element-category">{{ element.category }}</div>
+        <div class="element-name">{{ element.name }}</div>
+        <div class="element-price">Precio: ${{ element.price }}</div>
+        }
+      }
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCIONES (SEPARADO abajo, ocupa full-width) -->
+  <section class="card admin-card">
+    <div class="admin-info">
+      <span><strong>Información del cliente: </strong> </span>
+      <p>Nombre: {{ foundEvent()!.user.name }} {{ foundEvent()!.user.lastName }}</p>
+      <p>Email: {{ foundEvent()!.user.email }}</p>
+      <p>Número de teléfono: {{ foundEvent()!.user.email }}</p>
+      <br />
+      <p><strong>Estado actual:</strong> {{ foundEvent()!.status }}</p>
+    </div>
+  </section>
+</div>
+</div>
+}
