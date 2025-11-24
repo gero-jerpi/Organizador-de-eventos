@@ -43,6 +43,28 @@
       ],
       "totalPrice": 3595011,
       "status": "Pendiente"
+    },
+    {
+      "id": "2cea",
+      "user": {
+        "id": "6bbd",
+        "name": "Geronimo",
+        "lastName": "Jerpi",
+        "email": "gero@gmail.com",
+        "phone": "2235759592",
+        "password": "12345",
+        "role": "client"
+      },
+      "eventType": "Fiesta de 15",
+      "guests": 85,
+      "date": "2025-11-19",
+      "elements": [
+        "1",
+        "c111",
+        "f38c"
+      ],
+      "totalPrice": 3187000,
+      "status": "Pendiente"
     }
   ],
   "elements": [
@@ -107,6 +129,13 @@
       "name": "Rojo",
       "category": "decoracion",
       "price": 15000
+    },
+    {
+      "id": "ab4e",
+      "name": "bachata",
+      "category": "musica",
+      "description": "asdasd",
+      "price": 3000
     }
   ],
   "users": [
@@ -133,6 +162,15 @@
       "email": "cande@gmail.com",
       "phone": "2235336767",
       "password": "lalala",
+      "role": "client"
+    },
+    {
+      "id": "6bbd",
+      "name": "Geronimo",
+      "lastName": "Jerpi",
+      "email": "gero@gmail.com",
+      "phone": "2235759592",
+      "password": "12345",
       "role": "client"
     }
   ]

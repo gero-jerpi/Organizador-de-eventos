@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';
 import { UserService } from '../../../services/user-service';
 import { Event } from '../../../model/event.model';
@@ -13,14 +13,43 @@ import { RouterModule } from '@angular/router';
 })
 export class EventsUser {
 
+  private eventService = inject(EventService);
+  private userService = inject(UserService)
+
+  eventos = signal<Event[]>([])
+
+  constructor(){
+    this.loadEvents()
+  }
+
+  loadEvents(){
+    const user = this.userService.currentUser();
+
+    if(!user || !user.id){
+      return;
+    }
+
+    this.eventService.getEventsByUserId(user.id).subscribe((data)=>{
+      this.eventos.set(data);
+      console.log(this.eventos);
+      console.log(user);
+
+
+    })
+
+
+  }
+
+
+  /*
  private eventService = inject(EventService);
   private userService = inject(UserService);
 
   eventos: Event[] = [];
   loading = true;
 
-  ngOnInit() {
-    this.loadEvents();
+  constructor(){
+    this.loadEvents()
   }
 
   loadEvents() {
@@ -49,6 +78,6 @@ export class EventsUser {
         }
       });
   }
-
+*/
 }
 
