@@ -1,3 +1,4 @@
+import { filter, map } from 'rxjs';
 import { Component, effect, inject, signal } from '@angular/core';
 import { EventService } from '../../../services/event-service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -83,6 +84,17 @@ export class EventForm {
 
   constructor() {
     effect(() => {
+
+      const eventos = this.eventService.events;
+      const date = eventos().map((e)=>
+        e.date
+      )
+      if(!date){
+        return;
+      }
+
+      this.occupiedDates.set(date);
+
       const elems = this.elementService.elements();
       if (!elems) return;
       this.elements.set(elems);
