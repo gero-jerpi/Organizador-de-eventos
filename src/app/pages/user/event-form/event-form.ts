@@ -6,12 +6,24 @@ import { UserService } from '../../../services/user-service';
 import { Router, RouterModule } from '@angular/router';
 import { newEvent } from '../../../model/event.model';
 import { CommonModule } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 type ExtraName = 'fotografia' | 'barra' | 'cotillon' | 'mesaDulce' | 'animador';
 
 @Component({
   selector: 'app-event-form',
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   templateUrl: './event-form.html',
   styleUrl: './event-form.css',
 })
@@ -20,6 +32,15 @@ export class EventForm {
   private userService = inject(UserService);
   private eventService = inject(EventService);
   private elementService = inject(ElementsService);
+
+  occupiedDates = signal<string[]>([]);
+
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) return false;
+
+    const formatted = date.toISOString().split('T')[0];
+    return !this.occupiedDates().includes(formatted);
+  };
 
   finalPrice = signal<number>(0);
 
@@ -74,6 +95,11 @@ export class EventForm {
 
       this.elements.set(elems);
 
+      const events = this.eventService.events();
+      const dates = events.map((ev) => ev.date);
+
+      this.occupiedDates.set(dates);
+
       // Filtrar por categoría
       this.menus.set(elems.filter((e) => e.category === 'menu'));
       this.decorations.set(elems.filter((e) => e.category === 'decoracion'));
@@ -95,10 +121,9 @@ export class EventForm {
   // ─────────────────────────────────────────────────────
   // SELECCIÓN DE ELEMENTOS
   // ─────────────────────────────────────────────────────
-   getCategories() {
+  getCategories() {
     return [...new Set(this.elements().map((e) => e.category))];
   }
-
 
   filterByCategory(category: string) {
     return this.elements().filter((e) => e.category === category);
@@ -111,29 +136,29 @@ export class EventForm {
   }
 
   selectOption(category: string, id: string) {
-  const current = this.selectedByCategory[category];
-  if (current === id) {
-     const prevEl = this.elements().find((e: any) => e.id === current);
-     if (prevEl) {
-      this.finalPrice.update((p) => p - prevEl.price);
-    }
-    delete this.selectedByCategory[category];
+    const current = this.selectedByCategory[category];
+    if (current === id) {
+      const prevEl = this.elements().find((e: any) => e.id === current);
+      if (prevEl) {
+        this.finalPrice.update((p) => p - prevEl.price);
+      }
+      delete this.selectedByCategory[category];
 
-    if (category === 'menu') {
-      this.eventForm.controls.menuType.setValue('');
-    }
-   } else {
-     this.calculateValues(id, category);
+      if (category === 'menu') {
+        this.eventForm.controls.menuType.setValue('');
+      }
+    } else {
+      this.calculateValues(id, category);
 
-     if (category === 'menu') {
-      this.eventForm.controls.menuType.setValue(this.selectedByCategory['menu'] || '');
+      if (category === 'menu') {
+        this.eventForm.controls.menuType.setValue(this.selectedByCategory['menu'] || '');
+      }
+      return;
     }
-    return;
+    const ids = Object.values(this.selectedByCategory);
+    this.eventForm.controls.selectedElements.setValue(ids as string[]);
+    this.calculateTotal();
   }
-  const ids = Object.values(this.selectedByCategory);
-  this.eventForm.controls.selectedElements.setValue(ids as string[]);
-  this.calculateTotal();
-}
 
   // ─────────────────────────────────────────────────────
   // CÁLCULO TOTAL
@@ -213,11 +238,17 @@ export class EventForm {
     const user = this.userService.currentUser();
     if (!user?.id) return alert('No se encontró el usuario');
 
+    const rawDate = this.eventForm.get('date')?.value;
+
+    if (!rawDate) return alert('Fecha inválida');
+
+    const formattedDate = new Date(rawDate).toISOString().split('T')[0];
+
     const newEvent: newEvent = {
       user: user,
-      eventType:this.eventForm.value.eventType!,
+      eventType: this.eventForm.value.eventType!,
       guests: this.eventForm.value.guests!,
-      date: this.eventForm.value.date!,
+      date: formattedDate,
       elements: this.eventForm.value.selectedElements!,
       totalPrice: this.finalPrice(),
       status: 'Pendiente',

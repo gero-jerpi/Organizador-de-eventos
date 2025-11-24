@@ -36,27 +36,38 @@
           }
         </div>
 
-        <label>Fecha</label>
-        <input type="date" formControlName="date" />
+        <mat-form-field appearance="outline"  hideRequiredMarker>
+          <mat-label>Fecha del evento</mat-label>
 
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date"
+            [matDatepickerFilter]="dateFilter"
+            readonly
+          />
 
-      @for (category of getCategories(); track $index){
-         <label>{{ category }}</label>
-          <div class="options-row">
-             @for (element of filterByCategory(category); track element.id) {
-              <button
-                type="button"
-                class="option-btn"
-                [class.active]="selectedByCategory[category] === element.id"
-                (click)="selectOption(category, element.id)"
-                >
-                 {{ element.name }} - ${{ element.price }}
-                </button>  }
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-                @if (filterByCategory(category).length === 0) {
-                  <div class="no-elements">No hay opciones en esta categoría todavía.</div> }
-          </div>
-      }
+        @for (category of getCategories(); track $index){
+        <label>{{ category }}</label>
+        <div class="options-row">
+          @for (element of filterByCategory(category); track element.id) {
+          <button
+            type="button"
+            class="option-btn"
+            [class.active]="selectedByCategory[category] === element.id"
+            (click)="selectOption(category, element.id)"
+          >
+            {{ element.name }} - ${{ element.price }}
+          </button>
+          } @if (filterByCategory(category).length === 0) {
+          <div class="no-elements">No hay opciones en esta categoría todavía.</div>
+          }
+        </div>
+        }
 
         <!-- EXTRAS -->
         <div class="card section-card">
