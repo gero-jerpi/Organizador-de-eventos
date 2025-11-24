@@ -1,19 +1,19 @@
 <div class="events-user">
-    <div class="events-list">
-      @for (evento of eventos(); track $index) {
-        <div class="event-card">
+  <div class="events-list">
+    @if(eventos().length === 0){
+    <div class="no-events">No tenés eventos cargados todavía.</div>
+    } @for (evento of eventos(); track $index) {
+    <div class="event-card">
+      <h3>Evento del {{ evento.date }}</h3>
 
-          <h3>Evento del {{ evento.date }}</h3>
+      <p><strong>Estado:</strong> {{ evento.status }}</p>
+      <p><strong>Tipo de evento:</strong> {{ evento.eventType }}</p>
+      <p>ID del evento: {{ evento.id }}</p>
 
-          <p><strong>Estado:</strong> {{ evento.status }}</p>
-          <p><strong>Tipo de evento:</strong> {{ evento.eventType }}</p>
-          <p>ID del evento: {{ evento.id }}</p>
-
-        <div class="event-btn">
-          <button class="show-more-btn" [routerLink]="['/eventos', evento.id]">Mostrar más</button>
-        </div>
-        </div>
-      }
+      <div class="event-btn">
+        <button class="show-more-btn" [routerLink]="['/eventos', evento.id]">Mostrar más</button>
+      </div>
     </div>
+    }
+  </div>
 </div>
-

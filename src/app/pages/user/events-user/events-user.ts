@@ -29,6 +29,9 @@ export class EventsUser {
       return;
     }
 
+    console.log(user.id);
+
+
     this.eventService.getEventsByUserId(user.id).subscribe((data)=>{
       this.eventos.set(data);
     })

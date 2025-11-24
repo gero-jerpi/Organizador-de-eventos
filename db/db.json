@@ -43,28 +43,6 @@
       ],
       "totalPrice": 3595011,
       "status": "Pendiente"
-    },
-    {
-      "id": "2cea",
-      "user": {
-        "id": "6bbd",
-        "name": "Geronimo",
-        "lastName": "Jerpi",
-        "email": "gero@gmail.com",
-        "phone": "2235759592",
-        "password": "12345",
-        "role": "client"
-      },
-      "eventType": "Fiesta de 15",
-      "guests": 85,
-      "date": "2025-11-19",
-      "elements": [
-        "1",
-        "c111",
-        "f38c"
-      ],
-      "totalPrice": 3187000,
-      "status": "Pendiente"
     }
   ],
   "elements": [
@@ -165,9 +143,9 @@
       "role": "client"
     },
     {
-      "id": "6bbd",
-      "name": "Geronimo",
-      "lastName": "Jerpi",
+      "id": "c4ab",
+      "name": "gero",
+      "lastName": "jerpi",
       "email": "gero@gmail.com",
       "phone": "2235759592",
       "password": "12345",

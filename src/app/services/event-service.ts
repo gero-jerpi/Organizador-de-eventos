@@ -1,7 +1,7 @@
 import { Event, newEvent } from './../model/event.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,9 @@ export class EventService {
 
   //Obtener eventos por userId
   getEventsByUserId(userId: string) {
-    return this.http.get<Event[]>(`${this.apiUrl}?userId=${userId}`);
+    return this.http
+      .get<Event[]>(this.apiUrl)
+      .pipe(map((events) => events.filter((event) => event.user.id === userId)));
   }
 
   // obtener eventos por id
@@ -70,7 +72,10 @@ export class EventService {
   }
 
   //Cambiar estado (pendiente / confirmado)
-  patch(id: string, newStatus: 'Pendiente' | 'Confirmado'| 'Rechazado' | 'Finalizado'): Observable<Event> {
+  patch(
+    id: string,
+    newStatus: 'Pendiente' | 'Confirmado' | 'Rechazado' | 'Finalizado'
+  ): Observable<Event> {
     return this.http
       .patch<Event>(`${this.apiUrl}/${id}`, { status: newStatus })
       .pipe(
