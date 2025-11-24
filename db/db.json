@@ -12,12 +12,7 @@
         "role": "client"
       },
       "date": "2025-11-20",
-      "elements": [
-        "1",
-        "c111",
-        "f38c",
-        "b5ee"
-      ],
+      "elements": ["1", "c111", "f38c", "b5ee"],
       "totalPrice": 2965011,
       "status": "Pendiente"
     },
@@ -35,12 +30,7 @@
       "eventType": "Cumpleaños",
       "guests": 100,
       "date": "2026-02-27",
-      "elements": [
-        "1",
-        "c111",
-        "f38c",
-        "b5ee"
-      ],
+      "elements": ["1", "c111", "f38c", "b5ee"],
       "totalPrice": 3595011,
       "status": "Pendiente"
     }
@@ -107,6 +97,13 @@
       "name": "Rojo",
       "category": "decoracion",
       "price": 15000
+    },
+    {
+      "id": "ab4e",
+      "name": "bachata",
+      "category": "musica",
+      "description": "asdasd",
+      "price": 3000
     }
   ],
   "users": [
@@ -136,12 +133,12 @@
       "role": "client"
     },
     {
-      "id": "2517",
-      "name": "test",
-      "lastName": "cande",
-      "email": "lalala@gmail.com",
-      "phone": "2235336767",
-      "password": "lalala",
+      "id": "c4ab",
+      "name": "gero",
+      "lastName": "jerpi",
+      "email": "gero@gmail.com",
+      "phone": "2235759592",
+      "password": "12345",
       "role": "client"
     }
   ]

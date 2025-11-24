@@ -84,7 +84,7 @@ export class UserService {
   }
 
 
-  delete(id: number): Observable<any> {
+  delete(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrlUser}/${id}`).pipe(
       tap(() =>
         this.userSignal.update((users) =>
