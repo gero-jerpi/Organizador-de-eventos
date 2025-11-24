@@ -47,22 +47,32 @@
           </p>
         </div>
 
-    <label>Teléfono</label>
-    <input type="text" formControlName="phone" placeholder="Tu teléfono" />
-    <p class="error-msg"
-      *ngIf="registroForm.get('phone')?.invalid && registroForm.get('phone')?.touched">
-      Ingresá un telefono válido.
-    </p>
+        <div class="field">
+          <label>Teléfono</label>
+          <input type="text" formControlName="phone" placeholder="Tu teléfono" />
+          <p
+            class="error-msg"
+            *ngIf="registroForm.get('phone')?.invalid && registroForm.get('phone')?.touched"
+          >
+            Ingresá un teléfono válido.
+          </p>
+        </div>
+      </div>
 
-    <label>Contraseña</label>
-    <input type="password" formControlName="password" placeholder="Tu contraseña">
-    <p class="error-msg"
-      *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
-      Mínimo 5 caracteres.
-    </p>
+      <!-- Fila 3: solo contrasñea del form -->
+      <div class="password row-full">
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" placeholder="Tu contraseña" />
+        <p
+          class="error-msg"
+          *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched"
+        >
+          Mínimo 5 caracteres.
+        </p>
+      </div>
 
-
-    <button type="submit">Registrarse</button>
+      <!-- registrarse boton -->
+      <button type="submit">Registrarse</button>
 
       <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
     </form>
