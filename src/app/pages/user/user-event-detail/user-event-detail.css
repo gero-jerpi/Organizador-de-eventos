@@ -112,3 +112,32 @@
   }
 }
 
+.back-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 20px 0;
+}
+
+.back-btn {
+  background-color: #1f2937;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn:hover {
+  background-color: #374151;
+  transform: translateY(-2px);
+}
+
+.back-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
