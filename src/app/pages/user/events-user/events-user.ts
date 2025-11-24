@@ -31,53 +31,7 @@ export class EventsUser {
 
     this.eventService.getEventsByUserId(user.id).subscribe((data)=>{
       this.eventos.set(data);
-      console.log(this.eventos);
-      console.log(user);
-
-
     })
-
-
   }
-
-
-  /*
- private eventService = inject(EventService);
-  private userService = inject(UserService);
-
-  eventos: Event[] = [];
-  loading = true;
-
-  constructor(){
-    this.loadEvents()
-  }
-
-  loadEvents() {
-
-    const user = this.userService.currentUser();
-
-    if (!user) {
-      this.loading = true;
-      setTimeout(() => this.loadEvents(), 80);
-      return;
-    }
-
-    this.loading = true;
-
-    this.eventService.getEventsByUserId(user.id!.toString())
-      .subscribe({
-        next: (data) => {
-          // aseguramos actualización del template
-          setTimeout(() => {
-            this.eventos = data;
-            this.loading = false;
-          }, 0);
-        },
-        error: () => {
-          this.loading = false;
-        }
-      });
-  }
-*/
 }
 
