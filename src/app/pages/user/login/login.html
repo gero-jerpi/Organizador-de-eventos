@@ -1,17 +1,43 @@
-<div class="login-container">
-  <h2>Iniciá sesión.</h2>
+<div class="login-page">
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="login-container">
+    <div class="login-intro">
+      <h1>Gestioná tus eventos.</h1>
+      <p>Organizá, planificá y controlá todo desde un solo lugar.</p>
+    </div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <label>Correo electrónico</label>
-    <input type="email" formControlName="email" placeholder="Correo electrónico" />
+    <h2>Iniciá sesión.</h2>
 
-    <label>Contraseña</label>
-    <input type="password" formControlName="password" placeholder="Contraseña" />
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <label>Correo electrónico</label>
+      <input type="email" formControlName="email" placeholder="Correo electrónico" />
 
-    <button type="submit">Iniciar sesión</button>
+      <label>Contraseña</label>
+      <input type="password" formControlName="password" placeholder="Contraseña" />
 
-    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
-  </form>
+      <button type="submit">Iniciar sesión</button>
 
-  <a routerLink="/register">¿No tenés cuenta? Registrate</a>
+      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+    </form>
+
+    <a routerLink="/register">¿No tenés cuenta? Registrate</a>
+  </div>
+
+  <!-- columna de stats -->
+  <div class="stats-card">
+    <div class="stat-block big">
+      <div class="stat-number">120</div>
+      <div class="stat-label">Eventos creados</div>
+    </div>
+
+    <div class="stat-block medium">
+      <div class="stat-number">340</div>
+      <div class="stat-label">Invitados gestionados</div>
+    </div>
+
+    <div class="stat-block small">
+      <div class="stat-number">15</div>
+      <div class="stat-label">Proveedores conectados</div>
+    </div>
+  </div>
 </div>

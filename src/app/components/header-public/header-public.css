@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: rgb(71, 27, 112);
+  background: #395886;
   padding: 0.5rem 2rem;
   height: 90px;
   box-sizing: border-box;
@@ -26,21 +26,43 @@
   order: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.2rem;
   margin-left: auto;
+  margin-right: 30px;
 }
 
 .nav a {
   text-decoration: none;
-  padding: 0.5rem 2.2rem;
-  background: #d5deef;
-  color: #395886;
+  padding: 0.3rem 0;
+  background: transparent;
+  color: #e6ecf7;
   font-size: 1.1rem;
-  border-radius: 0;
   border: none;
-  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
+.nav a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #d5deef;
+  transition: width 0.25s ease, opacity 0.15s ease;
+  opacity: 0.6;
+}
+
+.nav a.active::after {
+  width: 100%;
+  opacity: 1;
+}
 /* MENU MOBILE */
 .menu-toggle {
   order: 2;

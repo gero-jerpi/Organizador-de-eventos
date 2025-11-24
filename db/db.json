@@ -134,6 +134,15 @@
       "phone": "2235336767",
       "password": "lalala",
       "role": "client"
+    },
+    {
+      "id": "2517",
+      "name": "test",
+      "lastName": "cande",
+      "email": "lalala@gmail.com",
+      "phone": "2235336767",
+      "password": "lalala",
+      "role": "client"
     }
   ]
 }
