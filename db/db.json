@@ -43,6 +43,28 @@
       ],
       "totalPrice": 3595011,
       "status": "Pendiente"
+    },
+    {
+      "id": "acee",
+      "user": {
+        "id": "e4c9",
+        "name": "Candela",
+        "lastName": "Flores",
+        "email": "cande@gmail.com",
+        "phone": "2235336767",
+        "password": "lalala",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 100,
+      "date": "2026-08-02",
+      "elements": [
+        "6131",
+        "c111",
+        "69c3"
+      ],
+      "totalPrice": 830000,
+      "status": "Pendiente"
     }
   ],
   "elements": [

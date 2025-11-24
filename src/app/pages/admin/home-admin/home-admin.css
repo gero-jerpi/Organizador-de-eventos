@@ -1,22 +1,22 @@
 :host {
   display: block;
+  margin: 0;
+  padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #fff;
 }
 
-
 /* === Fondo estilo hero === */
 .admin-hero {
-  min-height: 100vh;
+  min-height: 72vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
 .admin-hero::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background-image: url('https://media.janoseventos.com/large_Copia_de_0573_7c5336d74b.jpg');
@@ -34,7 +34,6 @@
   background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
-
 
 /* === Contenido === */
 .admin-content {
@@ -56,7 +55,6 @@
   opacity: 0.85;
   margin-bottom: 2.5rem;
 }
-
 
 /* === Cards estilo limpio === */
 .admin-grid {
@@ -89,20 +87,52 @@
   font-size: 0.8rem;
 }
 
-/* === Botones estilo los de tu menú === */
 .admin-card a {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-decoration: none;
+  position: relative;
+  display: inline-block;
   padding: 0.6rem 1.6rem;
-  background: #d0a1df;
-  color: #66227a;
   font-size: 0.8rem;
-  border-radius: 8px;
   font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+
+  background: #a7437a;
+  color: #fff;
+  border: none;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.admin-card a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+
+  background-color: #716bc4;
+  border-radius: 8px;
+
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.5), 7px 7px 20px rgba(0, 0, 0, 0.1),
+    4px 4px 5px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.3s ease;
+  z-index: -1;
 }
 
 .admin-card a:hover {
-  background: #9539ca;
   color: #fff;
   transform: translateY(-2px);
+}
+
+.admin-card a:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+.admin-card a:active {
+  top: 2px;
 }

@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: rgb(71, 27, 112);
-  padding: 1rem 2.5rem;
+  background: #395886;
+  padding: 0.5rem 2rem;
   height: 90px;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -16,37 +16,54 @@
 .logo a {
   color: #f0f3fa;
   text-decoration: none;
-  font-family: 'Times New Roman', serif;
   font-size: 1.2rem;
   max-width: 80px;
   display: block;
 }
 
+/* NAV LINKS */
 .nav {
   order: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.2rem;
   margin-left: auto;
+  margin-right: 30px;
 }
 
 .nav a {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  padding: 0.4rem 1.5rem;
-  background: #e8daec;
-  color: #66227a;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
+  padding: 0.3rem 0;
+  background: transparent;
+  color: #e6ecf7;
+  font-size: 1.1rem;
+  border: none;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-.nav a:hover {
-  background: #9539ca;
-  transform: translateY(-2px);
+.nav a:hover::after {
+  width: 100%;
+  opacity: 1;
 }
 
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #d5deef;
+  transition: width 0.25s ease, opacity 0.15s ease;
+  opacity: 0.6;
+}
+
+.nav a.active::after {
+  width: 100%;
+  opacity: 1;
+}
+/* MENU MOBILE */
 .menu-toggle {
   order: 2;
   display: none;
