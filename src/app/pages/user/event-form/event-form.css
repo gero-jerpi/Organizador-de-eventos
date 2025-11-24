@@ -202,3 +202,7 @@ select:focus {
   border: none;
   border-top: 1px solid #ddd;
 }
+
+.verMas{
+  cursor: pointer;
+}

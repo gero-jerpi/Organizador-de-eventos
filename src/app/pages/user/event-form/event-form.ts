@@ -33,15 +33,20 @@ export class EventForm {
   private userService = inject(UserService);
   private eventService = inject(EventService);
   private elementService = inject(ElementsService);
-  private router = inject(Router)
+  private router = inject(Router);
 
   occupiedDates = signal<string[]>([]);
 
   dateFilter = (date: Date | null): boolean => {
     if (!date) return false;
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const formatted = date.toISOString().split('T')[0];
-    return !this.occupiedDates().includes(formatted);
+    const isNotOccupied = !this.occupiedDates().includes(formatted);
+
+    return date >= today && isNotOccupied;
   };
 
   finalPrice = signal<number>(0);
@@ -54,13 +59,13 @@ export class EventForm {
   readonly REQUIRED_CATEGORIES = ['Menú'];
 
   readonly eventTypes = [
-  'Cumpleaños',
-  'Casamiento',
-  'Fiesta de 15',
-  'Evento corporativo',
-  'Bautismo',
-  'Aniversario'
-];
+    'Cumpleaños',
+    'Casamiento',
+    'Fiesta de 15',
+    'Evento corporativo',
+    'Bautismo',
+    'Aniversario',
+  ];
 
   // readonly EXTRAS = [
   //   { key: 'fotografia', price: 15000 },
@@ -71,7 +76,7 @@ export class EventForm {
   // ] as const;
 
   eventForm = this.fb.group({
-    date: ['', Validators.required],
+    date: ['', [Validators.required, this.noPastDateValidator]],
     guests: [0, Validators.required],
     eventType: ['', Validators.required],
     menuType: [''],
@@ -85,14 +90,23 @@ export class EventForm {
     // }),
   });
 
+  noPastDateValidator(control: any) {
+  if (!control.value) return null;
+
+  const selected = new Date(control.value);
+  const today = new Date();
+
+  selected.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  return selected < today ? { pastDate: true } : null;
+}
+
   constructor() {
     effect(() => {
-
       const eventos = this.eventService.events;
-      const date = eventos().map((e)=>
-        e.date
-      )
-      if(!date){
+      const date = eventos().map((e) => e.date);
+      if (!date) {
         return;
       }
 
@@ -127,8 +141,8 @@ export class EventForm {
   }
 
   isRequired(category: string): boolean {
-  return this.REQUIRED_CATEGORIES.includes(category);
-}
+    return this.REQUIRED_CATEGORIES.includes(category);
+  }
 
   // toggleExtra(extra: ExtraName, value: boolean) {
   //   const extras = this.eventForm.get('extras') as FormGroup;
@@ -174,7 +188,7 @@ export class EventForm {
     const ids = Object.values(this.selectedByCategory);
     this.eventForm.controls.selectedElements.setValue(ids as string[]);
 
-    if (category ==='Menú') {
+    if (category === 'Menú') {
       this.eventForm.patchValue({ menuType: id });
     }
 
@@ -229,7 +243,7 @@ export class EventForm {
   // ─────────────────────────────────────────────────────
 
   cargarEvento() {
-  if (this.eventForm.invalid) return alert('Datos inválidos');
+    if (this.eventForm.invalid) return alert('Datos inválidos');
 
     const user = this.userService.currentUser();
     if (!user?.id) return alert('No se encontró el usuario');
@@ -242,10 +256,10 @@ export class EventForm {
 
     // VALIDAR CATEGORÍAS OBLIGATORIAS
     for (const cat of this.REQUIRED_CATEGORIES) {
-     if (!this.selectedByCategory[cat]) {
-       return alert(`Debe seleccionar al menos una opción en la categoría: ${cat}`);
-     }
-   }
+      if (!this.selectedByCategory[cat]) {
+        return alert(`Debe seleccionar al menos una opción en la categoría: ${cat}`);
+      }
+    }
 
     const newEvent: newEvent = {
       user: user,
@@ -262,12 +276,9 @@ export class EventForm {
       this.eventForm.reset();
       this.finalPrice.set(0);
     });
+  }
 
-}
-
-
-verMas(){
-  this.router.navigate(['/user/elementList-Detail'])
-}
-
+  verMas() {
+    this.router.navigate(['/user/elementList-Detail']);
+  }
 }

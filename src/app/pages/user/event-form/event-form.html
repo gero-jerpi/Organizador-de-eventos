@@ -1,83 +1,96 @@
 <div class="event-wrapper">
-
   <!-- COLUMNA IZQUIERDA: FORMULARIO -->
   <div class="left-column">
     <form [formGroup]="eventForm">
-
       <!-- INFORMACIÓN DEL EVENTO -->
       <div class="card section-card">
-        <h2 class="section-title"> ¡Planifica el evento de tus sueños!</h2>
+        <h2 class="section-title">¡Planifica el evento de tus sueños!</h2>
 
-         <div class="card section-card">
-        <div class="field">
-          <label> ¿Que tipo de evento quisieras realizar? </label>
+        <div class="card section-card">
+          <div class="field">
+            <label> ¿Qué tipo de evento quisieras realizar? </label>
 
-          <select formControlName="eventType">
-            <option value="">Seleccionar</option>
-            <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="card section-card">
-        <div class="field">
-          <label> Pedimos para hacer posible su fiesta un minimo de 80, y un máximo de 200 invitados.</label>
-          <label>Cantidad:  <input type="number" formControlName="guests" placeholder="Número" min="80" max="200" /></label>
-
-          @if(eventForm.get('guests')?.invalid && eventForm.get('guests')?.touched) {
-          <div class="error-card">
-            @if (eventForm.get('guests')?.errors?.['required']) {
-               <small>Este campo es obligatorio.</small> }
-            @if(eventForm.get('guests')?.errors?.['min']) {
-               <small>El mínimo permitido es 80.</small>}
-            @if (eventForm.get('guests')?.errors?.['max']) {
-               <small>El máximo permitido es 200.</small>}
+            <select formControlName="eventType">
+              <option value="">Seleccionar</option>
+              <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+            </select>
           </div>
-          }
         </div>
-      </div>
 
-       <div class="card section-card">
-         <mat-form-field appearance="outline"  hideRequiredMarker>
-          <mat-label>Fecha del evento</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="date"
-            [matDatepickerFilter]="dateFilter"
-            readonly
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
+        <div class="card section-card">
+          <div class="field">
+            <label>
+              Pedimos para hacer posible su fiesta un minimo de 80, y un máximo de 200
+              invitados.</label
+            >
+            <label
+              >Cantidad:
+              <input type="number" formControlName="guests" placeholder="Número" min="80" max="200"
+            /></label>
 
-      <div class="card section-card">
+            @if(eventForm.get('guests')?.invalid && eventForm.get('guests')?.touched) {
+            <div class="error-card">
+              @if (eventForm.get('guests')?.errors?.['required']) {
+              <small>Este campo es obligatorio.</small> }
+              @if(eventForm.get('guests')?.errors?.['min']) {
+              <small>El mínimo permitido es 80.</small>} @if
+              (eventForm.get('guests')?.errors?.['max']) {
+              <small>El máximo permitido es 200.</small>}
+            </div>
+            }
+          </div>
+        </div>
 
-        <label>En esta sección podrá elegir el menú que desee; recuerde que este paso es obligatorio. Además, podrá seleccionar los adicionales que prefiera para su fiesta.
-        <br/>Puede ver la información detallada de cada opción en la página de inicio en <strong (click)="verMas()">"Más información"</strong>.</label>
+        <div class="card section-card">
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Fecha del evento</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              [matDatepickerFilter]="dateFilter"
+              readonly
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
 
-         @for (category of getCategories(); track $index) {
-             <label class="category-label"> <strong>{{ category }}</strong></label>
+        <div class="card section-card">
+          <label
+            >En esta sección podrá elegir el menú que desee; recuerde que este paso es obligatorio.
+            Además, podrá seleccionar los adicionales que prefiera para su fiesta. <br />Puede ver
+            la información haciendo click <strong class="verMas" (click)="verMas()">Aquí</strong> o
+            desde la pantalla de inicio en "Más información".</label
+          >
+
+          @for (category of getCategories(); track $index) {
+          <label class="category-label">
+            <strong>{{ category }}</strong></label
+          >
 
           <div class="options-row">
-             @for (element of filterByCategory(category); track element.id) {
-               <button type="button" class="option-btn" [class.active]="selectedByCategory[category] === element.id"
-                 (click)="selectOption(category, element.id)">
-                  {{ element.name }} - ${{ element.price }}
-               </button> }
-
-
-          @if (filterByCategory(category).length === 0) {
+            @for (element of filterByCategory(category); track element.id) {
+            <button
+              type="button"
+              class="option-btn"
+              [class.active]="selectedByCategory[category] === element.id"
+              (click)="selectOption(category, element.id)"
+            >
+              {{ element.name }} - ${{ element.price }}
+            </button>
+            } @if (filterByCategory(category).length === 0) {
             <div class="no-elements">No hay opciones en esta categoría todavía.</div>
-          }
-         </div>
-       <!-- MENSAJE SI ES OBLIGATORIO -->
-         <small class="error-card"
-            *ngIf="isRequired(category) && !selectedByCategory[category] && eventForm.touched">
-             Debes elegir una opción para la categoría "{{ category }}".
+            }
+          </div>
+          <!-- MENSAJE SI ES OBLIGATORIO -->
+          <small
+            class="error-card"
+            *ngIf="isRequired(category) && !selectedByCategory[category] && eventForm.touched"
+          >
+            Debes elegir una opción para la categoría "{{ category }}".
           </small>
-        }
+          }
         </div>
 
         <!--
@@ -109,9 +122,8 @@
         </div>
     -->
 
-
-      <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
-    </div>
+        <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
+      </div>
     </form>
   </div>
 
@@ -120,7 +132,7 @@
     <div class="card summary-card">
       <h2 class="summary-title">Resumen</h2>
 
-       <hr class="summary-divider" />
+      <hr class="summary-divider" />
 
       <!-- COMIDA -->
       <div class="summary-item" *ngIf="selectedMenu">
@@ -153,6 +165,3 @@
     </div>
   </div>
 </div>
-
-
-
