@@ -78,14 +78,11 @@
   border: 1px solid #d5deef;
   border-radius: 18px;
   padding: 0.45rem 1rem;
-  background: #fff;
+  background: #f0f3fa;
   font-size: 0.9rem;
   outline: none;
   width: 240px;
-}
-
-.password .row-full input {
-  width: 30px;
+  margin-left: 5px;
 }
 
 .register-container input:focus {
