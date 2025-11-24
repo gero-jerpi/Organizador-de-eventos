@@ -58,13 +58,13 @@ export class EventForm {
   'Evento corporativo'
 ];
 
-  readonly EXTRAS = [
-    { key: 'fotografia', price: 15000 },
-    { key: 'barra', price: 20000 },
-    { key: 'cotillon', price: 7000 },
-    { key: 'mesaDulce', price: 12000 },
-    { key: 'animador', price: 18000 },
-  ] as const;
+  // readonly EXTRAS = [
+  //   { key: 'fotografia', price: 15000 },
+  //   { key: 'barra', price: 20000 },
+  //   { key: 'cotillon', price: 7000 },
+  //   { key: 'mesaDulce', price: 12000 },
+  //   { key: 'animador', price: 18000 },
+  // ] as const;
 
   eventForm = this.fb.group({
     date: ['', Validators.required],
@@ -72,13 +72,13 @@ export class EventForm {
     eventType: ['', Validators.required],
     menuType: [''],
     selectedElements: this.fb.control<string[]>([]),
-    extras: this.fb.group({
-      fotografia: false,
-      barra: false,
-      cotillon: false,
-      mesaDulce: false,
-      animador: false,
-    }),
+    // extras: this.fb.group({
+    //   fotografia: false,
+    //   barra: false,
+    //   cotillon: false,
+    //   mesaDulce: false,
+    //   animador: false,
+    // }),
   });
 
   constructor() {
@@ -95,9 +95,9 @@ export class EventForm {
       this.calculateTotal();
     });
 
-    this.eventForm.get('extras')?.valueChanges.subscribe(() => {
-      this.calculateTotal();
-    });
+    // this.eventForm.get('extras')?.valueChanges.subscribe(() => {
+    //   this.calculateTotal();
+    // });
   }
 
   // ─────────────────────────────────────────────────────
@@ -115,11 +115,11 @@ export class EventForm {
   return this.REQUIRED_CATEGORIES.includes(category);
 }
 
-  toggleExtra(extra: ExtraName, value: boolean) {
-    const extras = this.eventForm.get('extras') as FormGroup;
-    extras.get(extra)?.setValue(value);
-    this.calculateTotal();
-  }
+  // toggleExtra(extra: ExtraName, value: boolean) {
+  //   const extras = this.eventForm.get('extras') as FormGroup;
+  //   extras.get(extra)?.setValue(value);
+  //   this.calculateTotal();
+  // }
 
   selectOption(category: string, id: string) {
     const current = this.selectedByCategory[category];
@@ -171,7 +171,7 @@ export class EventForm {
     const guests = raw.guests ?? 0;
     const eventType = raw.eventType ?? '';
     const selectedElements = raw.selectedElements ?? [];
-    const extras = raw.extras ?? {};
+    // const extras = raw.extras ?? {};
 
     let total = 0;
 
@@ -201,10 +201,10 @@ export class EventForm {
       }
     });
 
-    // Sumar extras
-    this.EXTRAS.forEach((extra) => {
-      if (extras?.[extra.key]) total += extra.price;
-    });
+    //  Sumar extras
+    // this.EXTRAS.forEach((extra) => {
+    //   if (extras?.[extra.key]) total += extra.price;
+    // });
 
     this.finalPrice.set(total);
     return total;

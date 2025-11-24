@@ -154,6 +154,28 @@
       ],
       "totalPrice": 5930000,
       "status": "Pendiente"
+    },
+    {
+      "id": "dba4",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Casamiento",
+      "guests": 81,
+      "date": "2025-11-19",
+      "elements": [
+        "1",
+        "c111",
+        "7531"
+      ],
+      "totalPrice": 7400000,
+      "status": "Confirmado"
     }
   ],
   "elements": [
@@ -204,7 +226,7 @@
       "name": "Decoración temática",
       "category": "Decoración",
       "price": 80000,
-      "description": "Ambientación personalizada según la temática elegida.\nIncluye cartelería, arreglos especiales, mesa temática y detalles en ingreso."
+      "description": "Ambientación personalizada según la temática elegida. Incluye cartelería, arreglos especiales, mesa temática y detalles en ingreso."
     },
     {
       "id": "f38c",

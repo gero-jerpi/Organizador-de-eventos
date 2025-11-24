@@ -48,11 +48,9 @@ export class EventList {
   });
 });
 
-setFilter(mode: 'all' | 'past' | 'future') {
-  this.filterMode.set(mode);
-}
-
-
+   setFilter(mode: 'all' | 'past' | 'future') {
+     this.filterMode.set(mode);
+  }
 
   delete(id: string) {
     if (confirm('Seguro desea eliminar?')) {
@@ -61,10 +59,10 @@ setFilter(mode: 'all' | 'past' | 'future') {
       });
     }
   }
+
 patch(event: Event) {
   const estados = ['Pendiente', 'Confirmado', 'Rechazado', 'Finalizado'] as const;
 
-  // Normalizar lo que venga de la base
   const estado = event.status.toLowerCase();
 
   let estadoNormalizado = '';
@@ -83,7 +81,6 @@ patch(event: Event) {
     console.log("Estado actualizado a:", newStatus);
   });
 }
-
 
   findById(id: string) {
     return this.elements().find((elementFound) => elementFound.id === id);

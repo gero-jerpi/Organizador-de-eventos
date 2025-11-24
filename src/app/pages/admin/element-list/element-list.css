@@ -1,7 +1,9 @@
+
 .elements-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.2rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
 }
 
 /* ---------- TITULO ---------- */
@@ -60,6 +62,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
+  margin-bottom: 4rem;
 }
 
 /* ---------- CARD DE ELEMENTO ---------- */
@@ -128,6 +131,20 @@
   background: #2f456e;
 }
 
+.description-section {
+  margin-top: 8px;
+}
+
+.description-section .label {
+  font-weight: bold;
+}
+
+.description-list {
+  margin: 5px 0 0 15px;
+  padding: 0;
+  list-style: disc;
+  line-height: 1.4;
+}
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1100px) {
   .elements-list {
@@ -150,18 +167,4 @@
     padding-left: 0.9rem;
     margin-top: 1.5rem;
   }
-}
-.description-section {
-  margin-top: 8px;
-}
-
-.description-section .label {
-  font-weight: bold;
-}
-
-.description-list {
-  margin: 5px 0 0 15px;
-  padding: 0;
-  list-style: disc;
-  line-height: 1.4;
 }

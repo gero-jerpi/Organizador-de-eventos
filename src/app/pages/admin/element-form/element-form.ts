@@ -20,7 +20,6 @@ export class ElementForm {
   isEditMode = signal(false);
 
   /// Form
-  /// Agregar validaciones
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     category: ['', Validators.required],
@@ -50,7 +49,6 @@ export class ElementForm {
   /// Method
   render() {
     if (this.form.invalid) {
-    // opcional: marcar touched para que aparezcan errores
     this.form.markAllAsTouched();
     return;
   }

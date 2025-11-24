@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ElementListDetail {
 
-
   private service = inject(ElementsService);
   private router = inject(Router);
 
@@ -21,7 +20,6 @@ export class ElementListDetail {
   categoryText = signal<string>('');
   filteredElements = signal<Elemento[]>([]);
   activeFilter = signal('all');
-
 
   constructor() {
     // inicializar
