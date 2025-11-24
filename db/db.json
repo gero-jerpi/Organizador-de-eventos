@@ -85,6 +85,53 @@
       ],
       "totalPrice": 140000,
       "status": "Pendiente"
+    },
+    {
+      "id": "2e98",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Casamiento",
+      "guests": 81,
+      "date": "2025-11-27",
+      "elements": [
+        "69c3",
+        "ab4e",
+        "7531",
+        "1"
+      ],
+      "totalPrice": 670000,
+      "status": "Pendiente"
+    },
+    {
+      "id": "a0c3",
+      "user": {
+        "id": "ffa3",
+        "name": "Melina",
+        "lastName": "Mamani",
+        "email": "melinamamani2022@gmail.com",
+        "phone": "2235066590",
+        "password": "123456",
+        "role": "client"
+      },
+      "eventType": "Cumpleaños",
+      "guests": 120,
+      "date": "2025-11-29",
+      "elements": [
+        "1",
+        "c111",
+        "f38c",
+        "ab4e",
+        "7531"
+      ],
+      "totalPrice": 600000,
+      "status": "Pendiente"
     }
   ],
   "elements": [

@@ -103,3 +103,29 @@
 .event-btn.secondary:hover {
   background: #d7c3e9;
 }
+
+.event-btn {
+  display: flex;
+  gap: 0.5rem;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+.show-more-btn {
+  background: #d5deef;
+  border: 1px solid #8eacd8;
+  color: #395886;
+  margin-top: auto;
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+  align-self: flex-end;
+}
+
+.show-more-btn:hover {
+  background: #c9d6ec;
+}
+

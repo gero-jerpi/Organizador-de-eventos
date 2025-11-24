@@ -1,8 +1,8 @@
 <div class="event-wrapper">
+
   <!-- COLUMNA IZQUIERDA: FORMULARIO -->
   <div class="left-column">
     <form [formGroup]="eventForm">
-      <!-- <- AQUI -->
 
       <!-- INFORMACIÓN DEL EVENTO -->
       <div class="card section-card">
@@ -18,27 +18,24 @@
         </div>
 
         <div class="field">
-          <label>Cantidad de invitados:</label>
-          <label
-            >Pedimos para hacer posible su fiesta un minimo de 80 invitados, y por el momento
-            contamos con espacio para un maximo de 200 invitados.
-          </label>
+          <label> Pedimos para hacer posible su fiesta un minimo de 80, y un máximo de 200 invitados.</label>
+          <label>Cantidad:</label>
           <input type="number" formControlName="guests" placeholder="Número" min="80" max="200" />
 
           @if(eventForm.get('guests')?.invalid && eventForm.get('guests')?.touched) {
           <div class="error">
             @if (eventForm.get('guests')?.errors?.['required']) {
-            <small>Este campo es obligatorio.</small> } @if
-            (eventForm.get('guests')?.errors?.['min']) { <small>El mínimo permitido es 80.</small>}
+               <small>Este campo es obligatorio.</small> }
+            @if(eventForm.get('guests')?.errors?.['min']) {
+               <small>El mínimo permitido es 80.</small>}
             @if (eventForm.get('guests')?.errors?.['max']) {
-            <small>El máximo permitido es 200.</small>}
+               <small>El máximo permitido es 200.</small>}
           </div>
           }
         </div>
 
-        <mat-form-field appearance="outline"  hideRequiredMarker>
+         <mat-form-field appearance="outline"  hideRequiredMarker>
           <mat-label>Fecha del evento</mat-label>
-
           <input
             matInput
             [matDatepicker]="picker"
@@ -46,30 +43,36 @@
             [matDatepickerFilter]="dateFilter"
             readonly
           />
-
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        @for (category of getCategories(); track $index){
-        <label>{{ category }}</label>
-        <div class="options-row">
-          @for (element of filterByCategory(category); track element.id) {
-          <button
-            type="button"
-            class="option-btn"
-            [class.active]="selectedByCategory[category] === element.id"
-            (click)="selectOption(category, element.id)"
-          >
-            {{ element.name }} - ${{ element.price }}
-          </button>
-          } @if (filterByCategory(category).length === 0) {
-          <div class="no-elements">No hay opciones en esta categoría todavía.</div>
+         @for (category of getCategories(); track $index) {
+             <label>{{ category }}</label>
+
+
+          <div class="options-row">
+             @for (element of filterByCategory(category); track element.id) {
+               <button type="button" class="option-btn" [class.active]="selectedByCategory[category] === element.id"
+                 (click)="selectOption(category, element.id)">
+                  {{ element.name }} - ${{ element.price }}
+               </button> }
+
+
+          @if (filterByCategory(category).length === 0) {
+            <div class="no-elements">No hay opciones en esta categoría todavía.</div>
           }
-        </div>
+         </div>
+
+
+       <!-- MENSAJE SI ES OBLIGATORIO -->
+         <small class="error"
+            *ngIf="isRequired(category) && !selectedByCategory[category] && eventForm.touched">
+             Debes elegir una opción para la categoría "{{ category }}".
+          </small>
         }
 
-        <!-- EXTRAS -->
+        <!--
         <div class="card section-card">
           <h2 class="section-title"><span>2</span> Adicionales</h2>
           <div class="extras-grid">
@@ -96,20 +99,18 @@
             </div>
           </div>
         </div>
+ -->
+
       </div>
       <button type="button" class="submit-btn" (click)="cargarEvento()">Crear evento</button>
     </form>
-    <!-- <- CIERRE FORM -->
   </div>
+
   <!-- COLUMNA DERECHA: RESUMEN -->
   <div class="right-column">
     <div class="card summary-card">
       <h2 class="summary-title">Resumen</h2>
-      <!-- TIPO DE EVENTO -->
-      <div class="summary-item" *ngIf="eventForm.value.eventType">
-        <span>{{ eventForm.value.eventType }}</span>
-        <span>${{ EVENT_TYPE_PRICE[eventForm.value.eventType] }}</span>
-      </div>
+
 
       <!-- COMIDA -->
       <div class="summary-item" *ngIf="selectedMenu">
@@ -127,19 +128,19 @@
         </ng-container>
       </div>
 
-      <hr />
-
-      <!-- EXTRAS -->
+      <!-- <hr />
       <div class="summary-item" *ngFor="let extra of EXTRAS">
         <ng-container *ngIf="eventForm.get('extras')?.get(extra.key)?.value">
           <span>{{ extra.key }}</span>
           <span>${{ extra.price }}</span>
         </ng-container>
       </div>
-
-      <hr />
+      <hr /> -->
 
       <div class="summary-total">Total: ${{ finalPrice() }}</div>
     </div>
   </div>
 </div>
+
+
+

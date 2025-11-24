@@ -43,25 +43,21 @@ export class EventForm {
   };
 
   finalPrice = signal<number>(0);
-
-  menus = signal<any[]>([]);
-  decorations = signal<any[]>([]);
-  music = signal<any[]>([]);
-
   elements = signal<any[]>([]);
 
   selectedByCategory: { [category: string]: string } = {};
   selectedMenu: any = null;
   foodTotal: number = 0;
 
-  readonly EVENT_TYPE_PRICE: Record<string, number> = {
-    Cumpleaños: 50000,
-    Casamiento: 150000,
-    Bautismo: 40000,
-    'Fiesta de 15': 120000,
-    Aniversario: 60000,
-    'Evento corporativo': 200000,
-  };
+  readonly REQUIRED_CATEGORIES = ['Menú'];
+
+
+  readonly eventTypes = [
+  'Cumpleaños',
+  'Casamiento',
+  'Fiesta de 15',
+  'Evento corporativo'
+];
 
   readonly EXTRAS = [
     { key: 'fotografia', price: 15000 },
@@ -71,13 +67,11 @@ export class EventForm {
     { key: 'animador', price: 18000 },
   ] as const;
 
-  eventTypes = Object.keys(this.EVENT_TYPE_PRICE);
-
   eventForm = this.fb.group({
     date: ['', Validators.required],
     guests: [0, Validators.required],
     eventType: ['', Validators.required],
-    menuType: ['', Validators.required],
+    menuType: [''],
     selectedElements: this.fb.control<string[]>([]),
     extras: this.fb.group({
       fotografia: false,
@@ -92,7 +86,6 @@ export class EventForm {
     effect(() => {
       const elems = this.elementService.elements();
       if (!elems) return;
-
       this.elements.set(elems);
 
       const events = this.eventService.events();
@@ -100,10 +93,6 @@ export class EventForm {
 
       this.occupiedDates.set(dates);
 
-      // Filtrar por categoría
-      this.menus.set(elems.filter((e) => e.category === 'menu'));
-      this.decorations.set(elems.filter((e) => e.category === 'decoracion'));
-      this.music.set(elems.filter((e) => e.category === 'musica'));
     });
     this.eventForm.get('guests')?.valueChanges.subscribe(() => {
       this.calculateTotal();
@@ -128,6 +117,10 @@ export class EventForm {
   filterByCategory(category: string) {
     return this.elements().filter((e) => e.category === category);
   }
+
+  isRequired(category: string): boolean {
+  return this.REQUIRED_CATEGORIES.includes(category);
+}
 
   toggleExtra(extra: ExtraName, value: boolean) {
     const extras = this.eventForm.get('extras') as FormGroup;
@@ -189,11 +182,6 @@ export class EventForm {
 
     let total = 0;
 
-    // Precio del tipo de evento
-    if (eventType) {
-      total += this.EVENT_TYPE_PRICE[eventType] || 0;
-    }
-
     const allElems = this.elements();
 
     // Encontrar menú seleccionado
@@ -233,7 +221,7 @@ export class EventForm {
   // ─────────────────────────────────────────────────────
 
   cargarEvento() {
-    if (this.eventForm.invalid) return alert('Datos inválidos');
+  if (this.eventForm.invalid) return alert('Datos inválidos');
 
     const user = this.userService.currentUser();
     if (!user?.id) return alert('No se encontró el usuario');
@@ -243,6 +231,13 @@ export class EventForm {
     if (!rawDate) return alert('Fecha inválida');
 
     const formattedDate = new Date(rawDate).toISOString().split('T')[0];
+
+    // VALIDAR CATEGORÍAS OBLIGATORIAS
+    for (const cat of this.REQUIRED_CATEGORIES) {
+     if (!this.selectedByCategory[cat]) {
+       return alert(`Debe seleccionar al menos una opción en la categoría: ${cat}`);
+     }
+   }
 
     const newEvent: newEvent = {
       user: user,
@@ -259,5 +254,6 @@ export class EventForm {
       this.eventForm.reset();
       this.finalPrice.set(0);
     });
-  }
+
+}
 }
