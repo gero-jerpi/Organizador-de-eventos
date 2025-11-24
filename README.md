@@ -6,10 +6,9 @@ Este proyecto es una **aplicación web** que digitaliza y optimiza la gestión d
 El sistema funciona con **persistencia simulada** usando JSON Server para operaciones CRUD, y está diseñado de manera **responsiva y escalable** para futuras mejoras como pagos online o reportes automáticos.
 
 ## Funcionalidades principales
-- Registro y login de clientes y administradores.
+- Registro, login de clientes y administradores.
 - Reserva y personalización de eventos (comida, decoración, música, torta, etc.).
 - Generación automática de presupuestos.
-- Seguimiento visual del progreso de los eventos.
 - Panel de control para administradores con gestión de recursos y estado de eventos.
 
 ## Participantes
@@ -17,4 +16,3 @@ El sistema funciona con **persistencia simulada** usando JSON Server para operac
 - Deppen Ludmila  
 - Mamani Melina  
 - Jerpi Gerónimo  
-- Vega Daniela
