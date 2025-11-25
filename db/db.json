@@ -68,7 +68,7 @@
         "7531"
       ],
       "totalPrice": 15010000,
-      "status": "Confirmado"
+      "status": "Finalizado"
     },
     {
       "id": "a95d",
@@ -92,30 +92,6 @@
       ],
       "totalPrice": 140000,
       "status": "Confirmado"
-    },
-    {
-      "id": "d7f1",
-      "user": {
-        "id": "c4ab",
-        "name": "gero",
-        "lastName": "jerpi",
-        "email": "gero@gmail.com",
-        "phone": "2235759592",
-        "password": "12345",
-        "role": "client"
-      },
-      "eventType": "Cumpleaños",
-      "guests": 85,
-      "date": "2026-02-19",
-      "elements": [
-        "1",
-        "c111",
-        "f38c",
-        "bc7f",
-        "7531"
-      ],
-      "totalPrice": 8160000,
-      "status": "Pendiente"
     }
   ],
   "elements": [
