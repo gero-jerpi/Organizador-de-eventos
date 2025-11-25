@@ -12,8 +12,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-type ExtraName = 'fotografia' | 'barra' | 'cotillon' | 'mesaDulce' | 'animador';
-
 @Component({
   selector: 'app-event-form',
   imports: [
@@ -67,27 +65,12 @@ export class EventForm {
     'Aniversario',
   ];
 
-  // readonly EXTRAS = [
-  //   { key: 'fotografia', price: 15000 },
-  //   { key: 'barra', price: 20000 },
-  //   { key: 'cotillon', price: 7000 },
-  //   { key: 'mesaDulce', price: 12000 },
-  //   { key: 'animador', price: 18000 },
-  // ] as const;
-
   eventForm = this.fb.group({
     date: ['', [Validators.required, this.noPastDateValidator]],
     guests: [0, Validators.required],
     eventType: ['', Validators.required],
     menuType: [''],
     selectedElements: this.fb.control<string[]>([]),
-    // extras: this.fb.group({
-    //   fotografia: false,
-    //   barra: false,
-    //   cotillon: false,
-    //   mesaDulce: false,
-    //   animador: false,
-    // }),
   });
 
   noPastDateValidator(control: any) {
@@ -124,9 +107,6 @@ export class EventForm {
       this.calculateTotal();
     });
 
-    // this.eventForm.get('extras')?.valueChanges.subscribe(() => {
-    //   this.calculateTotal();
-    // });
   }
 
   // ─────────────────────────────────────────────────────
@@ -143,12 +123,6 @@ export class EventForm {
   isRequired(category: string): boolean {
     return this.REQUIRED_CATEGORIES.includes(category);
   }
-
-  // toggleExtra(extra: ExtraName, value: boolean) {
-  //   const extras = this.eventForm.get('extras') as FormGroup;
-  //   extras.get(extra)?.setValue(value);
-  //   this.calculateTotal();
-  // }
 
   selectOption(category: string, id: string) {
     const current = this.selectedByCategory[category];
@@ -200,7 +174,6 @@ export class EventForm {
     const guests = raw.guests ?? 0;
     const eventType = raw.eventType ?? '';
     const selectedElements = raw.selectedElements ?? [];
-    // const extras = raw.extras ?? {};
 
     let total = 0;
 
@@ -229,12 +202,6 @@ export class EventForm {
         total += el.price;
       }
     });
-
-    //  Sumar extras
-    // this.EXTRAS.forEach((extra) => {
-    //   if (extras?.[extra.key]) total += extra.price;
-    // });
-
     this.finalPrice.set(total);
     return total;
   }
